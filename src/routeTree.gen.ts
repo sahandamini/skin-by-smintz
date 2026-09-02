@@ -10,43 +10,33 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as PrototypeThemesRouteImport } from './routes/prototype/themes'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PrototypeThemesRoute = PrototypeThemesRouteImport.update({
-  id: '/prototype/themes',
-  path: '/prototype/themes',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/prototype/themes': typeof PrototypeThemesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/prototype/themes': typeof PrototypeThemesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/prototype/themes': typeof PrototypeThemesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/prototype/themes'
+  fullPaths: '/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/prototype/themes'
-  id: '__root__' | '/' | '/prototype/themes'
+  to: '/'
+  id: '__root__' | '/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  PrototypeThemesRoute: typeof PrototypeThemesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -58,19 +48,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/prototype/themes': {
-      id: '/prototype/themes'
-      path: '/prototype/themes'
-      fullPath: '/prototype/themes'
-      preLoaderRoute: typeof PrototypeThemesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  PrototypeThemesRoute: PrototypeThemesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

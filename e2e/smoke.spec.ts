@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test'
 test('landing page renders its primary content', async ({ page }) => {
 	await page.goto('/')
 	await expect(
-		page.getByRole('heading', { name: 'Skin health, made personal.' }),
+		page.getByRole('heading', { name: 'Your best skin era.' }),
 	).toBeVisible()
 	await expect(
 		page.getByRole('link', { name: 'Explore virtual care' }),

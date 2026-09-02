@@ -26,12 +26,12 @@ export const Route = createRootRoute({
 			{ name: 'twitter:card', content: 'summary_large_image' },
 			{
 				name: 'theme-color',
-				content: '#eef1ef',
+				content: '#f0b790',
 				media: '(prefers-color-scheme: light)',
 			},
 			{
 				name: 'theme-color',
-				content: '#151a18',
+				content: '#33211b',
 				media: '(prefers-color-scheme: dark)',
 			},
 		],

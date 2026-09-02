@@ -1,9 +1,7 @@
-import {
-	ArrowDownRightIcon,
-	ArrowUpRightIcon,
-	SparkleIcon,
-} from '@phosphor-icons/react'
+import { ArrowDownRightIcon, ArrowUpRightIcon } from '@phosphor-icons/react'
 import { createFileRoute } from '@tanstack/react-router'
+
+import vinylGlowImage from '../../docs/esti_vision_board/47_661255157830430553_many_different_colored_lamps_on_a_pink_background_pin_page.jpg'
 
 export const Route = createFileRoute('/')({ component: LandingPage })
 
@@ -27,84 +25,78 @@ const services = [
 
 function BrandMark() {
 	return (
-		<a
-			className="brand-mark focus-ring"
-			href="#top"
-			aria-label="Skin Groove, back to top"
-		>
-			<span className="brand-orbit" aria-hidden="true">
-				<SparkleIcon weight="fill" />
-			</span>
-			<span>Skin Groove</span>
+		<a className="brand-mark focus-ring" href="#top">
+			Skin Groove
 		</a>
 	)
 }
 
 function LandingPage() {
 	return (
-		<main id="top" className="site-shell">
-			<section className="hero-section">
-				<header className="site-header page-width">
-					<BrandMark />
-					<nav aria-label="Primary navigation" className="desktop-nav">
-						<a className="nav-link focus-ring" href="#services">
-							Services
-						</a>
-						<a className="nav-link focus-ring" href="#approach">
-							Approach
-						</a>
-						<a className="nav-link focus-ring" href="#about">
-							About
-						</a>
-					</nav>
-					<a className="header-cta focus-ring" href="#booking">
-						Virtual care soon
+		<main id="top" className="groove-site">
+			<header className="site-header page-width">
+				<BrandMark />
+				<nav aria-label="Primary navigation" className="desktop-nav">
+					<a className="nav-link focus-ring" href="#services">
+						Services
 					</a>
-				</header>
+					<a className="nav-link focus-ring" href="#approach">
+						Approach
+					</a>
+					<a className="nav-link focus-ring" href="#about">
+						About
+					</a>
+				</nav>
+				<a className="header-cta focus-ring" href="#booking">
+					Virtual care soon
+				</a>
+			</header>
 
-				<div className="hero-grid page-width">
-					<div className="hero-copy enter-up">
-						<p className="eyebrow">Virtual esthetics</p>
-						<h1>
-							Skin health,
-							<span>made personal.</span>
-						</h1>
-						<p className="hero-description">
-							One-to-one skin consultations and curated products, designed to
-							make your routine clearer.
-						</p>
-						<div className="hero-actions">
-							<a className="button button-primary focus-ring" href="#services">
-								Explore virtual care
-								<ArrowDownRightIcon aria-hidden="true" weight="bold" />
-							</a>
-							<a className="button button-secondary focus-ring" href="#about">
-								Our approach
-							</a>
-						</div>
-					</div>
+			<section className="hero-section page-width" aria-labelledby="hero-title">
+				<figure className="hero-media hero-enter">
+					<img
+						alt="Playful collection of rounded retro lamps on a blush background"
+						fetchPriority="high"
+						height="1200"
+						src={vinylGlowImage}
+						width="675"
+					/>
+				</figure>
 
-					<div className="hero-media">
-						<img
-							alt="Woman with naturally luminous skin resting her hand along her jaw"
-							fetchPriority="high"
-							height="1402"
-							src="/images/hero-skin.webp"
-							width="1122"
-						/>
-					</div>
+				<div className="hero-copy copy-enter">
+					<p className="eyebrow">Virtual esthetics</p>
+					<h1 id="hero-title">Your best skin era.</h1>
+					<p className="hero-description">
+						Virtual expertise, a useful routine, and a focused product edit,
+						designed for home.
+					</p>
+					<a className="button button-primary focus-ring" href="#services">
+						Explore virtual care
+						<ArrowDownRightIcon aria-hidden="true" weight="bold" />
+					</a>
 				</div>
 			</section>
 
-			<section id="approach" className="manifesto-section page-width">
-				<div className="manifesto-mark" aria-hidden="true">
-					<SparkleIcon weight="fill" />
+			<div
+				className="service-ribbon page-width"
+				aria-label="Available services"
+			>
+				<p>Virtual skin consultation</p>
+				<p>Routine tune-up</p>
+				<p>Curated retail</p>
+			</div>
+
+			<section id="approach" className="approach-section page-width">
+				<div className="approach-record" aria-hidden="true">
+					<span />
 				</div>
-				<p className="manifesto-copy">
-					Skincare should feel like a conversation, not a correction. Every
-					consultation begins with listening and ends with a routine that makes
-					sense for real life.
-				</p>
+				<div className="approach-copy">
+					<h2>Skincare should feel like a conversation, not a correction.</h2>
+					<p>
+						Every consultation begins with listening and ends with a routine
+						that makes sense for real life.
+					</p>
+				</div>
 			</section>
 
 			<section id="services" className="services-section page-width">
@@ -120,10 +112,8 @@ function LandingPage() {
 					<div className="services-list">
 						{services.map((service) => (
 							<article className="service-row" key={service.name}>
-								<div>
-									<h3>{service.name}</h3>
-									<p>{service.description}</p>
-								</div>
+								<h3>{service.name}</h3>
+								<p>{service.description}</p>
 							</article>
 						))}
 					</div>
@@ -141,15 +131,15 @@ function LandingPage() {
 			</section>
 
 			<section id="about" className="about-section page-width">
-				<div className="about-media">
+				<figure className="about-media">
 					<img
-						alt="Esthetician thoughtfully assessing skin during a consultation"
-						height="1050"
+						alt="Woman with naturally luminous skin resting her hand along her jaw"
+						height="1402"
 						loading="lazy"
-						src="/images/treatment.webp"
-						width="1400"
+						src="/images/hero-skin.webp"
+						width="1122"
 					/>
-				</div>
+				</figure>
 				<div className="about-copy">
 					<h2>Less noise. More attention.</h2>
 					<p>
