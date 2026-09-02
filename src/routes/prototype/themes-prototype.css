@@ -1147,7 +1147,7 @@
 
 .vinyl-glow-study {
 	color-scheme: light;
-	background: #fff0dc;
+	background: #f0b790;
 	color: #5a2a22;
 }
 
@@ -1196,7 +1196,7 @@
 .vinyl-hero::after {
 	position: absolute;
 	z-index: 0;
-	border: 1px solid rgb(214 75 44 / 32%);
+	border: 1px solid rgb(101 115 61 / 46%);
 	border-radius: 50%;
 	content: '';
 	pointer-events: none;
@@ -1225,7 +1225,7 @@
 .vinyl-image::before {
 	position: absolute;
 	inset: -1rem;
-	border: 2px solid #d64b2c;
+	border: 2px solid #65733d;
 	border-radius: 50%;
 	content: '';
 }
@@ -1244,7 +1244,7 @@
 }
 
 .vinyl-copy .study-kicker {
-	color: #d64b2c;
+	color: #465225;
 }
 
 .vinyl-copy h1 {
@@ -1271,7 +1271,7 @@
 	margin-top: 1.8rem;
 	border-radius: 999px;
 	padding: 0.9rem 1.2rem;
-	background: #d64b2c;
+	background: #65733d;
 	color: #fff0dc;
 	font-size: 0.76rem;
 	font-weight: 800;
@@ -1317,6 +1317,11 @@
 .vinyl-glow-study .theme-palette li,
 .vinyl-glow-study .theme-type {
 	border-color: rgb(90 42 34 / 36%);
+}
+
+.vinyl-glow-study .theme-palette small,
+.vinyl-glow-study .theme-type > div > span {
+	opacity: 1;
 }
 
 .apricot-header-link,
@@ -1415,19 +1420,32 @@
 	}
 
 	.vinyl-glow-study {
-		background: #301b17;
-		color: #f9d9ca;
+		background: #33211b;
+		color: #ffe2cc;
 	}
 
 	.vinyl-header,
 	.vinyl-services,
 	.vinyl-services p + p {
-		border-color: rgb(249 217 202 / 38%);
+		border-color: rgb(255 226 204 / 38%);
 	}
 
 	.vinyl-glow-study .theme-palette li,
 	.vinyl-glow-study .theme-type {
-		border-color: rgb(249 217 202 / 38%);
+		border-color: rgb(255 226 204 / 38%);
+	}
+
+	.vinyl-hero::before,
+	.vinyl-hero::after {
+		border-color: rgb(174 188 112 / 34%);
+	}
+
+	.vinyl-image::before {
+		border-color: #aebc70;
+	}
+
+	.vinyl-copy .study-kicker {
+		color: #aebc70;
 	}
 }
 
