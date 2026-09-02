@@ -6,9 +6,9 @@ test('landing page renders its primary content', async ({ page }) => {
 		page.getByRole('heading', { name: 'Skin health, made personal.' }),
 	).toBeVisible()
 	await expect(
-		page.getByRole('link', { name: 'Explore services' }),
+		page.getByRole('link', { name: 'Explore virtual care' }),
 	).toBeVisible()
 	await expect(
-		page.getByRole('heading', { name: 'Care for the skin you are in.' }),
+		page.getByRole('heading', { name: 'Care that meets you where you are.' }),
 	).toBeVisible()
 })

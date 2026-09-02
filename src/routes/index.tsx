@@ -9,19 +9,19 @@ export const Route = createFileRoute('/')({ component: LandingPage })
 
 const services = [
 	{
-		name: 'Signature facial',
+		name: 'Virtual skin consultation',
 		description:
-			'A considered reset shaped around your skin, your routine, and how you want to feel when you leave.',
+			'A one-to-one video consultation shaped around your skin, your goals, and the products you already use.',
 	},
 	{
-		name: 'Clarifying treatment',
+		name: 'Routine edit',
 		description:
-			'Targeted care for congestion and texture, paced to support the skin instead of overwhelming it.',
+			'A focused review that turns an overcrowded or confusing shelf into a routine you can actually follow.',
 	},
 	{
-		name: 'Barrier reset',
+		name: 'Curated retail',
 		description:
-			'Comfort-first treatment for skin that feels reactive, depleted, or simply in need of a softer approach.',
+			'A considered product edit selected to support your routine without adding noise or unnecessary steps.',
 	},
 ]
 
@@ -30,12 +30,12 @@ function BrandMark() {
 		<a
 			className="brand-mark focus-ring"
 			href="#top"
-			aria-label="Skin by Smintz, back to top"
+			aria-label="Skin Groove, back to top"
 		>
 			<span className="brand-orbit" aria-hidden="true">
 				<SparkleIcon weight="fill" />
 			</span>
-			<span>Skin by Smintz</span>
+			<span>Skin Groove</span>
 		</a>
 	)
 }
@@ -58,28 +58,28 @@ function LandingPage() {
 						</a>
 					</nav>
 					<a className="header-cta focus-ring" href="#booking">
-						Booking soon
+						Virtual care soon
 					</a>
 				</header>
 
 				<div className="hero-grid page-width">
 					<div className="hero-copy enter-up">
-						<p className="eyebrow">Thoughtful esthetics</p>
+						<p className="eyebrow">Virtual esthetics</p>
 						<h1>
 							Skin health,
 							<span>made personal.</span>
 						</h1>
 						<p className="hero-description">
-							Unhurried, customized facials for skin that feels clear,
-							comfortable, and understood.
+							One-to-one skin consultations and curated products, designed to
+							make your routine clearer.
 						</p>
 						<div className="hero-actions">
 							<a className="button button-primary focus-ring" href="#services">
-								Explore services
+								Explore virtual care
 								<ArrowDownRightIcon aria-hidden="true" weight="bold" />
 							</a>
 							<a className="button button-secondary focus-ring" href="#about">
-								Meet Smintz
+								Our approach
 							</a>
 						</div>
 					</div>
@@ -102,15 +102,18 @@ function LandingPage() {
 				</div>
 				<p className="manifesto-copy">
 					Skincare should feel like a conversation, not a correction. Every
-					session begins with listening and ends with a routine that makes sense
-					for real life.
+					consultation begins with listening and ends with a routine that makes
+					sense for real life.
 				</p>
 			</section>
 
 			<section id="services" className="services-section page-width">
 				<div className="section-heading">
-					<h2>Care for the skin you are in.</h2>
-					<p>A focused menu designed to meet your skin where it is today.</p>
+					<h2>Care that meets you where you are.</h2>
+					<p>
+						Virtual guidance and a focused retail edit for everyday skin
+						decisions.
+					</p>
 				</div>
 
 				<div className="services-layout">
@@ -127,10 +130,10 @@ function LandingPage() {
 
 					<figure className="services-media">
 						<img
-							alt="Esthetician applying a gentle facial treatment with a soft brush"
+							alt="Skincare products arranged for a simple daily routine"
 							height="1024"
 							loading="lazy"
-							src="/images/treatment.webp"
+							src="/images/skincare-ritual.webp"
 							width="1536"
 						/>
 					</figure>
@@ -140,18 +143,18 @@ function LandingPage() {
 			<section id="about" className="about-section page-width">
 				<div className="about-media">
 					<img
-						alt="Minimal arrangement of unbranded skincare essentials on cool gray stone"
+						alt="Esthetician thoughtfully assessing skin during a consultation"
 						height="1050"
 						loading="lazy"
-						src="/images/skincare-ritual.webp"
+						src="/images/treatment.webp"
 						width="1400"
 					/>
 				</div>
 				<div className="about-copy">
 					<h2>Less noise. More attention.</h2>
 					<p>
-						Skin by Smintz is a private esthetics practice built around careful
-						observation, practical education, and treatments that respect your
+						Skin Groove is a virtual esthetics practice built around careful
+						observation, practical education, and routines that respect your
 						skin barrier.
 					</p>
 					<p>
@@ -165,23 +168,23 @@ function LandingPage() {
 				<div>
 					<h2>Your next skin chapter starts here.</h2>
 					<p>
-						Online scheduling is coming soon. Until then, reach out to start the
-						conversation.
+						Virtual consultations and online retail are coming soon. Until then,
+						reach out to start the conversation.
 					</p>
 				</div>
 				<a
 					className="button booking-button focus-ring"
 					href="mailto:hello@skinbysmintz.com"
 				>
-					Email the studio
+					Email Skin Groove
 					<ArrowUpRightIcon aria-hidden="true" weight="bold" />
 				</a>
 			</section>
 
 			<footer className="site-footer page-width">
 				<BrandMark />
-				<p>Personalized esthetics, with intention.</p>
-				<p>© {new Date().getFullYear()} Skin by Smintz</p>
+				<p>Virtual esthetics, with personality.</p>
+				<p>© {new Date().getFullYear()} Skin Groove</p>
 			</footer>
 		</main>
 	)

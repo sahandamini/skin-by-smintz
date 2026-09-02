@@ -11,16 +11,16 @@ import { queryClient } from '@/lib/utils/query'
 import appCss from '../styles.css?url'
 
 const description =
-	'Customized facials and thoughtful skin care from Skin by Smintz.'
+	'Virtual skin consultations and curated retail from Skin Groove.'
 
 export const Route = createRootRoute({
 	head: () => ({
 		meta: [
 			{ charSet: 'utf-8' },
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
-			{ title: 'Skin by Smintz | Personalized Esthetics' },
+			{ title: 'Skin Groove | Virtual Esthetics' },
 			{ name: 'description', content: description },
-			{ property: 'og:title', content: 'Skin by Smintz' },
+			{ property: 'og:title', content: 'Skin Groove' },
 			{ property: 'og:description', content: description },
 			{ property: 'og:type', content: 'website' },
 			{ name: 'twitter:card', content: 'summary_large_image' },

@@ -1,4 +1,4 @@
-# Skin by Smintz
+# Skin Groove
 
 A premium baseline website for an esthetics practice, built with TanStack Start,
 React 19, Tailwind CSS 4, and Vite+.
