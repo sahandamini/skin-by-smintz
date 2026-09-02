@@ -1,0 +1,57 @@
+import { QueryClientProvider } from '@tanstack/react-query'
+import {
+	HeadContent,
+	Outlet,
+	Scripts,
+	createRootRoute,
+} from '@tanstack/react-router'
+
+import { queryClient } from '@/lib/utils/query'
+
+import appCss from '../styles.css?url'
+
+const description =
+	'Customized facials and thoughtful skin care from Skin by Smintz.'
+
+export const Route = createRootRoute({
+	head: () => ({
+		meta: [
+			{ charSet: 'utf-8' },
+			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
+			{ title: 'Skin by Smintz | Personalized Esthetics' },
+			{ name: 'description', content: description },
+			{ property: 'og:title', content: 'Skin by Smintz' },
+			{ property: 'og:description', content: description },
+			{ property: 'og:type', content: 'website' },
+			{ name: 'twitter:card', content: 'summary_large_image' },
+			{
+				name: 'theme-color',
+				content: '#eef1ef',
+				media: '(prefers-color-scheme: light)',
+			},
+			{
+				name: 'theme-color',
+				content: '#151a18',
+				media: '(prefers-color-scheme: dark)',
+			},
+		],
+		links: [{ rel: 'stylesheet', href: appCss }],
+	}),
+	component: RootComponent,
+})
+
+function RootComponent() {
+	return (
+		<html lang="en">
+			<head>
+				<HeadContent />
+			</head>
+			<body>
+				<QueryClientProvider client={queryClient}>
+					<Outlet />
+				</QueryClientProvider>
+				<Scripts />
+			</body>
+		</html>
+	)
+}
