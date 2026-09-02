@@ -554,16 +554,16 @@ function VinylGlowStudy() {
 			</section>
 
 			<ThemeDetails
-				accent="#65733D"
+				accent="#C43E23"
 				colors={[
 					['Apricot', '#F0B790'],
-					['Blush', '#E9B7AD'],
+					['Burnt orange', '#C43E23'],
 					['Avocado', '#65733D'],
 					['Brown vinyl', '#5A2A22'],
 				]}
 				font="Righteous + DM Serif Display"
 				fontClassName="vinyl-type-sample"
-				notes="Bold, nostalgic, and upbeat. Apricot warmth meets Soft Serve play, with avocado adding a grounded retro note."
+				notes="Bold, nostalgic, and upbeat. Apricot warmth and burnt orange lead, with avocado used as a quiet graphic counterpoint."
 				typeSample="Put your skin on repeat."
 			/>
 		</main>
