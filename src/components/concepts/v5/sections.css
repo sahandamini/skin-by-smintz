@@ -1,0 +1,446 @@
+/* V5 sections. Rules start at phone size. */
+
+.v5-strip {
+	position: relative;
+	height: clamp(4rem, 9vw, 7rem);
+	overflow: hidden;
+}
+
+.v5-center {
+	display: flex;
+	justify-content: center;
+	margin-top: 2rem;
+}
+
+/* ===== Services ===== */
+
+.v5-services {
+	--kicker: var(--amber);
+	padding: 3.5rem 1.5rem;
+	background: var(--chestnut);
+	color: var(--cream);
+	text-align: center;
+}
+
+.v5-services h2 {
+	margin-block: 0.6rem 0.9rem;
+	color: var(--amber);
+	font-size: clamp(2.6rem, 12vw, 6rem);
+}
+
+.v5-services h2 span {
+	display: inline-block;
+}
+
+.v5-services-head > p:last-child {
+	margin-inline: auto;
+	max-width: 28rem;
+	line-height: 1.5;
+}
+
+/* A swatch book: paper cards fanned out over one another. */
+.v5-swatches {
+	display: grid;
+	gap: 0;
+	max-width: 24rem;
+	margin: 2.5rem auto 0;
+	padding: 0;
+	list-style: none;
+	text-align: start;
+}
+
+.v5-swatches li {
+	overflow: hidden;
+	border-radius: 1.5rem;
+	background: var(--cream);
+	box-shadow: 0 1rem 2rem rgb(0 0 0 / 40%);
+	color: var(--chestnut);
+	rotate: -2.5deg;
+}
+
+.v5-swatches li:nth-child(2) {
+	position: relative;
+	margin-block: -1rem;
+	rotate: 2deg;
+}
+
+.v5-swatches li:nth-child(3) {
+	rotate: -1deg;
+}
+
+.v5-swatch {
+	height: 7rem;
+}
+
+.v5-swatch.is-flowers {
+	background: url('/images/tile/wave.svg') 0 0 / 110px auto;
+}
+
+.v5-swatch.is-stripes {
+	background: repeating-linear-gradient(
+		135deg,
+		var(--garnet) 0 1rem,
+		var(--burnt) 1rem 2rem,
+		var(--amber) 2rem 3rem,
+		var(--apricot) 3rem 4rem
+	);
+}
+
+.v5-swatch.is-rings {
+	background:
+		repeating-radial-gradient(
+				circle at 50% 50%,
+				var(--avocado) 0 0.55rem,
+				var(--cream) 0.55rem 1.1rem,
+				var(--amber) 1.1rem 1.65rem
+			)
+			0 0 / 6rem 6rem;
+}
+
+.v5-swatch-copy {
+	display: grid;
+	gap: 0.4rem;
+	padding: 1.25rem 1.5rem 1.75rem;
+}
+
+.v5-swatches h3 {
+	font-family: var(--display);
+	font-size: 1.85rem;
+	font-weight: 400;
+	line-height: 1.1;
+}
+
+.v5-swatch-kind {
+	color: var(--burnt);
+	font-size: 0.76rem;
+	font-weight: 800;
+	line-height: 1.35;
+}
+
+.v5-swatch-copy p:last-child {
+	line-height: 1.55;
+}
+
+/* ===== Meet ===== */
+
+.v5-meet {
+	--focus: var(--amber);
+	padding-bottom: 3.5rem;
+	overflow: hidden;
+	background: var(--avocado);
+	color: var(--cream);
+}
+
+.v5-ticker {
+	padding-block: 0.7rem;
+	overflow: hidden;
+	background: var(--amber);
+	color: var(--chestnut);
+	font-family: var(--display);
+	font-size: 1.35rem;
+	white-space: nowrap;
+}
+
+.v5-ticker p {
+	display: inline-block;
+}
+
+.v5-meet h2 {
+	margin: 2.5rem 1.5rem 1.5rem;
+	font-size: clamp(2.8rem, 12.5vw, 7rem);
+}
+
+.v5-meet-list {
+	display: grid;
+	gap: 1.75rem;
+	padding-inline: 1.5rem;
+}
+
+.v5-meet-list h3 {
+	margin-bottom: 0.7rem;
+	color: var(--amber);
+	font-family: var(--display);
+	font-size: 1.7rem;
+	font-weight: 400;
+	line-height: 1.12;
+	text-wrap: balance;
+}
+
+.v5-meet-list p {
+	line-height: 1.62;
+}
+
+.v5-meet-list p + p {
+	margin-top: 0.8rem;
+}
+
+/* ===== Sammy ===== */
+
+.v5-sammy {
+	--focus: var(--amber);
+	display: grid;
+	gap: 1.75rem;
+	padding: 3.5rem 1.5rem;
+	background: var(--garnet);
+	color: var(--cream);
+}
+
+.v5-sammy-photo {
+	position: relative;
+	padding-bottom: 3rem;
+}
+
+.v5-sammy-photo figure {
+	width: min(74vw, 22rem);
+	aspect-ratio: 3 / 4;
+	padding: 0.6rem;
+	border-radius: 999px;
+	background: url('/images/tile/wave.svg') 0 0 / 90px auto;
+	rotate: -3deg;
+}
+
+.gv .v5-sammy-photo img {
+	border-radius: 999px;
+}
+
+/* A speech bubble lets the greeting come from her. */
+.v5-sammy h2 {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	padding: 0.85rem 1.25rem 1rem;
+	border-radius: 1.75rem 1.75rem 0.35rem 1.75rem;
+	background: var(--amber);
+	color: var(--chestnut);
+	font-size: clamp(2rem, 9.5vw, 3.75rem);
+	rotate: 2deg;
+}
+
+.v5-sammy-copy > p {
+	max-width: 36rem;
+	line-height: 1.68;
+}
+
+.v5-sammy-copy > p + p {
+	margin-top: 0.9rem;
+}
+
+.v5-sammy-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem 1.75rem;
+	align-items: center;
+	margin-top: 1.75rem;
+}
+
+/* ===== Expect ===== */
+
+.v5-expect {
+	padding: 3.5rem 1.5rem;
+	background: var(--apricot);
+	color: var(--chestnut);
+}
+
+.v5-expect h2 {
+	color: var(--rust);
+	font-size: clamp(2.8rem, 12.5vw, 7rem);
+}
+
+.v5-expect ol {
+	display: grid;
+	gap: 1.75rem;
+	margin: 2rem 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.v5-expect li {
+	display: grid;
+	grid-template-columns: 3.5rem minmax(0, 1fr);
+	gap: 1rem;
+}
+
+.v5-expect li > span {
+	color: var(--cream);
+	font-family: var(--display);
+	font-size: 4.5rem;
+	line-height: 0.9;
+	text-shadow:
+		0.03em 0.03em 0 var(--amber),
+		0.06em 0.06em 0 var(--burnt),
+		0.09em 0.09em 0 var(--garnet);
+}
+
+.v5-expect h3 {
+	margin-bottom: 0.5rem;
+	font-family: var(--display);
+	font-size: 1.5rem;
+	font-weight: 400;
+	line-height: 1.12;
+	text-wrap: balance;
+}
+
+.v5-expect p {
+	line-height: 1.58;
+}
+
+/* ===== Groove Room ===== */
+
+.v5-room {
+	--focus: var(--amber);
+	padding-block: 3.5rem;
+	overflow: hidden;
+	background: var(--chestnut);
+	color: var(--cream);
+}
+
+.v5-room-head {
+	width: min(100% - 3rem, 40rem);
+	margin: 0 auto 2.5rem;
+	text-align: center;
+}
+
+.v5-room h2 {
+	color: var(--amber);
+	font-size: clamp(2.6rem, 11vw, 5rem);
+}
+
+.v5-room-head p {
+	margin-block: 0.9rem 0.6rem;
+	line-height: 1.6;
+}
+
+/* Loose snapshots dropped on the rug. */
+.v5-pile {
+	display: flex;
+	gap: 0.75rem;
+	padding: 0.75rem 1.5rem 1.5rem;
+	overflow-x: auto;
+	scroll-snap-type: x proximity;
+	scrollbar-width: none;
+}
+
+.v5-pile span {
+	display: block;
+	flex: 0 0 13rem;
+	aspect-ratio: 5 / 6;
+	padding: 0.6rem 0.6rem 2rem;
+	background: var(--cream);
+	box-shadow: 0 0.75rem 1.5rem rgb(0 0 0 / 45%);
+	rotate: -3deg;
+	scroll-snap-align: center;
+}
+
+.v5-pile span:nth-child(even) {
+	rotate: 3deg;
+	translate: 0 0.75rem;
+}
+
+/* ===== FAQ ===== */
+
+.v5-faq {
+	--line: rgb(58 26 18 / 20%);
+	display: grid;
+	gap: 1.5rem;
+	padding: 3.5rem 1.5rem;
+	background: var(--cream);
+}
+
+.v5-faq h2 {
+	color: var(--burnt);
+	font-size: clamp(2.6rem, 11vw, 5rem);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.v5-ticker p {
+		animation: v5-ticker 60s linear infinite;
+	}
+}
+
+@keyframes v5-ticker {
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+/* ===== Wide screens ===== */
+
+@media (min-width: 800px) {
+	.v5-services,
+	.v5-expect,
+	.v5-faq {
+		padding: clamp(4rem, 7vw, 6rem) clamp(2rem, 6vw, 6rem);
+	}
+
+	.v5-swatches {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		max-width: 66rem;
+		margin-top: 3.5rem;
+	}
+
+	.v5-swatches li:nth-child(2) {
+		margin: 1.5rem -1rem 0;
+		z-index: 1;
+	}
+
+	.v5-swatch {
+		height: 10rem;
+	}
+
+	.v5-meet h2 {
+		margin: 4rem clamp(2rem, 6vw, 6rem) 2.5rem;
+	}
+
+	.v5-meet-list {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 3rem;
+		padding-inline: clamp(2rem, 6vw, 6rem);
+	}
+
+	.v5-sammy {
+		grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+		gap: clamp(2.5rem, 6vw, 6rem);
+		align-items: center;
+		padding: clamp(4rem, 7vw, 6rem) clamp(2rem, 6vw, 6rem);
+	}
+
+	.v5-sammy-photo figure {
+		width: min(32vw, 26rem);
+		padding: 0.9rem;
+	}
+
+	.v5-sammy-photo h2 {
+		right: -1rem;
+	}
+
+	.v5-expect ol {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 3rem;
+		margin-top: 3rem;
+	}
+
+	.v5-expect li {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.v5-expect li > span {
+		font-size: 7rem;
+	}
+
+	.v5-pile {
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0 -1rem;
+		overflow: visible;
+	}
+
+	.v5-pile span {
+		flex-basis: clamp(11rem, 17vw, 15rem);
+		margin: 0 -0.5rem 0.5rem;
+	}
+
+	.v5-faq {
+		grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+		gap: 4rem;
+	}
+}

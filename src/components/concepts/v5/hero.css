@@ -1,0 +1,136 @@
+/* V5 "Wallpaper": a moving op-art wall, and a racetrack badge that holds the headline. */
+
+.v5-hero {
+	--focus: var(--amber);
+	position: relative;
+	display: grid;
+	min-height: 100svh;
+	place-items: center;
+	overflow: hidden;
+	padding: 5.5rem 1rem 2rem;
+	color: var(--cream);
+}
+
+/* The wall is one tile wider than the page, so sliding one tile loops without a jump. */
+.v5-wall {
+	--tile-w: 168px;
+	position: absolute;
+	inset: 0 calc(var(--tile-w) * -1) 0 0;
+	background: url('/images/tile/wave.svg') 0 0 / var(--tile-w) auto;
+}
+
+.v5-hero .gv-nav::before {
+	opacity: 1;
+}
+
+.v5-badge {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	width: min(100%, 44rem);
+	justify-items: center;
+	gap: 1rem;
+	padding: 2.75rem 1.5rem 2.5rem;
+	border-radius: 3.5rem;
+	background: var(--chestnut);
+	box-shadow:
+		0 0 0 0.35rem var(--cream),
+		0 0 0 0.7rem var(--chestnut);
+	text-align: center;
+}
+
+.v5-eyebrow {
+	color: var(--amber);
+	font-size: 0.72rem;
+	font-weight: 800;
+	letter-spacing: 0.14em;
+	line-height: 1.2;
+	text-transform: uppercase;
+}
+
+.v5-title {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0 0.28em;
+	justify-content: center;
+	font-family: var(--display);
+	font-size: clamp(3rem, 14.5vw, 4.25rem);
+	font-weight: 400;
+	line-height: 1.04;
+}
+
+.v5-word {
+	display: inline-flex;
+}
+
+.v5-word span {
+	display: inline-block;
+	text-shadow:
+		0.035em 0.035em 0 var(--burnt),
+		0.07em 0.07em 0 var(--garnet);
+	transform: translateY(var(--lift));
+}
+
+.v5-lead {
+	max-width: 30rem;
+	line-height: 1.55;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.v5-wall {
+		animation: v5-drift 26s linear infinite;
+	}
+
+	.v5-word span {
+		animation: v5-dance 2.4s ease-in-out infinite alternate;
+		animation-delay: calc(var(--beat) * -160ms);
+	}
+}
+
+@keyframes v5-drift {
+	to {
+		transform: translate3d(calc(var(--tile-w) * -1), 0, 0);
+	}
+}
+
+@keyframes v5-dance {
+	from {
+		transform: translateY(calc(var(--lift) * -1));
+	}
+
+	to {
+		transform: translateY(var(--lift));
+	}
+}
+
+@media (min-width: 900px) {
+	.v5-wall {
+		--tile-w: 300px;
+	}
+
+	.v5-hero {
+		padding: 6rem 2rem 3rem;
+	}
+
+	.v5-badge {
+		width: min(100%, 62rem);
+		gap: 1.5rem;
+		padding: 4rem 5rem;
+		border-radius: 7rem;
+		box-shadow:
+			0 0 0 0.6rem var(--cream),
+			0 0 0 1.2rem var(--chestnut);
+	}
+
+	.v5-title {
+		font-size: clamp(4rem, 7vw, 6.5rem);
+	}
+
+	.v5-eyebrow {
+		font-size: 0.82rem;
+	}
+
+	.v5-lead {
+		font-size: 1.12rem;
+	}
+}

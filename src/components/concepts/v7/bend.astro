@@ -1,0 +1,15 @@
+---
+interface Props {
+	to: 'left' | 'right'
+	background: string
+}
+
+const { to, background } = Astro.props
+---
+
+<!-- Moves the striped track from one side of the page to the other. -->
+<div aria-hidden="true" class:list={['v7-bend', `to-${to}`]} style={`background:var(--${background})`}>
+	<div class="v7-corner is-top"></div>
+	<div class="v7-run"></div>
+	<div class="v7-corner is-bottom"></div>
+</div>

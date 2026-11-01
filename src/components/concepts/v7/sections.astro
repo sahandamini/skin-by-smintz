@@ -1,0 +1,120 @@
+---
+import BookPill from '@/components/site/book-pill.astro'
+import Closing from '@/components/site/closing.astro'
+import Icon from '@/components/site/icon.astro'
+import InstagramLink from '@/components/site/instagram-link.astro'
+import Record from '@/components/site/record.astro'
+
+import { expectations, galleryRows, pillars, sammyIntro, services } from '../v3/content'
+import FaqList from '../v3/faq-list.astro'
+import Bend from './bend.astro'
+
+import '../faq.css'
+import './sections.css'
+
+const film = galleryRows[0]
+---
+
+<Bend background="chestnut" to="left" />
+
+<section id="services" class="v7-section v7-services is-left" aria-labelledby="v7-services-title">
+	<div aria-hidden="true" class="v7-rail is-left"></div>
+	<p class="gv-kicker" data-reveal>Services</p>
+	<h2 id="v7-services-title" data-reveal>
+		<span>$50 consult.</span> <span>$50 shop credit.</span>
+	</h2>
+	<p class="v7-lead" data-reveal>After your consult, you get a $50 code for the shop, opening soon.</p>
+	<ol class="v7-stops">
+		{services.map((service) => (
+			<li data-reveal>
+				<Record class="v7-stop" />
+				<h3>{service.name}</h3>
+				<p class="v7-kind">{service.kind}</p>
+				<p>{service.body}</p>
+			</li>
+		))}
+	</ol>
+	<div data-reveal><BookPill /></div>
+</section>
+
+<Bend background="avocado" to="right" />
+
+<section class="v7-section v7-meet is-right" aria-labelledby="v7-meet-title">
+	<div aria-hidden="true" class="v7-rail is-right"></div>
+	<h2 id="v7-meet-title" data-reveal>Meet Skin Groove</h2>
+	<div class="v7-meet-list">
+		{pillars.map((pillar) => (
+			<article data-reveal>
+				<h3>{pillar.title}</h3>
+				{pillar.body.map((paragraph) => (
+					<p>{paragraph}</p>
+				))}
+			</article>
+		))}
+	</div>
+</section>
+
+<Bend background="chestnut" to="left" />
+
+<section class="v7-section v7-sammy is-left" aria-labelledby="v7-sammy-title">
+	<div aria-hidden="true" class="v7-rail is-left"></div>
+	<div class="v7-sammy-head" data-reveal>
+		<img alt="Sammy, the founder of Skin Groove, smiling in a black uniform" decoding="async" height="1080" loading="lazy" src="/images/sammy.webp" width="810" />
+		<div>
+			<p class="gv-kicker">The founder</p>
+			<h2 id="v7-sammy-title">Hi, I’m Sammy!</h2>
+		</div>
+	</div>
+	<div class="v7-sammy-copy" data-reveal>
+		{sammyIntro.map((paragraph) => (
+			<p set:html={paragraph} />
+		))}
+	</div>
+	<div class="v7-sammy-actions" data-reveal>
+		<a class="gv-pill" href="/about">
+			Meet the founder
+			<Icon name="arrowRight" />
+		</a>
+		<InstagramLink />
+	</div>
+</section>
+
+<Bend background="garnet" to="right" />
+
+<section class="v7-section v7-expect is-right" aria-labelledby="v7-expect-title">
+	<div aria-hidden="true" class="v7-rail is-right"></div>
+	<h2 id="v7-expect-title" data-reveal>What you can expect</h2>
+	<ol class="v7-stops">
+		{expectations.map((item) => (
+			<li data-reveal>
+				<Record class="v7-stop" />
+				<h3>{item.title}</h3>
+				<p set:html={item.body} />
+			</li>
+		))}
+	</ol>
+</section>
+
+<Bend background="chestnut" to="left" />
+
+<section class="v7-section v7-room is-left" aria-labelledby="v7-room-title">
+	<div aria-hidden="true" class="v7-rail is-left"></div>
+	<Record class="v7-terminus" />
+	<h2 id="v7-room-title" data-reveal>The Groove Room</h2>
+	<p class="v7-lead" data-reveal>Warm light, soft shapes, and spaces that feel like an exhale.</p>
+	<div data-reveal><InstagramLink /></div>
+	<div aria-hidden="true" class="v7-film">
+		<div>
+			{[...film, ...film].map((image) => (
+				<img alt="" decoding="async" height="300" loading="lazy" src={`/images/groove/${image}.webp`} width="400" />
+			))}
+		</div>
+	</div>
+</section>
+
+<section id="faq" class="v7-faq" aria-labelledby="v7-faq-title">
+	<h2 id="v7-faq-title" data-reveal>Before you book</h2>
+	<div data-reveal><FaqList /></div>
+</section>
+
+<Closing />

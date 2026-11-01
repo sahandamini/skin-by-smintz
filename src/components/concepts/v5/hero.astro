@@ -1,0 +1,41 @@
+---
+import BookPill from '@/components/site/book-pill.astro'
+import SiteNav from '@/components/site/site-nav.astro'
+
+import './hero.css'
+
+const title = 'Find your skincare rhythm.'
+
+const words = title.split(' ').map((word, wordIndex) =>
+	[...word].map((letter, letterIndex) => ({
+		letter,
+		beat: wordIndex * 6 + letterIndex,
+	})),
+)
+---
+
+<header class="v5-hero">
+	<SiteNav />
+	<div aria-hidden="true" class="v5-wall"></div>
+	<div class="v5-badge">
+		<p class="v5-eyebrow">Skin Groove · Virtual esthetics</p>
+		<h1 aria-label={title} class="v5-title">
+			{words.map((word) => (
+				<span aria-hidden="true" class="v5-word">
+					{word.map(({ letter, beat }) => (
+						<span
+							style={`--beat:${beat};--lift:${(Math.sin(beat * 0.75) * 0.055).toFixed(3)}em`}
+						>
+							{letter}
+						</span>
+					))}
+				</span>
+			))}
+		</h1>
+		<p class="v5-lead">
+			Thoughtful, curated skincare guidance to help you understand your skin,
+			simplify your routine, and finally find what works for you.
+		</p>
+		<BookPill />
+	</div>
+</header>
