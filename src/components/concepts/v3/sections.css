@@ -1,0 +1,505 @@
+/* V3 sections. Rules start at phone size. */
+
+.v3-sweep {
+	display: block;
+	width: 100%;
+	height: clamp(4.5rem, 15vw, 13rem);
+	margin-block: -1px;
+}
+
+.v3-sweep.is-flipped {
+	transform: scaleX(-1);
+}
+
+.v3-cta {
+	margin-top: 1.5rem;
+}
+
+/* ===== Services ===== */
+
+.v3-services {
+	--kicker: var(--garnet);
+	--pill-bg: var(--chestnut);
+	--pill-fg: var(--cream);
+	padding: 2.5rem 1.5rem 3rem;
+	background: var(--amber);
+	color: var(--chestnut);
+}
+
+.v3-services h2 {
+	margin-block: 0.6rem 0.9rem;
+	font-size: clamp(2.6rem, 12vw, 6rem);
+}
+
+.v3-services h2 span {
+	display: inline-block;
+}
+
+.v3-services-head > p:last-child {
+	max-width: 30rem;
+	font-size: 1.05rem;
+	font-weight: 600;
+	line-height: 1.5;
+}
+
+.v3-posters {
+	display: flex;
+	gap: 0.85rem;
+	margin: 1.75rem -1.5rem 0;
+	padding: 0 1.5rem 0.5rem;
+	overflow-x: auto;
+	list-style: none;
+	scroll-padding-inline: 1.5rem;
+	scroll-snap-type: x mandatory;
+	scrollbar-width: none;
+}
+
+.v3-posters li {
+	position: relative;
+	display: grid;
+	flex: 0 0 min(82%, 21rem);
+	align-items: end;
+	min-height: 28rem;
+	overflow: hidden;
+	border-radius: 1.75rem;
+	background: var(--chestnut);
+	color: var(--cream);
+	scroll-snap-align: start;
+}
+
+.gv .v3-posters img {
+	position: absolute;
+	inset: 0;
+}
+
+.v3-posters li::after {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, transparent 25%, rgb(43 17 13 / 92%) 68%);
+	content: '';
+}
+
+.v3-posters li > div {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	gap: 0.4rem;
+	padding: 1.5rem;
+}
+
+.v3-posters h3 {
+	font-family: var(--display);
+	font-size: 2.1rem;
+	font-weight: 400;
+	line-height: 1.05;
+	text-shadow:
+		0.04em 0.04em 0 var(--burnt),
+		0.08em 0.08em 0 var(--garnet);
+}
+
+.v3-poster-kind {
+	color: var(--amber);
+	font-size: 0.74rem;
+	font-weight: 800;
+	letter-spacing: 0.08em;
+	line-height: 1.35;
+	text-transform: uppercase;
+}
+
+.v3-posters li p:last-child {
+	line-height: 1.5;
+}
+
+/* ===== Meet ===== */
+
+.v3-meet {
+	--focus: var(--amber);
+	--line: rgb(251 241 225 / 30%);
+	display: grid;
+	gap: 1.5rem;
+	padding: 2.5rem 1.5rem 3rem;
+	background: var(--avocado);
+	color: var(--cream);
+}
+
+.v3-meet-head {
+	display: flex;
+	gap: 0.75rem;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.v3-meet h2 {
+	font-size: clamp(2.6rem, 12vw, 6rem);
+}
+
+.v3-meet-record {
+	flex: 0 0 8rem;
+}
+
+.v3-meet-record .v3-ring-text {
+	font-size: 15px;
+}
+
+.v3-accordion details {
+	border-top: 1px solid var(--line);
+}
+
+.v3-accordion details:last-child {
+	border-bottom: 1px solid var(--line);
+}
+
+.v3-accordion summary {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	justify-content: space-between;
+	padding-block: 1.1rem;
+	color: var(--amber);
+	cursor: pointer;
+	font-family: var(--display);
+	font-size: 1.65rem;
+	line-height: 1.1;
+	list-style: none;
+}
+
+.v3-accordion summary::-webkit-details-marker {
+	display: none;
+}
+
+.v3-accordion summary svg {
+	width: 1.25rem;
+	height: 1.25rem;
+	flex: none;
+	transition: transform 400ms var(--ease);
+}
+
+.v3-accordion details[open] summary svg {
+	transform: rotate(45deg);
+}
+
+.v3-accordion p {
+	max-width: 38rem;
+	padding-bottom: 1.1rem;
+	line-height: 1.65;
+}
+
+/* ===== Sammy ===== */
+
+.v3-sammy {
+	--kicker: var(--amber);
+	--focus: var(--amber);
+	display: grid;
+	gap: 2rem;
+	justify-items: center;
+	padding: 2.5rem 1.5rem 4rem;
+	background: var(--rust);
+	color: var(--cream);
+}
+
+.v3-flower {
+	position: relative;
+	width: min(82vw, 26rem);
+	aspect-ratio: 1;
+}
+
+.v3-flower svg {
+	position: absolute;
+	inset: 0;
+	overflow: visible;
+}
+
+.v3-petals {
+	fill: var(--amber);
+	transform-origin: 50% 50%;
+}
+
+.gv .v3-flower img {
+	position: relative;
+	clip-path: url('#v3-flower-clip');
+	object-position: 50% 18%;
+}
+
+.v3-sammy h2 {
+	margin-block: 0.6rem 1.25rem;
+	color: var(--amber);
+	font-size: clamp(2.8rem, 13vw, 5.5rem);
+}
+
+.v3-sammy-copy > p:not(.gv-kicker) {
+	max-width: 36rem;
+	line-height: 1.68;
+}
+
+.v3-sammy-copy > p + p:not(.gv-kicker) {
+	margin-top: 0.9rem;
+}
+
+.v3-sammy-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem 1.75rem;
+	align-items: center;
+	margin-top: 1.75rem;
+}
+
+/* ===== Expect ===== */
+
+/* Layered colour tabs: each band rounds over the one before it. */
+.v3-expect {
+	background: var(--rust);
+}
+
+.v3-expect h2 {
+	padding: 3rem 1.5rem 3.5rem;
+	border-radius: 2.5rem 2.5rem 0 0;
+	background: var(--garnet);
+	color: var(--cream);
+	font-size: clamp(2.6rem, 12vw, 6rem);
+}
+
+.v3-expect ul {
+	margin: -2rem 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.v3-expect li {
+	padding: 2rem 1.5rem 4rem;
+	border-radius: 2.5rem 2.5rem 0 0;
+	margin-top: -2rem;
+}
+
+.v3-expect li:nth-child(1) {
+	background: var(--burnt);
+	color: var(--cream);
+}
+
+.v3-expect li:nth-child(2) {
+	background: var(--amber);
+	color: var(--chestnut);
+}
+
+.v3-expect li:nth-child(3) {
+	padding-bottom: 5rem;
+	background: var(--apricot);
+	color: var(--chestnut);
+}
+
+.v3-expect h3 {
+	margin-bottom: 0.7rem;
+	font-family: var(--display);
+	font-size: 1.8rem;
+	font-weight: 400;
+	line-height: 1.1;
+	text-wrap: balance;
+}
+
+.v3-expect p {
+	max-width: 40rem;
+	line-height: 1.6;
+}
+
+/* ===== Groove Room ===== */
+
+.v3-room {
+	--focus: var(--amber);
+	margin-top: -2rem;
+	padding-block: 3.5rem 2rem;
+	border-radius: 2.5rem 2.5rem 0 0;
+	background: var(--chestnut);
+	color: var(--cream);
+	position: relative;
+}
+
+.v3-room-head {
+	width: min(100% - 3rem, 40rem);
+	margin: 0 auto 2rem;
+	text-align: center;
+}
+
+.v3-room h2 {
+	color: var(--amber);
+	font-size: clamp(2.6rem, 11vw, 5rem);
+}
+
+.v3-room-head p {
+	margin-block: 0.9rem 0.6rem;
+	line-height: 1.6;
+}
+
+/* Each photo is a 45 on a long shelf: vinyl rim, photo label, spindle hole. */
+.v3-discs {
+	display: flex;
+	width: max-content;
+	gap: 1rem;
+}
+
+.v3-discs span {
+	position: relative;
+	display: block;
+	width: clamp(10rem, 18vw, 16rem);
+	aspect-ratio: 1;
+	padding: 0.9rem;
+	border-radius: 50%;
+	background: #1f0d09;
+	box-shadow: inset 0 0 0 1px rgb(242 181 74 / 50%);
+}
+
+.v3-discs span::after {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 0.8rem;
+	height: 0.8rem;
+	border-radius: 50%;
+	background: var(--chestnut);
+	content: '';
+	transform: translate(-50%, -50%);
+}
+
+.gv .v3-discs img {
+	border-radius: 50%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.v3-discs {
+		animation: v3-marquee 70s linear infinite;
+	}
+}
+
+@keyframes v3-marquee {
+	to {
+		transform: translateX(calc(-50% - 0.5rem));
+	}
+}
+
+/* ===== FAQ ===== */
+
+.v3-faq {
+	--line: rgb(58 26 18 / 20%);
+	display: grid;
+	gap: 1.5rem;
+	padding: 2rem 1.5rem 3.5rem;
+	background: var(--cream);
+}
+
+.v3-faq h2 {
+	color: var(--burnt);
+	font-size: clamp(2.6rem, 11vw, 5rem);
+}
+
+.gv-faq details {
+	border-bottom: 1px solid var(--line);
+}
+
+.gv-faq details:first-child {
+	border-top: 1px solid var(--line);
+}
+
+.gv-faq summary {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.5rem;
+	padding-block: 1.2rem;
+	cursor: pointer;
+	font-size: 1.02rem;
+	font-weight: 600;
+	list-style: none;
+}
+
+.gv-faq summary::-webkit-details-marker {
+	display: none;
+}
+
+.gv-faq summary svg {
+	width: 1.1rem;
+	height: 1.1rem;
+	flex: none;
+	transition: transform 400ms var(--ease);
+}
+
+.gv-faq details[open] summary svg {
+	transform: rotate(45deg);
+}
+
+.gv-faq details p {
+	max-width: 32rem;
+	padding-bottom: 1.3rem;
+	line-height: 1.65;
+}
+
+/* ===== Wide screens ===== */
+
+@media (min-width: 760px) {
+	.v3-services,
+	.v3-meet {
+		padding: 4rem clamp(2rem, 6vw, 6rem) 5rem;
+	}
+
+	.v3-posters {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		margin-inline: 0;
+		padding: 0;
+		overflow: visible;
+	}
+
+	.v3-posters li {
+		min-height: 34rem;
+	}
+
+	.v3-meet {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+		gap: 4rem;
+		align-items: start;
+	}
+
+	.v3-meet-head {
+		display: grid;
+		justify-items: start;
+		gap: 1.5rem;
+	}
+
+	.v3-meet-record {
+		width: 12rem;
+		flex: none;
+	}
+
+	.v3-accordion summary {
+		font-size: 2.1rem;
+		padding-block: 1.5rem;
+	}
+
+	.v3-sammy {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+		gap: clamp(2.5rem, 6vw, 6rem);
+		align-items: center;
+		padding: 3rem clamp(2rem, 6vw, 6rem) 7rem;
+	}
+
+	.v3-expect h2 {
+		padding-inline: clamp(2rem, 6vw, 6rem);
+	}
+
+	.v3-expect li {
+		padding: 2.5rem clamp(2rem, 6vw, 6rem) 5rem;
+	}
+
+	.v3-expect li > div {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+		gap: 3rem;
+	}
+
+	.v3-expect h3 {
+		font-size: 2.4rem;
+	}
+
+	.v3-faq {
+		grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+		gap: 4rem;
+		padding: 3rem clamp(2rem, 6vw, 6rem) 6rem;
+	}
+}

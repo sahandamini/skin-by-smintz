@@ -1,0 +1,32 @@
+---
+import BookPill from '@/components/site/book-pill.astro'
+import SiteNav from '@/components/site/site-nav.astro'
+
+import './hero.css'
+---
+
+<header class="v4-hero">
+	<SiteNav />
+	<div class="v4-stage">
+		<div class="v4-door">
+			<img
+				alt="A sunken lounge under glowing amber arches"
+				fetchpriority="high"
+				height="1104"
+				src="/images/groove/57.webp"
+				width="736"
+			/>
+		</div>
+		<h1 class="v4-title">
+			<span>Skin Groove · Virtual esthetics</span>
+			Find your skincare rhythm.
+		</h1>
+		<div class="v4-side">
+			<p>
+				Thoughtful, curated skincare guidance to help you understand your skin,
+				simplify your routine, and finally find what works for you.
+			</p>
+			<BookPill />
+		</div>
+	</div>
+</header>

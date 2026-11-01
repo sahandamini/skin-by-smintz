@@ -1,0 +1,175 @@
+/* V4 "The Lounge": a dark walnut wall with one lit doorway. Scrolling walks through it. */
+
+.v4-hero {
+	--focus: var(--amber);
+	--slat: repeating-linear-gradient(
+		90deg,
+		#2b110d 0 2.25rem,
+		#1d0a07 2.25rem 2.5rem
+	);
+	position: relative;
+	color: var(--cream);
+}
+
+.v4-stage {
+	position: relative;
+	display: grid;
+	min-height: 100svh;
+	align-content: end;
+	overflow: hidden;
+	padding: 5rem 1.25rem 1.75rem;
+	background:
+		radial-gradient(70% 60% at 50% 62%, rgb(242 181 74 / 26%), transparent 72%),
+		var(--slat);
+}
+
+.v4-door {
+	position: absolute;
+	inset: 5.25rem 1rem 0;
+	overflow: hidden;
+	border-radius: 999px 999px 0 0;
+	box-shadow:
+		0 0 0 2px #ffe2a8,
+		0 0 1rem 2px var(--amber),
+		0 0 4rem rgb(242 181 74 / 55%);
+}
+
+.v4-door::after {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, transparent 30%, rgb(29 10 7 / 94%) 68%);
+	content: '';
+}
+
+.v4-title,
+.v4-side {
+	position: relative;
+	z-index: 1;
+	padding-inline: 0.75rem;
+}
+
+.v4-title {
+	font-family: var(--display);
+	font-size: clamp(3rem, 14vw, 4rem);
+	font-weight: 400;
+	line-height: 0.98;
+	text-shadow:
+		0 0 0.5em rgb(242 181 74 / 60%),
+		0 0 1.2em rgb(184 70 27 / 80%);
+	text-wrap: balance;
+}
+
+.v4-title span {
+	display: block;
+	margin-bottom: 0.8rem;
+	color: var(--amber);
+	font: 800 0.72rem/1.2 var(--body);
+	letter-spacing: 0.14em;
+	text-shadow: none;
+	text-transform: uppercase;
+}
+
+.v4-side {
+	display: grid;
+	justify-items: start;
+	gap: 1rem;
+	margin-top: 0.9rem;
+	line-height: 1.5;
+}
+
+/* ===== Walk through ===== */
+
+@supports (animation-timeline: scroll()) {
+	@media (prefers-reduced-motion: no-preference) {
+		.v4-hero {
+			height: 185svh;
+		}
+
+		.v4-stage {
+			position: sticky;
+			top: 0;
+			height: 100svh;
+		}
+
+		.v4-door {
+			animation: v4-walk linear both;
+			animation-range: 0 85svh;
+			animation-timeline: scroll(root);
+			transform-origin: 50% 66%;
+		}
+
+		/* The scrim lifts while the title leaves, so the walk ends in a lit room. */
+		.v4-door::after {
+			animation: v4-leave linear both;
+			animation-range: 0 34svh;
+			animation-timeline: scroll(root);
+		}
+
+		.v4-title,
+		.v4-side {
+			animation: v4-leave linear both;
+			animation-range: 0 34svh;
+			animation-timeline: scroll(root);
+		}
+	}
+}
+
+@keyframes v4-walk {
+	to {
+		transform: scale(4.2);
+	}
+}
+
+@keyframes v4-leave {
+	to {
+		opacity: 0;
+		transform: translateY(-2rem);
+	}
+}
+
+/* ===== Wide screens ===== */
+
+@media (min-width: 900px) {
+	.v4-stage {
+		grid-template-columns: minmax(0, 1fr) min(32vw, 56svh) minmax(0, 1fr);
+		gap: 0 clamp(2rem, 4vw, 4rem);
+		align-items: center;
+		align-content: stretch;
+		padding: 5.5rem clamp(2rem, 5vw, 5rem) 0;
+	}
+
+	.v4-door {
+		position: relative;
+		inset: auto;
+		grid-column: 2;
+		grid-row: 1;
+		align-self: end;
+		height: calc(100svh - 7rem);
+	}
+
+	.v4-door::after {
+		background: linear-gradient(180deg, transparent 75%, rgb(29 10 7 / 55%));
+	}
+
+	.v4-title {
+		grid-column: 1;
+		grid-row: 1;
+		padding: 0;
+		font-size: clamp(2.5rem, 4.55vw, 5rem);
+		text-wrap: wrap;
+	}
+
+	.v4-title span {
+		font-size: 0.8rem;
+		letter-spacing: 0.16em;
+	}
+
+	.v4-side {
+		grid-column: 3;
+		grid-row: 1;
+		gap: 1.5rem;
+		margin: 0;
+		padding: 0;
+		font-size: 1.12rem;
+	}
+}

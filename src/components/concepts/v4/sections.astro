@@ -1,0 +1,105 @@
+---
+import BookPill from '@/components/site/book-pill.astro'
+import Closing from '@/components/site/closing.astro'
+import Icon from '@/components/site/icon.astro'
+import InstagramLink from '@/components/site/instagram-link.astro'
+
+import { expectations, pillars, sammyIntro, services } from './content'
+import FaqList from './faq-list.astro'
+import NeonLine from './neon-line.astro'
+
+import './sections.css'
+
+const serviceImages = ['/images/groove/41-lg.webp', '/images/groove/43-lg.webp', '/images/groove/06-lg.webp']
+
+const mosaic = ['13', '04', '38', '02', '44', '16', '25', '52']
+---
+
+<section class="v4-sign" aria-labelledby="v4-sign-title">
+	<NeonLine />
+	<h2 id="v4-sign-title" data-reveal>
+		<span>$50 consult.</span> <span>$50 shop credit.</span>
+	</h2>
+	<p data-reveal>After your consult, you get a $50 code for the shop, opening soon.</p>
+</section>
+
+<section id="services" class="v4-services" aria-label="Services">
+	{services.map((service, index) => (
+		<article class="v4-booth">
+			<img alt="" decoding="async" height="1000" loading="lazy" src={serviceImages[index]} width="800" />
+			<div>
+				<p class="gv-kicker">Service {index + 1} of 3</p>
+				<h3>{service.name}</h3>
+				<p class="v4-booth-kind">{service.kind}</p>
+				<p>{service.body}</p>
+				<BookPill />
+			</div>
+		</article>
+	))}
+</section>
+
+<section class="v4-meet" aria-labelledby="v4-meet-title">
+	<h2 id="v4-meet-title" data-reveal>Meet Skin Groove</h2>
+	<div aria-label="Meet Skin Groove" class="v4-meet-list" role="group">
+		{pillars.map((pillar) => (
+			<article>
+				<h3>{pillar.title}</h3>
+				{pillar.body.map((paragraph) => (
+					<p>{paragraph}</p>
+				))}
+			</article>
+		))}
+	</div>
+</section>
+
+<section class="v4-sammy" aria-labelledby="v4-sammy-title">
+	<figure data-reveal>
+		<img alt="Sammy, the founder of Skin Groove, smiling in a black uniform" decoding="async" height="1080" loading="lazy" src="/images/sammy.webp" width="810" />
+	</figure>
+	<div class="v4-sammy-copy" data-reveal>
+		<p class="gv-kicker">The founder</p>
+		<h2 id="v4-sammy-title">Hi, I’m Sammy!</h2>
+		{sammyIntro.map((paragraph) => (
+			<p set:html={paragraph} />
+		))}
+		<div class="v4-sammy-actions">
+			<a class="gv-pill" href="/about">
+				Meet the founder
+				<Icon name="arrowRight" />
+			</a>
+			<InstagramLink />
+		</div>
+	</div>
+</section>
+
+<section class="v4-expect" aria-labelledby="v4-expect-title">
+	<h2 id="v4-expect-title" data-reveal>What you can expect</h2>
+	<ul>
+		{expectations.map((item) => (
+			<li data-reveal>
+				<h3>{item.title}</h3>
+				<p set:html={item.body} />
+			</li>
+		))}
+	</ul>
+</section>
+
+<section class="v4-room" aria-labelledby="v4-room-title">
+	<div class="v4-room-head" data-reveal>
+		<h2 id="v4-room-title">The Groove Room</h2>
+		<p>Warm light, soft shapes, and spaces that feel like an exhale.</p>
+		<InstagramLink />
+	</div>
+	<div aria-hidden="true" class="v4-mosaic">
+		{mosaic.map((image) => (
+			<img alt="" decoding="async" height="500" loading="lazy" src={`/images/groove/${image}.webp`} width="400" />
+		))}
+	</div>
+</section>
+
+<section id="faq" class="v4-faq" aria-labelledby="v4-faq-title">
+	<h2 id="v4-faq-title" data-reveal>Before you book</h2>
+	<div data-reveal><FaqList /></div>
+</section>
+
+<Closing />

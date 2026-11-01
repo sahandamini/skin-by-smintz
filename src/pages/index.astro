@@ -1,15 +1,50 @@
 ---
 import Base from '@/layouts/base.astro'
-import Hero from '@/components/home/hero.astro'
-import Sections from '@/components/home/sections.astro'
+
+const versions = [
+	{ href: '/v1', name: 'V1 · Ripple', note: 'Wavy mirror, flat ripple bands, album sleeve' },
+	{ href: '/v2', name: 'V2 · Vanity', note: 'Cream wall, sun lamp, drawn shelf' },
+	{ href: '/v3', name: 'V3 · Flow', note: 'Stripe ribbon, big records, colour fields' },
+	{ href: '/v4', name: 'V4 · The Lounge', note: 'Walk through the doorway, neon, photography' },
+]
 ---
 
-<Base canonicalPath="/">
-	<main class="gv">
-		<Hero />
-		<Sections />
+<Base>
+	<main class="gv concept-hub">
+		<h1>Skin Groove landing versions</h1>
+		{versions.map((version) => (
+			<a href={version.href}>
+				<b>{version.name}</b>
+				{version.note}
+			</a>
+		))}
 	</main>
-	<script>
-		import '@/scripts/reveal'
-	</script>
 </Base>
+
+<style is:global>
+	.concept-hub {
+		display: grid;
+		gap: 0.75rem;
+		width: min(100% - 3rem, 34rem);
+		margin: 0 auto;
+		padding-block: 3rem;
+	}
+
+	.concept-hub h1 {
+		font: 400 2.25rem/1.05 var(--display);
+	}
+
+	.concept-hub a {
+		display: grid;
+		gap: 0.25rem;
+		padding: 1.1rem 1.25rem;
+		border-radius: 1rem;
+		background: var(--chestnut);
+		color: var(--cream);
+	}
+
+	.concept-hub b {
+		color: var(--amber);
+		font: 400 1.4rem/1.1 var(--display);
+	}
+</style>

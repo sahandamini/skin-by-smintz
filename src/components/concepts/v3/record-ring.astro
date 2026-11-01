@@ -1,0 +1,22 @@
+---
+import Record from '@/components/site/record.astro'
+
+interface Props {
+	text: string
+	id: string
+	class?: string
+}
+
+const { text, id, class: className } = Astro.props
+---
+
+<!-- A spinning record inside a ring of curved lettering. -->
+<div aria-hidden="true" class:list={['v3-ring', className]}>
+	<svg class="v3-ring-text" viewBox="0 0 200 200">
+		<defs>
+			<path d="M100 100m-92 0a92 92 0 1 1 184 0a92 92 0 1 1-184 0" id={id}></path>
+		</defs>
+		<text textLength="570"><textPath href={`#${id}`}>{text}</textPath></text>
+	</svg>
+	<Record class="v3-ring-record" />
+</div>

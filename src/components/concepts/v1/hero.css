@@ -1,0 +1,232 @@
+/* Homepage hero: the tagline beside a wavy mirror that sends flat ripple bands across the header. */
+
+/* ===== Hero ===== */
+
+.hero {
+	--focus: var(--amber);
+	--wave-fill: var(--cream);
+	position: relative;
+	display: grid;
+	/* svh, not dvh: dvh changes while the phone address bar collapses, which resizes the page during the first scroll. */
+	min-height: 100svh;
+	grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+	gap: clamp(2rem, 5vw, 5rem);
+	align-items: center;
+	overflow: hidden;
+	padding: 7rem clamp(1.5rem, 6vw, 6rem) clamp(5rem, 8vw, 7rem);
+	background: var(--chestnut);
+	color: var(--cream);
+}
+
+.hero-copy {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	justify-items: start;
+	gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.hero-eyebrow {
+	display: block;
+	margin-bottom: clamp(0.9rem, 1.6vw, 1.4rem);
+	color: var(--amber);
+	font-family: var(--body);
+	font-size: 0.82rem;
+	font-weight: 800;
+	letter-spacing: 0.18em;
+	line-height: 1;
+	text-transform: uppercase;
+}
+
+.hero-title {
+	display: block;
+	max-width: 9.5em;
+	font-family: var(--display);
+	font-size: clamp(3.25rem, 7.4vw, 7.25rem);
+	font-weight: 400;
+	letter-spacing: -0.015em;
+	line-height: 0.96;
+	text-shadow:
+		0.035em 0.035em 0 var(--burnt),
+		0.07em 0.07em 0 var(--garnet);
+	text-wrap: balance;
+}
+
+.hero-lead {
+	/* The width follows the viewport, so the copy stops short of the amber band. */
+	max-width: min(30rem, 34vw);
+	font-size: clamp(1rem, 1.3vw, 1.15rem);
+	line-height: 1.6;
+}
+
+.hero-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem 1.75rem;
+	align-items: center;
+	margin-top: 0.5rem;
+}
+
+/* ===== Mirror ===== */
+
+.hero-mirror {
+	position: relative;
+	width: min(100%, (100svh - 11rem) * 0.75);
+	aspect-ratio: 3 / 4;
+	justify-self: center;
+}
+
+/* The bands paint past the mirror box and stop at the edge of the header. */
+.hero-ripples {
+	position: absolute;
+	inset: 0;
+	overflow: visible;
+}
+
+.gv .hero-mirror img {
+	position: relative;
+	clip-path: url('#hero-mirror-clip');
+	object-position: 50% 20%;
+}
+
+.hero-mirror figcaption {
+	position: absolute;
+	right: -1%;
+	bottom: 13%;
+	padding: 0.45rem 0.9rem;
+	border-radius: 999px;
+	background: var(--cream);
+	color: var(--chestnut);
+	font-size: 0.74rem;
+	font-weight: 750;
+	white-space: nowrap;
+}
+
+.hero-sticker {
+	position: absolute;
+	top: 56%;
+	left: -7%;
+	display: grid;
+	width: clamp(6.5rem, 10vw, 8.5rem);
+	aspect-ratio: 1;
+	place-items: center;
+	transform: rotate(-9deg);
+}
+
+.hero-sticker svg {
+	position: absolute;
+	inset: 0;
+	fill: var(--amber);
+	filter: drop-shadow(0 0.4rem 0.8rem rgb(43 17 13 / 45%));
+}
+
+.hero-sticker p {
+	position: relative;
+	display: grid;
+	justify-items: center;
+	color: var(--chestnut);
+	font-family: var(--display);
+	font-size: clamp(1.9rem, 3.2vw, 2.5rem);
+	line-height: 0.95;
+}
+
+.hero-sticker span {
+	max-width: 5.5em;
+	font-family: var(--body);
+	font-size: 0.64rem;
+	font-weight: 800;
+	letter-spacing: 0.08em;
+	line-height: 1.15;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.gv-wave.hero-wave {
+	bottom: -1px;
+}
+
+/* ===== Motion ===== */
+
+@media (prefers-reduced-motion: no-preference) {
+	.hero-ripples use {
+		animation: hero-ripple 1500ms calc(var(--ripple) * 110ms) var(--ease) both;
+	}
+
+	.hero-mirror img,
+	.hero-mirror figcaption {
+		animation: gv-rise 1100ms var(--ease) both;
+	}
+
+	.hero-sticker {
+		animation: hero-stamp 700ms 900ms var(--ease) both;
+	}
+
+	.hero-copy {
+		animation: gv-rise 1100ms 120ms var(--ease) both;
+	}
+}
+
+@keyframes hero-ripple {
+	from {
+		stroke-width: 0;
+	}
+}
+
+@keyframes hero-stamp {
+	from {
+		opacity: 0;
+		transform: rotate(-30deg) scale(1.5);
+	}
+}
+
+/* ===== Responsive ===== */
+
+/* Phones stack the tagline over the mirror. The mirror runs off the bottom of the header, so the page keeps moving. */
+@media (max-width: 860px) {
+	.hero {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 6.5rem;
+		align-items: start;
+		align-content: start;
+		padding-block: 6rem 0;
+	}
+
+	.hero-lead {
+		max-width: 34rem;
+	}
+
+	.hero-mirror {
+		width: min(78%, 22rem);
+		margin-bottom: -20%;
+	}
+
+	.hero-sticker {
+		top: 40%;
+		left: -13%;
+	}
+
+	.hero-mirror figcaption {
+		right: -9%;
+		bottom: 29%;
+	}
+}
+
+/* Phones move the booking pill from the hero into the nav. */
+@media (max-width: 720px) {
+	.hero-actions {
+		display: none;
+	}
+}
+
+/* Keeps V1 as reviewed: phones show the nav pill at the top of the page. */
+@media (max-width: 720px) {
+	.gv-nav:not([data-solid]) .gv-nav-pill {
+		display: inline-flex;
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.gv-nav:not([data-solid]) .gv-nav-home span {
+		display: none;
+	}
+}

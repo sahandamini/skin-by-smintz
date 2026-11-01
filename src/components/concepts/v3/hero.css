@@ -1,0 +1,162 @@
+/* V3 "Flow": a stripe ribbon swoops across a dark wall, and a big record sits on it. */
+
+.v3-hero {
+	--focus: var(--amber);
+	position: relative;
+	display: grid;
+	min-height: 100svh;
+	align-content: start;
+	overflow: hidden;
+	padding: 5.5rem 1.5rem 0;
+	background: var(--chestnut);
+	color: var(--cream);
+}
+
+.v3-ribbon {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.v3-ribbon.is-wide {
+	display: none;
+}
+
+.v3-hero-copy {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	justify-items: start;
+	gap: 1rem;
+	padding-bottom: 19rem;
+}
+
+.v3-eyebrow {
+	display: block;
+	margin-bottom: 0.9rem;
+	color: var(--amber);
+	font: 800 0.72rem/1.2 var(--body);
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
+/* The stripes from the ribbon repeat as an offset shadow on the lettering. */
+.v3-title {
+	display: block;
+	font-family: var(--display);
+	font-size: clamp(3rem, 14vw, 4rem);
+	font-weight: 400;
+	line-height: 0.98;
+	text-shadow:
+		0.03em 0.03em 0 var(--amber),
+		0.06em 0.06em 0 var(--burnt),
+		0.09em 0.09em 0 var(--garnet);
+	text-wrap: balance;
+}
+
+.v3-hero-copy > p {
+	max-width: 31rem;
+	margin-top: 0.4rem;
+	line-height: 1.55;
+}
+
+.v3-hero-record {
+	position: absolute;
+	right: -3rem;
+	bottom: -1.5rem;
+	z-index: 1;
+	width: min(72vw, 19rem);
+}
+
+.v3-ring {
+	display: grid;
+	aspect-ratio: 1;
+	place-items: center;
+}
+
+.v3-ring > * {
+	grid-area: 1 / 1;
+}
+
+.v3-ring-text {
+	width: 100%;
+	overflow: visible;
+	fill: currentcolor;
+	font: 800 12.5px var(--body);
+}
+
+.v3-ring-record {
+	width: 78%;
+	color: var(--amber);
+	filter: drop-shadow(0 0.75rem 1.5rem rgb(43 17 13 / 50%));
+}
+
+.v3-hero .v3-ring-text {
+	color: var(--cream);
+	text-shadow: 0 0 6px rgb(43 17 13 / 90%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.v3-ring-text {
+		animation: gv-spin 40s linear infinite reverse;
+	}
+
+	.v3-ribbon path {
+		animation: v3-draw 1800ms var(--ease) both;
+		stroke-dasharray: 3000;
+	}
+
+	.v3-hero-copy {
+		animation: gv-rise 1000ms 150ms var(--ease) both;
+	}
+}
+
+@keyframes v3-draw {
+	from {
+		stroke-dashoffset: 3000;
+	}
+
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+
+@media (min-width: 900px) {
+	.v3-hero {
+		align-content: center;
+		padding: 6rem clamp(2rem, 6vw, 6rem) 4rem;
+	}
+
+	.v3-ribbon.is-tall {
+		display: none;
+	}
+
+	.v3-ribbon.is-wide {
+		display: block;
+	}
+
+	.v3-hero-copy {
+		max-width: 44rem;
+		padding-bottom: 7rem;
+	}
+
+	.v3-eyebrow {
+		font-size: 0.82rem;
+		letter-spacing: 0.18em;
+	}
+
+	.v3-title {
+		font-size: clamp(4rem, 7vw, 7rem);
+	}
+
+	.v3-hero-copy > p {
+		font-size: 1.12rem;
+	}
+
+	.v3-hero-record {
+		right: 4vw;
+		bottom: 3vh;
+		width: min(36vw, 62svh);
+	}
+}

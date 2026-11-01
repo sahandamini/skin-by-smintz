@@ -1,0 +1,45 @@
+---
+interface Props {
+	current: string
+}
+
+const { current } = Astro.props
+
+const versions = ['v1', 'v2', 'v3', 'v4']
+---
+
+<!-- Review only: jumps between landing page versions. -->
+<nav aria-label="Design versions" class="concept-switcher">
+	{versions.map((version) => (
+		<a aria-current={version === current ? 'page' : undefined} href={`/${version}`}>
+			{version.toUpperCase()}
+		</a>
+	))}
+</nav>
+
+<style is:global>
+	.concept-switcher {
+		position: fixed;
+		z-index: 40;
+		bottom: 0.75rem;
+		left: 0.75rem;
+		display: flex;
+		gap: 0.15rem;
+		padding: 0.2rem;
+		border-radius: 999px;
+		background: #fff;
+		box-shadow: 0 0.25rem 1rem rgb(0 0 0 / 35%);
+		font: 800 0.72rem/1 var(--body);
+	}
+
+	.concept-switcher a {
+		padding: 0.5rem 0.6rem;
+		border-radius: 999px;
+		color: #2b110d;
+	}
+
+	.concept-switcher a[aria-current='page'] {
+		background: #2b110d;
+		color: #fff;
+	}
+</style>

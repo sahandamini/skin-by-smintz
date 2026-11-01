@@ -1,0 +1,510 @@
+/* V4 sections. Rules start at phone size. Every room stays dark and lamp-lit. */
+
+.v4-sign,
+.v4-services,
+.v4-meet,
+.v4-sammy,
+.v4-expect,
+.v4-room,
+.v4-faq {
+	position: relative;
+	z-index: 1;
+	--focus: var(--amber);
+	color: var(--cream);
+}
+
+/* ===== Neon sign ===== */
+
+.v4-sign {
+	display: grid;
+	justify-items: center;
+	gap: 1.25rem;
+	padding: 3.5rem 1.5rem 4rem;
+	overflow: hidden;
+	background: repeating-linear-gradient(90deg, #2b110d 0 2.25rem, #1d0a07 2.25rem 2.5rem);
+	text-align: center;
+}
+
+.v4-neon {
+	display: block;
+	width: 110%;
+	height: 5rem;
+	overflow: visible;
+	filter: drop-shadow(0 0 6px var(--amber)) drop-shadow(0 0 18px var(--burnt));
+}
+
+.v4-neon path {
+	stroke: #ffe9bf;
+	stroke-linecap: round;
+	stroke-width: 4;
+}
+
+.v4-sign h2 {
+	color: #fff4dc;
+	font-size: clamp(2.9rem, 13.5vw, 7.5rem);
+	line-height: 1;
+	text-shadow:
+		0 0 0.05em #fff,
+		0 0 0.22em var(--amber),
+		0 0 0.55em var(--burnt),
+		0 0 1.1em var(--burnt);
+}
+
+.v4-sign h2 span {
+	display: inline-block;
+}
+
+.v4-sign p {
+	max-width: 28rem;
+	line-height: 1.5;
+}
+
+/* ===== Services ===== */
+
+/* Each booth pins under the nav, and the next one slides over it. */
+.v4-services {
+	display: grid;
+	gap: 1rem;
+	padding: 0 0.75rem 2rem;
+	background: #1d0a07;
+}
+
+.v4-booth {
+	--pill-bg: var(--amber);
+	display: grid;
+	overflow: hidden;
+	border-radius: 2rem;
+	background: var(--garnet);
+	box-shadow: 0 -0.75rem 2rem rgb(0 0 0 / 45%);
+}
+
+.v4-booth:nth-child(2) {
+	background: var(--rust);
+}
+
+.v4-booth:nth-child(3) {
+	background: var(--avocado);
+}
+
+/* Short phones skip the pinning, because a card taller than the screen would hide its own button. */
+@media (min-height: 780px) {
+	.v4-booth {
+		position: sticky;
+		top: 4.75rem;
+	}
+
+	.v4-booth:nth-child(2) {
+		top: 5.5rem;
+	}
+
+	.v4-booth:nth-child(3) {
+		top: 6.25rem;
+	}
+}
+
+.gv .v4-booth img {
+	height: 15rem;
+}
+
+.v4-booth > div {
+	--kicker: var(--amber);
+	display: grid;
+	justify-items: start;
+	gap: 0.5rem;
+	padding: 1.5rem;
+}
+
+.v4-booth h3 {
+	font-family: var(--display);
+	font-size: 2.3rem;
+	font-weight: 400;
+	line-height: 1.05;
+}
+
+.v4-booth-kind {
+	font-size: 0.8rem;
+	font-weight: 800;
+	line-height: 1.35;
+}
+
+.v4-booth p:not([class]) {
+	margin-bottom: 0.6rem;
+	line-height: 1.55;
+}
+
+/* ===== Meet ===== */
+
+.v4-meet {
+	padding-block: 3.5rem;
+	background: #1d0a07;
+}
+
+.v4-meet h2 {
+	margin-inline: 1.5rem;
+	margin-bottom: 1.5rem;
+	color: var(--amber);
+	font-size: clamp(2.6rem, 12vw, 6rem);
+}
+
+.v4-meet-list {
+	display: flex;
+	gap: 0;
+	overflow-x: auto;
+	padding-inline: 1.5rem;
+	scroll-padding-inline: 1.5rem;
+	scroll-snap-type: x mandatory;
+	scrollbar-width: none;
+}
+
+.v4-meet-list article {
+	flex: 0 0 min(84%, 22rem);
+	padding: 0.25rem 1.25rem 0.5rem 0;
+	margin-right: 1.25rem;
+	border-right: 1px solid rgb(242 181 74 / 35%);
+	scroll-snap-align: start;
+}
+
+.v4-meet-list h3 {
+	margin-bottom: 0.8rem;
+	font-family: var(--display);
+	font-size: 1.65rem;
+	font-weight: 400;
+	line-height: 1.12;
+	text-wrap: balance;
+}
+
+.v4-meet-list p {
+	line-height: 1.62;
+}
+
+.v4-meet-list p + p {
+	margin-top: 0.8rem;
+}
+
+/* ===== Sammy ===== */
+
+/* A pendant throws a pool of amber light onto the wall behind the portrait. */
+.v4-sammy {
+	--kicker: var(--amber);
+	display: grid;
+	gap: 2rem;
+	justify-items: center;
+	padding: 3.5rem 1.5rem;
+	background:
+		radial-gradient(60rem 34rem at 50% 12rem, rgb(184 70 27 / 75%), transparent 70%),
+		var(--chestnut);
+}
+
+.v4-sammy figure {
+	width: min(72vw, 24rem);
+	aspect-ratio: 3 / 4;
+}
+
+.gv .v4-sammy figure img {
+	border-radius: 999px 999px 0 0;
+	box-shadow:
+		0 0 0 2px #ffe2a8,
+		0 0 1rem 2px var(--amber),
+		0 0 3.5rem rgb(242 181 74 / 50%);
+}
+
+.v4-sammy h2 {
+	margin-block: 0.6rem 1.25rem;
+	color: var(--amber);
+	font-size: clamp(2.8rem, 13vw, 5.5rem);
+}
+
+.v4-sammy-copy > p:not(.gv-kicker) {
+	max-width: 36rem;
+	line-height: 1.68;
+}
+
+.v4-sammy-copy > p + p:not(.gv-kicker) {
+	margin-top: 0.9rem;
+}
+
+.v4-sammy-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem 1.75rem;
+	align-items: center;
+	margin-top: 1.75rem;
+}
+
+/* ===== Expect ===== */
+
+/* Three pendant globes hang from one cord. */
+.v4-expect {
+	padding: 3.5rem 1.5rem;
+	background: var(--garnet);
+}
+
+.v4-expect h2 {
+	font-size: clamp(2.6rem, 12vw, 6rem);
+}
+
+.v4-expect ul {
+	position: relative;
+	display: grid;
+	gap: 2.25rem;
+	margin: 2rem 0 0;
+	padding: 0 0 0 3rem;
+	list-style: none;
+}
+
+.v4-expect ul::before {
+	position: absolute;
+	top: -2rem;
+	bottom: 2rem;
+	left: 0.95rem;
+	width: 2px;
+	background: var(--amber);
+	content: '';
+	opacity: 0.6;
+}
+
+.v4-expect li {
+	position: relative;
+}
+
+.v4-expect li::before {
+	position: absolute;
+	top: 0.1rem;
+	left: -3rem;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	background: radial-gradient(circle at 40% 35%, #fff4dc, var(--amber) 45%, var(--burnt));
+	box-shadow: 0 0 1.5rem 0.25rem rgb(242 181 74 / 65%);
+	content: '';
+}
+
+.v4-expect h3 {
+	margin-bottom: 0.6rem;
+	color: var(--amber);
+	font-family: var(--display);
+	font-size: 1.6rem;
+	font-weight: 400;
+	line-height: 1.12;
+	text-wrap: balance;
+}
+
+.v4-expect p {
+	max-width: 40rem;
+	line-height: 1.62;
+}
+
+/* ===== Groove Room ===== */
+
+.v4-room {
+	padding: 3.5rem 0.75rem;
+	background: #1d0a07;
+}
+
+.v4-room-head {
+	margin: 0 0.75rem 1.75rem;
+}
+
+.v4-room h2 {
+	color: var(--amber);
+	font-size: clamp(2.6rem, 11vw, 5rem);
+}
+
+.v4-room-head p {
+	margin-block: 0.8rem 0.5rem;
+	line-height: 1.6;
+}
+
+.v4-mosaic {
+	display: grid;
+	grid-auto-rows: 42vw;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0.5rem;
+}
+
+.gv .v4-mosaic img {
+	border-radius: 1.25rem;
+}
+
+.gv .v4-mosaic img:nth-child(3n + 1) {
+	grid-column: span 2;
+	object-position: 50% 62%;
+}
+
+.gv .v4-mosaic img:nth-child(n + 7) {
+	display: none;
+}
+
+/* ===== FAQ ===== */
+
+.v4-faq {
+	--line: rgb(251 241 225 / 28%);
+	display: grid;
+	gap: 1.5rem;
+	padding: 3.5rem 1.5rem;
+	background: var(--rust);
+}
+
+.v4-faq h2 {
+	color: var(--amber);
+	font-size: clamp(2.6rem, 11vw, 5rem);
+}
+
+.gv-faq details {
+	border-bottom: 1px solid var(--line);
+}
+
+.gv-faq details:first-child {
+	border-top: 1px solid var(--line);
+}
+
+.gv-faq summary {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.5rem;
+	padding-block: 1.2rem;
+	cursor: pointer;
+	font-size: 1.02rem;
+	font-weight: 600;
+	list-style: none;
+}
+
+.gv-faq summary::-webkit-details-marker {
+	display: none;
+}
+
+.gv-faq summary svg {
+	width: 1.1rem;
+	height: 1.1rem;
+	flex: none;
+	transition: transform 400ms var(--ease);
+}
+
+.gv-faq details[open] summary svg {
+	transform: rotate(45deg);
+}
+
+.gv-faq details p {
+	max-width: 32rem;
+	padding-bottom: 1.3rem;
+	line-height: 1.65;
+}
+
+/* ===== Wide screens ===== */
+
+@media (min-width: 760px) {
+	.v4-booth {
+		grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+		min-height: min(68svh, 34rem);
+		align-items: center;
+	}
+
+	.gv .v4-booth img {
+		height: 100%;
+	}
+
+	.v4-booth > div {
+		padding: clamp(2rem, 5vw, 4rem);
+	}
+
+	.v4-booth h3 {
+		font-size: clamp(2.75rem, 5vw, 4.25rem);
+	}
+
+	.v4-services {
+		padding-inline: clamp(1rem, 3vw, 3rem);
+	}
+
+	.v4-meet,
+	.v4-expect,
+	.v4-faq {
+		padding: clamp(4rem, 7vw, 6rem) clamp(2rem, 6vw, 6rem);
+	}
+
+	.v4-meet h2 {
+		margin: 0 0 2.5rem;
+	}
+
+	.v4-meet-list {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 3rem;
+		padding: 0;
+		overflow: visible;
+	}
+
+	.v4-meet-list article {
+		margin: 0;
+		padding: 0 0 0 1.5rem;
+		border-right: 0;
+		border-left: 1px solid rgb(242 181 74 / 35%);
+	}
+
+	.v4-sammy {
+		grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+		gap: clamp(2.5rem, 6vw, 6rem);
+		align-items: center;
+		padding: clamp(4rem, 7vw, 6rem) clamp(2rem, 6vw, 6rem);
+		background:
+			radial-gradient(44rem 40rem at 22% 42%, rgb(184 70 27 / 75%), transparent 70%),
+			var(--chestnut);
+	}
+
+	.v4-expect ul {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 3rem;
+		margin-top: 5rem;
+		padding: 0;
+	}
+
+	.v4-expect ul::before {
+		top: -2rem;
+		right: 0;
+		bottom: auto;
+		left: 0;
+		width: auto;
+		height: 2px;
+	}
+
+	.v4-expect li {
+		padding-top: 2.25rem;
+	}
+
+	.v4-expect li::before {
+		top: -3rem;
+		left: 0;
+	}
+
+	.v4-room {
+		padding: clamp(4rem, 7vw, 6rem) clamp(1rem, 3vw, 3rem);
+	}
+
+	.v4-room-head {
+		margin: 0 clamp(1rem, 3vw, 3rem) 2.5rem;
+	}
+
+	.v4-mosaic {
+		grid-auto-rows: 18vw;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 0.75rem;
+	}
+
+	.gv .v4-mosaic img:nth-child(n + 7) {
+		display: block;
+	}
+
+	.gv .v4-mosaic img:nth-child(3n + 1) {
+		grid-column: auto;
+	}
+
+	.gv .v4-mosaic img:nth-child(5n + 1) {
+		grid-column: span 2;
+		grid-row: span 2;
+	}
+
+	.v4-faq {
+		grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+		gap: 4rem;
+	}
+}

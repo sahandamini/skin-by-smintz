@@ -1,0 +1,71 @@
+---
+import BookPill from '@/components/site/book-pill.astro'
+import SiteNav from '@/components/site/site-nav.astro'
+
+import RecordRing from './record-ring.astro'
+
+import './hero.css'
+
+const bands = [
+	{ color: 'var(--avocado)', width: 400 },
+	{ color: 'var(--garnet)', width: 330 },
+	{ color: 'var(--rust)', width: 262 },
+	{ color: 'var(--burnt)', width: 196 },
+	{ color: 'var(--amber)', width: 130 },
+	{ color: 'var(--apricot)', width: 70 },
+	{ color: 'var(--cream)', width: 16 },
+]
+---
+
+<header class="v3-hero">
+	<SiteNav />
+
+	<svg
+		aria-hidden="true"
+		class="v3-ribbon is-tall"
+		preserveAspectRatio="xMidYMax slice"
+		viewBox="0 0 390 844"
+	>
+		{bands.map((band) => (
+			<path
+				d="M-120 640C10 860 190 860 250 720S330 500 520 470"
+				fill="none"
+				stroke={band.color}
+				stroke-width={band.width * 0.42}
+			/>
+		))}
+	</svg>
+	<svg
+		aria-hidden="true"
+		class="v3-ribbon is-wide"
+		preserveAspectRatio="xMaxYMax slice"
+		viewBox="0 0 1440 900"
+	>
+		{bands.map((band) => (
+			<path
+				d="M-160 760C260 1040 560 900 760 640S1120 170 1640 300"
+				fill="none"
+				stroke={band.color}
+				stroke-width={band.width}
+			/>
+		))}
+	</svg>
+
+	<div class="v3-hero-copy">
+		<h1>
+			<span class="v3-eyebrow">Skin Groove · Virtual esthetics</span>
+			<span class="v3-title">Find your skincare rhythm.</span>
+		</h1>
+		<p>
+			Thoughtful, curated skincare guidance to help you understand your skin,
+			simplify your routine, and finally find what works for you.
+		</p>
+		<BookPill />
+	</div>
+
+	<RecordRing
+		class="v3-hero-record"
+		id="v3-hero-ring"
+		text="SKIN GROOVE ✿ VIRTUAL ESTHETICS ✿ $50 SHOP CREDIT ✿ "
+	/>
+</header>
