@@ -1,0 +1,33 @@
+---
+import BookPill from '@/components/site/book-pill.astro'
+import Icon from '@/components/site/icon.astro'
+import SiteNav from '@/components/site/site-nav.astro'
+
+import './hero.css'
+
+const blobs = Array.from({ length: 7 }, (_, index) => index)
+---
+
+<header class="v8-hero">
+	<SiteNav />
+	<div aria-hidden="true" class="v8-lava">
+		{blobs.map((blob) => <i style={`--n:${blob}`}></i>)}
+	</div>
+	<div class="v8-copy">
+		<h1>
+			<span class="v8-eyebrow">Skin Groove · Virtual esthetics</span>
+			<span class="v8-title">Find your skincare rhythm.</span>
+		</h1>
+		<p>
+			Thoughtful, curated skincare guidance to help you understand your skin,
+			simplify your routine, and finally find what works for you.
+		</p>
+		<div class="v8-actions">
+			<BookPill />
+			<a class="gv-text-link" href="#services">
+				See the services
+				<Icon name="arrowRight" />
+			</a>
+		</div>
+	</div>
+</header>

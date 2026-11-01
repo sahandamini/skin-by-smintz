@@ -5,7 +5,7 @@ interface Props {
 
 const { current } = Astro.props
 
-const versions = ['v1', 'v2', 'v3', 'v4', 'v5', 'v6', 'v7']
+const versions = Array.from({ length: 10 }, (_, index) => `v${index + 1}`)
 ---
 
 <!-- Review only: jumps between landing page versions. -->
@@ -24,7 +24,9 @@ const versions = ['v1', 'v2', 'v3', 'v4', 'v5', 'v6', 'v7']
 		bottom: 0.75rem;
 		left: 0.75rem;
 		display: flex;
-		gap: 0.15rem;
+		max-width: calc(100vw - 1.5rem);
+		overflow-x: auto;
+		scrollbar-width: none;
 		padding: 0.2rem;
 		border-radius: 999px;
 		background: #fff;
@@ -33,7 +35,8 @@ const versions = ['v1', 'v2', 'v3', 'v4', 'v5', 'v6', 'v7']
 	}
 
 	.concept-switcher a {
-		padding: 0.5rem 0.6rem;
+		flex: none;
+		padding: 0.5rem 0.48rem;
 		border-radius: 999px;
 		color: #2b110d;
 	}

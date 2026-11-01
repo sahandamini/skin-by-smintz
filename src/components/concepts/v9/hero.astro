@@ -1,0 +1,46 @@
+---
+import BookPill from '@/components/site/book-pill.astro'
+import Record from '@/components/site/record.astro'
+import SiteNav from '@/components/site/site-nav.astro'
+
+import './hero.css'
+---
+
+<header class="v9-top">
+	<SiteNav />
+</header>
+
+<section class="v9-wall v9-first" aria-label="Skin Groove">
+	<div class="v9-tile v9-headline">
+		<h1>
+			<span class="v9-eyebrow">Skin Groove · Virtual esthetics</span>
+			<span class="v9-title">Find your skincare rhythm.</span>
+		</h1>
+		<p>
+			Thoughtful, curated skincare guidance to help you understand your skin,
+			simplify your routine, and finally find what works for you.
+		</p>
+		<BookPill />
+	</div>
+	<figure class="v9-tile v9-photo v9-sammy-tile">
+		<img
+			alt="Sammy, the founder of Skin Groove, smiling in a black uniform"
+			fetchpriority="high"
+			height="1080"
+			src="/images/sammy.webp"
+			width="810"
+		/>
+	</figure>
+	<div aria-hidden="true" class="v9-tile v9-record-tile"><Record /></div>
+	<div aria-hidden="true" class="v9-tile v9-arcs"></div>
+	<div aria-hidden="true" class="v9-tile v9-stripes"></div>
+	<figure aria-hidden="true" class="v9-tile v9-photo">
+		<img alt="" height="1169" src="/images/groove/06-lg.webp" width="1170" />
+	</figure>
+	<div aria-hidden="true" class="v9-tile v9-waves"></div>
+	<div aria-hidden="true" class="v9-tile v9-rings is-wide"></div>
+	<figure aria-hidden="true" class="v9-tile v9-photo is-wide">
+		<img alt="" height="1104" src="/images/groove/57.webp" width="736" />
+	</figure>
+	<div aria-hidden="true" class="v9-tile v9-record-tile is-wide is-avocado"><Record /></div>
+</section>

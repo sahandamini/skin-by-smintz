@@ -1,0 +1,115 @@
+---
+import BookPill from '@/components/site/book-pill.astro'
+import Closing from '@/components/site/closing.astro'
+import Icon from '@/components/site/icon.astro'
+import InstagramLink from '@/components/site/instagram-link.astro'
+
+import { expectations, galleryRows, pillars, sammyIntro, services } from '../v3/content'
+import FaqList from '../v3/faq-list.astro'
+import Drip from './drip.astro'
+
+import '../faq.css'
+import './sections.css'
+
+const gallery = galleryRows[1]
+---
+
+<Drip from="garnet" to="amber" />
+
+<section id="services" class="v8-services" aria-labelledby="v8-services-title">
+	<div data-reveal>
+		<p class="gv-kicker">Services</p>
+		<h2 id="v8-services-title">
+			<span>$50 consult.</span> <span>$50 shop credit.</span>
+		</h2>
+		<p class="v8-lead">After your consult, you get a $50 code for the shop, opening soon.</p>
+	</div>
+	<ul class="v8-wax">
+		{services.map((service) => (
+			<li data-reveal>
+				<h3>{service.name}</h3>
+				<p class="v8-kind">{service.kind}</p>
+				<p>{service.body}</p>
+			</li>
+		))}
+	</ul>
+	<div data-reveal><BookPill /></div>
+</section>
+
+<Drip from="amber" to="avocado" />
+
+<section class="v8-meet" aria-labelledby="v8-meet-title">
+	<h2 id="v8-meet-title" data-reveal>Meet Skin Groove</h2>
+	<div class="v8-meet-list">
+		{pillars.map((pillar) => (
+			<article data-reveal>
+				<h3>{pillar.title}</h3>
+				{pillar.body.map((paragraph) => (
+					<p>{paragraph}</p>
+				))}
+			</article>
+		))}
+	</div>
+</section>
+
+<Drip from="avocado" to="apricot" />
+
+<section class="v8-sammy" aria-labelledby="v8-sammy-title">
+	<figure data-reveal>
+		<img alt="Sammy, the founder of Skin Groove, smiling in a black uniform" decoding="async" height="1080" loading="lazy" src="/images/sammy.webp" width="810" />
+	</figure>
+	<div class="v8-sammy-copy" data-reveal>
+		<p class="gv-kicker">The founder</p>
+		<h2 id="v8-sammy-title">Hi, I’m Sammy!</h2>
+		{sammyIntro.map((paragraph) => (
+			<p set:html={paragraph} />
+		))}
+		<div class="v8-sammy-actions">
+			<a class="gv-pill" href="/about">
+				Meet the founder
+				<Icon name="arrowRight" />
+			</a>
+			<InstagramLink />
+		</div>
+	</div>
+</section>
+
+<Drip from="apricot" to="rust" />
+
+<section class="v8-expect" aria-labelledby="v8-expect-title">
+	<h2 id="v8-expect-title" data-reveal>What you can expect</h2>
+	<div class="v8-expect-grid">
+		{expectations.map((item) => (
+			<article data-reveal>
+				<h3>{item.title}</h3>
+				<p set:html={item.body} />
+			</article>
+		))}
+	</div>
+</section>
+
+<Drip from="rust" to="chestnut" />
+
+<section class="v8-room" aria-labelledby="v8-room-title">
+	<div class="v8-room-head" data-reveal>
+		<h2 id="v8-room-title">The Groove Room</h2>
+		<p>Warm light, soft shapes, and spaces that feel like an exhale.</p>
+		<InstagramLink />
+	</div>
+	<div aria-hidden="true" class="v8-blobs">
+		<div>
+			{[...gallery, ...gallery].map((image) => (
+				<img alt="" decoding="async" height="300" loading="lazy" src={`/images/groove/${image}.webp`} width="300" />
+			))}
+		</div>
+	</div>
+</section>
+
+<Drip from="chestnut" to="cream" />
+
+<section id="faq" class="v8-faq" aria-labelledby="v8-faq-title">
+	<h2 id="v8-faq-title" data-reveal>Before you book</h2>
+	<div data-reveal><FaqList /></div>
+</section>
+
+<Closing />

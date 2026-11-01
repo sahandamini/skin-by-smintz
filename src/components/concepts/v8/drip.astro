@@ -1,0 +1,38 @@
+---
+interface Props {
+	from: string
+	to: string
+}
+
+const { from, to } = Astro.props
+
+const drips = [
+	{ x: 90, w: 70, d: 70 },
+	{ x: 250, w: 46, d: 130 },
+	{ x: 400, w: 90, d: 50 },
+	{ x: 620, w: 56, d: 170 },
+	{ x: 800, w: 80, d: 80 },
+	{ x: 980, w: 44, d: 140 },
+	{ x: 1130, w: 100, d: 60 },
+	{ x: 1340, w: 54, d: 110 },
+]
+
+const flow = drips
+	.map(({ x, w, d }) => {
+		const r = w / 2
+
+		return `H${x - 24}Q${x} 20 ${x} 44V${20 + d}a${r} ${r} 0 0 0 ${w} 0V44Q${x + w} 20 ${x + w + 24} 20`
+	})
+	.join('')
+---
+
+<!-- Melted wax runs from one section into the next. -->
+<svg
+	aria-hidden="true"
+	class="v8-drip"
+	preserveAspectRatio="none"
+	style={`background:var(--${to})`}
+	viewBox="0 0 1440 240"
+>
+	<path d={`M0 0V20${flow}H1440V0Z`} fill={`var(--${from})`}></path>
+</svg>
