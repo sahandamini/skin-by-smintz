@@ -1,0 +1,245 @@
+---
+import { cn } from '@/lib/utils/ui'
+
+import './vanity.css'
+
+interface Props {
+	name: 'dropper' | 'jar' | 'lamp' | 'lava' | 'mirror' | 'pump'
+	class?: string
+}
+
+const { name, class: className } = Astro.props
+
+const viewBoxes = {
+	dropper: '0 0 120 270',
+	jar: '0 0 190 130',
+	lamp: '0 0 240 300',
+	lava: '0 0 130 340',
+	mirror: '0 0 200 300',
+	pump: '0 0 130 300',
+}
+
+const jarRibs = [30, 52, 74, 96, 118, 140, 162]
+
+const petalAngles = [0, 72, 144, 216, 288]
+---
+
+<!-- A drawn object from the vanity. It needs `vanity-defs.astro` on the page. Each drawing stands on the bottom of its box. -->
+<svg
+	aria-hidden="true"
+	class={cn('gv-vanity', className)}
+	data-object={name}
+	viewBox={viewBoxes[name]}
+>
+	{name === 'dropper' && (
+		<>
+			<path d="M44 66V30Q44 6 60 6t16 24v36z" fill="url(#glass-garnet)" />
+			<rect
+				fill="var(--chestnut)"
+				height="22"
+				rx="4"
+				width="50"
+				x="35"
+				y="64"
+			/>
+			<rect
+				fill="var(--glass-amber-neck)"
+				height="20"
+				width="36"
+				x="42"
+				y="84"
+			/>
+			<path
+				d="M14 130q0-26 26-30h40q26 4 26 30v120q0 18-18 18H32q-18 0-18-18z"
+				fill="url(#glass-amber)"
+			/>
+			<rect fill="var(--cream)" height="74" rx="8" width="78" x="21" y="148" />
+			<rect
+				fill="none"
+				height="62"
+				rx="4"
+				stroke="var(--ink)"
+				stroke-width="1.5"
+				width="66"
+				x="27"
+				y="154"
+			/>
+			{petalAngles.map((angle) => (
+				<circle
+					cx="60"
+					cy="176"
+					fill="var(--burnt)"
+					r="6.5"
+					transform={`rotate(${angle} 60 185)`}
+				/>
+			))}
+			<circle cx="60" cy="185" fill="var(--amber)" r="4" />
+			<path
+				d="M26 124v12M26 232v16"
+				fill="none"
+				stroke="var(--sheen)"
+				stroke-linecap="round"
+				stroke-opacity="0.45"
+				stroke-width="6"
+			/>
+		</>
+	)}
+	{name === 'jar' && (
+		<>
+			<rect
+				fill="url(#glass-garnet)"
+				height="94"
+				rx="20"
+				width="174"
+				x="8"
+				y="36"
+			/>
+			{jarRibs.map((x) => (
+				<path
+					d={`M${x} 48v72`}
+					fill="none"
+					stroke="var(--sheen)"
+					stroke-opacity="0.13"
+					stroke-width="9"
+				/>
+			))}
+			<rect
+				fill="url(#lid-cream)"
+				height="36"
+				rx="9"
+				width="158"
+				x="16"
+				y="6"
+			/>
+			<path
+				d="M24 58v44"
+				fill="none"
+				stroke="var(--sheen)"
+				stroke-linecap="round"
+				stroke-opacity="0.5"
+				stroke-width="7"
+			/>
+		</>
+	)}
+	{name === 'lamp' && (
+		<>
+			<circle
+				class="gv-vanity-glow"
+				cx="120"
+				cy="120"
+				fill="url(#lamp-glow)"
+				r="120"
+			/>
+			<path
+				d="M92 136c6 64-14 134-30 164h116c-16-30-36-100-30-164z"
+				fill="url(#dome-burnt)"
+			/>
+			<path
+				d="M10 134C10 42 70 8 120 8s110 34 110 126q-110 22-220 0z"
+				fill="url(#dome-burnt)"
+			/>
+			<ellipse cx="120" cy="134" fill="var(--lamp-shade)" rx="108" ry="12" />
+			<path
+				d="M50 92q10-40 46-58"
+				fill="none"
+				stroke="var(--sheen)"
+				stroke-linecap="round"
+				stroke-opacity="0.4"
+				stroke-width="9"
+			/>
+		</>
+	)}
+	{name === 'lava' && (
+		<>
+			<clipPath id="lava-glass">
+				<path d="M50 42h30l20 190H30z" />
+			</clipPath>
+			<path d="M50 42h30l20 190H30z" fill="url(#lava-fluid)" />
+			<g clip-path="url(#lava-glass)">
+				<circle
+					class="gv-lava-blob"
+					cx="64"
+					cy="190"
+					fill="var(--burnt)"
+					r="26"
+				/>
+				<circle
+					class="gv-lava-blob is-slow"
+					cx="60"
+					cy="118"
+					fill="var(--garnet)"
+					r="13"
+				/>
+				<ellipse
+					class="gv-lava-blob is-late"
+					cx="72"
+					cy="150"
+					fill="var(--burnt)"
+					rx="11"
+					ry="16"
+				/>
+				<ellipse cx="65" cy="240" fill="var(--burnt)" rx="44" ry="20" />
+			</g>
+			<path
+				d="M56 56 44 196"
+				fill="none"
+				stroke="var(--sheen)"
+				stroke-linecap="round"
+				stroke-opacity="0.5"
+				stroke-width="5"
+			/>
+			<path d="M52 42 58 8q7-6 14 0l6 34z" fill="url(#metal-brass)" />
+			<path d="M30 230h70l18 110H12z" fill="url(#metal-brass)" />
+		</>
+	)}
+	{name === 'mirror' && (
+		<>
+			<path d="M92 190h16l6 92H86z" fill="url(#metal-brass)" />
+			<ellipse cx="100" cy="288" fill="url(#metal-brass)" rx="62" ry="12" />
+			<circle cx="100" cy="100" fill="url(#metal-brass)" r="96" />
+			<circle cx="100" cy="100" fill="url(#mirror-face)" r="84" />
+			<path
+				d="M48 128q-10-52 34-76M68 150q-8-24 8-44"
+				fill="none"
+				stroke="var(--sheen)"
+				stroke-linecap="round"
+				stroke-opacity="0.8"
+				stroke-width="8"
+			/>
+		</>
+	)}
+	{name === 'pump' && (
+		<>
+			<path d="M18 22h62q14 0 14 12v8H64v22H52V34H18z" fill="url(#lid-cream)" />
+			<rect
+				fill="url(#lid-cream)"
+				height="30"
+				rx="4"
+				width="44"
+				x="42"
+				y="62"
+			/>
+			<path
+				d="M18 122q0-30 30-32h34q30 2 30 32v160q0 18-18 18H36q-18 0-18-18z"
+				fill="url(#glass-olive)"
+			/>
+			<rect fill="var(--cream)" height="70" rx="8" width="66" x="32" y="160" />
+			<path
+				d="M34 176h34M34 192h48M34 208h22"
+				fill="none"
+				stroke="var(--ink)"
+				stroke-linecap="round"
+				stroke-width="3"
+				transform="translate(6 -1)"
+			/>
+			<path
+				d="M30 122v24M30 244v30"
+				fill="none"
+				stroke="var(--sheen)"
+				stroke-linecap="round"
+				stroke-opacity="0.4"
+				stroke-width="6"
+			/>
+		</>
+	)}
+</svg>

@@ -1,219 +1,353 @@
-/* Homepage hero: the tagline beside a wavy mirror that sends flat ripple bands across the header. */
+/* Homepage hero: the tagline over a sunlit vanity shelf. The drawings size from --u, so one rule set fits a phone and a desktop. */
 
 /* ===== Hero ===== */
 
 .hero {
-	--focus: var(--amber);
-	--wave-fill: var(--cream);
+	--focus: var(--burnt);
+	--u: min(0.92vw, 5.2px);
 	position: relative;
 	display: grid;
 	/* svh, not dvh: dvh changes while the phone address bar collapses, which resizes the page during the first scroll. */
 	min-height: 100svh;
-	grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-	gap: clamp(2rem, 5vw, 5rem);
-	align-items: center;
+	grid-template-rows: auto 1fr auto auto;
 	overflow: hidden;
-	padding: 7rem clamp(1.5rem, 6vw, 6rem) clamp(5rem, 8vw, 7rem);
-	background: var(--chestnut);
-	color: var(--cream);
+	background: linear-gradient(180deg, var(--cream) 45%, #f9dcbb 100%);
+	color: var(--chestnut);
+}
+
+.hero .gv-nav:not([data-solid]) {
+	--focus: var(--burnt);
+	color: var(--chestnut);
 }
 
 .hero-copy {
 	position: relative;
-	z-index: 1;
+	z-index: 2;
 	display: grid;
-	justify-items: start;
-	gap: clamp(1.25rem, 2.5vw, 2rem);
+	gap: 1rem;
+	padding: 5.75rem 1.5rem 1rem;
 }
 
 .hero-eyebrow {
 	display: block;
-	margin-bottom: clamp(0.9rem, 1.6vw, 1.4rem);
-	color: var(--amber);
+	margin-bottom: 0.75rem;
+	color: var(--rust);
 	font-family: var(--body);
-	font-size: 0.82rem;
+	font-size: 0.72rem;
 	font-weight: 800;
-	letter-spacing: 0.18em;
-	line-height: 1;
+	letter-spacing: 0.14em;
+	line-height: 1.2;
 	text-transform: uppercase;
 }
 
 .hero-title {
 	display: block;
-	max-width: 9.5em;
 	font-family: var(--display);
-	font-size: clamp(3.25rem, 7.4vw, 7.25rem);
+	font-size: clamp(2.9rem, 13.2vw, 3.75rem);
 	font-weight: 400;
 	letter-spacing: -0.015em;
-	line-height: 0.96;
-	text-shadow:
-		0.035em 0.035em 0 var(--burnt),
-		0.07em 0.07em 0 var(--garnet);
+	line-height: 0.98;
 	text-wrap: balance;
 }
 
 .hero-lead {
-	/* The width follows the viewport, so the copy stops short of the amber band. */
-	max-width: min(30rem, 34vw);
-	font-size: clamp(1rem, 1.3vw, 1.15rem);
-	line-height: 1.6;
+	max-width: 32rem;
+	color: var(--ink);
+	font-size: 1rem;
+	line-height: 1.55;
 }
 
 .hero-actions {
+	--pill-bg: var(--burnt);
+	--pill-fg: var(--cream);
 	display: flex;
 	flex-wrap: wrap;
-	gap: 1rem 1.75rem;
+	gap: 0.85rem 1.5rem;
 	align-items: center;
-	margin-top: 0.5rem;
 }
 
-/* ===== Mirror ===== */
+.hero-actions .gv-pill {
+	flex: 1 1 100%;
+	max-width: 26rem;
+}
 
-.hero-mirror {
+.hero-actions .gv-text-link {
+	display: none;
+}
+
+/* ===== Scene ===== */
+
+/* The sun lamp from the mood board: a soft amber disc on the wall. */
+.hero-sun {
+	position: absolute;
+	right: -22vw;
+	bottom: 2.5rem;
+	width: 96vw;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	background: radial-gradient(
+		circle,
+		#f8c45e 0%,
+		var(--amber) 42%,
+		#e98a3b 62%,
+		var(--burnt) 70.5%,
+		rgb(184 70 27 / 0%) 71%
+	);
+	filter: blur(2px);
+}
+
+.hero-pendant {
+	display: none;
+}
+
+.hero-vanity {
 	position: relative;
-	width: min(100%, (100svh - 11rem) * 0.75);
+	z-index: 1;
+	display: flex;
+	gap: calc(var(--u) * 2);
+	align-items: flex-end;
+	justify-content: center;
+	padding-inline: 0.5rem;
+	padding-top: 0.75rem;
+}
+
+.hero-vanity .is-wide-only {
+	display: none;
+}
+
+.hero-vanity [data-object='dropper'] {
+	height: calc(var(--u) * 33);
+}
+
+.hero-vanity [data-object='lamp'] {
+	height: calc(var(--u) * 36);
+}
+
+.hero-vanity [data-object='lava'] {
+	height: calc(var(--u) * 52);
+}
+
+.hero-vanity [data-object='jar'] {
+	height: calc(var(--u) * 15);
+	/* The jar sits in front of the lamp base, which saves width on a phone. */
+	margin-left: calc(var(--u) * -8);
+}
+
+.hero-frame {
+	flex: none;
+	width: calc(var(--u) * 33);
 	aspect-ratio: 3 / 4;
-	justify-self: center;
-}
-
-/* The bands paint past the mirror box and stop at the edge of the header. */
-.hero-ripples {
-	position: absolute;
-	inset: 0;
-	overflow: visible;
-}
-
-.gv .hero-mirror img {
-	position: relative;
-	clip-path: url('#hero-mirror-clip');
-	object-position: 50% 20%;
-}
-
-.hero-mirror figcaption {
-	position: absolute;
-	right: -1%;
-	bottom: 13%;
-	padding: 0.45rem 0.9rem;
-	border-radius: 999px;
+	padding: calc(var(--u) * 1.2);
+	border: calc(var(--u) * 1) solid #4a2115;
+	border-radius: calc(var(--u) * 1.5);
 	background: var(--cream);
-	color: var(--chestnut);
+	box-shadow: 0 0.5rem 1rem rgb(58 26 18 / 30%);
+	rotate: -3deg;
+	transform-origin: 50% 100%;
+}
+
+.gv .hero-frame img {
+	border-radius: calc(var(--u) * 0.6);
+}
+
+/* The plank casts a soft shadow onto the wall under it. */
+.hero-shelf {
+	position: relative;
+	z-index: 1;
+	height: 0.85rem;
+	background: linear-gradient(180deg, #7a4326, #4a2115 60%, #331509);
+	box-shadow: 0 0.6rem 1rem rgb(58 26 18 / 35%);
+}
+
+.hero-facts {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	margin: 0;
+	padding: 0;
+	background: var(--chestnut);
+	color: var(--cream);
 	font-size: 0.74rem;
 	font-weight: 750;
-	white-space: nowrap;
-}
-
-.hero-sticker {
-	position: absolute;
-	top: 56%;
-	left: -7%;
-	display: grid;
-	width: clamp(6.5rem, 10vw, 8.5rem);
-	aspect-ratio: 1;
-	place-items: center;
-	transform: rotate(-9deg);
-}
-
-.hero-sticker svg {
-	position: absolute;
-	inset: 0;
-	fill: var(--amber);
-	filter: drop-shadow(0 0.4rem 0.8rem rgb(43 17 13 / 45%));
-}
-
-.hero-sticker p {
-	position: relative;
-	display: grid;
-	justify-items: center;
-	color: var(--chestnut);
-	font-family: var(--display);
-	font-size: clamp(1.9rem, 3.2vw, 2.5rem);
-	line-height: 0.95;
-}
-
-.hero-sticker span {
-	max-width: 5.5em;
-	font-family: var(--body);
-	font-size: 0.64rem;
-	font-weight: 800;
-	letter-spacing: 0.08em;
-	line-height: 1.15;
+	line-height: 1.25;
+	list-style: none;
 	text-align: center;
-	text-transform: uppercase;
 }
 
-.gv-wave.hero-wave {
-	bottom: -1px;
+.hero-facts li {
+	display: grid;
+	place-items: center;
+	padding: 0.85rem 0.5rem;
+}
+
+.hero-facts li + li {
+	border-left: 1px solid rgb(251 241 225 / 22%);
 }
 
 /* ===== Motion ===== */
 
 @media (prefers-reduced-motion: no-preference) {
-	.hero-ripples use {
-		animation: hero-ripple 1500ms calc(var(--ripple) * 110ms) var(--ease) both;
+	.hero-sun {
+		animation: hero-sunrise 1800ms var(--ease) both;
 	}
 
-	.hero-mirror img,
-	.hero-mirror figcaption {
-		animation: gv-rise 1100ms var(--ease) both;
+	.hero-vanity > * {
+		animation: gv-rise 900ms var(--ease) both;
 	}
 
-	.hero-sticker {
-		animation: hero-stamp 700ms 900ms var(--ease) both;
+	.hero-vanity > :nth-child(2) {
+		animation-delay: 80ms;
+	}
+
+	.hero-vanity > :nth-child(3) {
+		animation-delay: 160ms;
+	}
+
+	.hero-vanity > :nth-child(4) {
+		animation-delay: 240ms;
+	}
+
+	.hero-vanity > :nth-child(5) {
+		animation-delay: 320ms;
+	}
+
+	.hero-pendant {
+		animation: hero-sway 7s ease-in-out infinite alternate;
+	}
+
+	.gv-vanity-glow {
+		animation: hero-flicker 5s ease-in-out infinite alternate;
+	}
+
+	.gv-lava-blob {
+		animation: hero-lava 11s ease-in-out infinite alternate;
+	}
+
+	.gv-lava-blob.is-slow {
+		animation-duration: 17s;
+		animation-direction: alternate-reverse;
+	}
+
+	.gv-lava-blob.is-late {
+		animation-delay: -6s;
+		animation-duration: 14s;
+	}
+}
+
+@keyframes hero-sunrise {
+	from {
+		opacity: 0;
+		transform: translateY(18%) scale(0.92);
+	}
+}
+
+@keyframes hero-sway {
+	from {
+		rotate: -1.6deg;
+	}
+
+	to {
+		rotate: 1.6deg;
+	}
+}
+
+@keyframes hero-flicker {
+	to {
+		opacity: 0.65;
+	}
+}
+
+@keyframes hero-lava {
+	to {
+		transform: translateY(-60px);
+	}
+}
+
+/* ===== Wide screens ===== */
+
+@media (min-width: 900px) {
+	.hero {
+		--u: min(0.44vw, 0.72svh);
+		grid-template-rows: 1fr auto auto;
+		grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
 	}
 
 	.hero-copy {
-		animation: gv-rise 1100ms 120ms var(--ease) both;
+		align-self: center;
+		gap: 1.5rem;
+		padding: 6.5rem 0 2.5rem clamp(2rem, 6vw, 6rem);
 	}
-}
 
-@keyframes hero-ripple {
-	from {
-		stroke-width: 0;
+	.hero-eyebrow {
+		font-size: 0.82rem;
+		letter-spacing: 0.18em;
+		margin-bottom: 1.25rem;
 	}
-}
 
-@keyframes hero-stamp {
-	from {
-		opacity: 0;
-		transform: rotate(-30deg) scale(1.5);
-	}
-}
-
-/* ===== Responsive ===== */
-
-/* Phones stack the tagline over the mirror. The mirror runs off the bottom of the header, so the page keeps moving. */
-@media (max-width: 860px) {
-	.hero {
-		grid-template-columns: minmax(0, 1fr);
-		gap: 6.5rem;
-		align-items: start;
-		align-content: start;
-		padding-block: 6rem 0;
+	.hero-title {
+		font-size: clamp(3.75rem, 6.2vw, 6.5rem);
 	}
 
 	.hero-lead {
-		max-width: 34rem;
+		max-width: 27rem;
+		font-size: 1.1rem;
 	}
 
-	.hero-mirror {
-		width: min(78%, 22rem);
-		margin-bottom: -20%;
+	.hero-actions .gv-pill {
+		flex: none;
 	}
 
-	.hero-sticker {
-		top: 40%;
-		left: -13%;
+	.hero-actions .gv-text-link {
+		display: inline-flex;
 	}
 
-	.hero-mirror figcaption {
-		right: -9%;
-		bottom: 29%;
+	.hero-vanity {
+		align-self: end;
+		justify-content: center;
+		gap: calc(var(--u) * 3);
+		padding-inline: 0 clamp(1rem, 3vw, 3rem);
 	}
-}
 
-/* Phones move the booking pill from the hero into the nav. */
-@media (max-width: 720px) {
-	.hero-actions {
-		display: none;
+	.hero-vanity .is-wide-only {
+		display: block;
+	}
+
+	.hero-vanity [data-object='jar'] {
+		margin-left: 0;
+	}
+
+	.hero-frame {
+		width: calc(var(--u) * 38);
+	}
+
+	.hero-shelf {
+		height: 1.25rem;
+		grid-column: 1 / -1;
+	}
+
+	.hero-facts {
+		grid-column: 1 / -1;
+		font-size: 0.92rem;
+	}
+
+	.hero-facts li {
+		padding: 1rem;
+	}
+
+	.hero-sun {
+		right: 2vw;
+		bottom: 2.5rem;
+		width: min(54vw, 96svh);
+	}
+
+	.hero-pendant {
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		right: 6%;
+		display: block;
+		width: calc(var(--u) * 27);
+		transform-origin: 50% 0;
 	}
 }

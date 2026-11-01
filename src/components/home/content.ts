@@ -27,20 +27,17 @@ export const pillars = [
 export const expectations = [
 	{
 		title: 'A routine that feels uniquely yours',
-		motif: 'flowers',
 		body: 'Your routine recommendations are made based on your individual skin concerns, history, current routine, and goals. Not a trend or template, and definitely not someone else’s routine.',
 	},
 	{
 		title: 'Education without the overwhelm',
-		motif: 'waves',
 		body: 'You deserve to know <em>why</em> something is in your routine. Education is a huge part of my approach, so you’ll never leave with a list of products and no understanding of what they’re doing. I want you to understand what you’re using, why you’re using it, and what it’s actually doing for your skin.',
 	},
 	{
 		title: 'A reason behind every recommendation',
-		motif: 'rings',
 		body: 'If something you already own is a great fit for your skin and goals, there’s no reason to replace it. We’ll keep what makes sense, rethink what doesn’t, and fill in the gaps where needed.',
 	},
-] as const
+]
 
 export const sammyIntro = [
 	'I’m an esthetician and cosmetologist with a deep love for skincare, ingredient knowledge, and figuring out the <em>why</em> behind what’s happening on the surface.',
@@ -51,23 +48,23 @@ export const sammyIntro = [
 export const services = [
 	{
 		name: 'The consult',
-		image: '/images/groove/37-lg.webp',
+		object: 'mirror',
 		kind: '$50 · 45-minute virtual consult',
 		body: 'A one-on-one virtual consultation about your skin, your current routine, your history, and your goals.',
 	},
 	{
 		name: 'The routine edit',
-		image: '/images/groove/43-lg.webp',
+		object: 'dropper',
 		kind: 'Included with every consult',
 		body: 'A practical plan that keeps what works, rethinks what doesn’t, and explains every step.',
 	},
 	{
 		name: 'The shelf',
-		image: '/images/groove/06-lg.webp',
+		object: 'jar',
 		kind: '$50 shop credit after your consult · Opening soon',
 		body: 'A small, considered product edit chosen to support your routine without adding clutter.',
 	},
-]
+] as const
 
 export const questions = [
 	{

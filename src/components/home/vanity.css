@@ -1,0 +1,37 @@
+/* Shades for the vanity drawings. The gradients in `vanity-defs.astro` read these, so they live above the hero and the service labels. */
+
+.gv {
+	--sheen: #fff;
+	--brass-dark: #7c4e16;
+	--brass-light: #f6d48f;
+	--brass-mid: #94621a;
+	--dome-edge: #8c3010;
+	--dome-light: #f9a44c;
+	--dome-mid: #d4601f;
+	--glass-amber-edge: #7a2c0c;
+	--glass-amber-mid: #c96a16;
+	--glass-amber-neck: #a2500f;
+	--glass-amber-warm: #d9781a;
+	--glass-garnet-edge: #2b0a12;
+	--glass-garnet-light: #93303f;
+	--glass-olive-edge: #2e3614;
+	--glass-olive-light: #97a356;
+	--lamp-light: #ffd27a;
+	--lamp-shade: #ffe2a8;
+	--lid-edge: #cdb893;
+	--lid-light: #fff8ec;
+	--lid-shade: #d9c6a6;
+	--mirror-mid: #ecd7b8;
+}
+
+.gv-vanity-defs {
+	position: absolute;
+	width: 0;
+	height: 0;
+}
+
+.gv-vanity {
+	display: block;
+	flex: none;
+	overflow: visible;
+}
