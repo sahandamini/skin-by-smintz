@@ -1,0 +1,162 @@
+/* V11 sections: dark and cream take turns around one centered column. */
+
+.calm {
+	--focus: var(--amber);
+	--kicker: var(--amber);
+	--line: rgb(251 241 225 / 22%);
+	padding: 3.75rem 1.5rem;
+	background: var(--chestnut);
+	color: var(--cream);
+	text-align: center;
+}
+
+.calm-meet,
+.calm-expect,
+.calm-faq {
+	--focus: var(--garnet);
+	--kicker: var(--burnt);
+	--line: rgb(58 26 18 / 20%);
+	background: var(--cream);
+	color: var(--ink);
+}
+
+.calm-inner {
+	width: min(100%, 42rem);
+	margin-inline: auto;
+}
+
+.calm .gv-kicker {
+	margin-bottom: 0.7rem;
+}
+
+.calm-title {
+	font-size: clamp(2.6rem, 11.5vw, 4.75rem);
+	line-height: 1.08;
+}
+
+.calm-title span {
+	display: inline-block;
+}
+
+.calm-meet .calm-title,
+.calm-expect .calm-title,
+.calm-faq .calm-title {
+	color: var(--burnt);
+	text-shadow: none;
+}
+
+.calm-lead {
+	max-width: 30rem;
+	margin: 1rem auto 0;
+	line-height: 1.55;
+}
+
+.calm-list {
+	display: grid;
+	gap: 2rem;
+	margin: 2.25rem 0;
+	padding: 0;
+	list-style: none;
+}
+
+.calm-list h3 {
+	margin-bottom: 0.45rem;
+	color: var(--amber);
+	font-family: var(--display);
+	font-size: 1.75rem;
+	font-weight: 400;
+	line-height: 1.12;
+	text-wrap: balance;
+}
+
+.calm-meet h3,
+.calm-expect h3 {
+	color: var(--ink);
+}
+
+.calm-kind {
+	margin-bottom: 0.4rem;
+	font-size: 0.8rem;
+	font-weight: 800;
+	line-height: 1.35;
+}
+
+.calm-list p {
+	line-height: 1.62;
+}
+
+.calm-list p + p {
+	margin-top: 0.75rem;
+}
+
+.calm-photo {
+	width: 11rem;
+	aspect-ratio: 1;
+	margin: 0 auto 1.5rem;
+}
+
+.gv .calm-photo img {
+	border-radius: 50%;
+	box-shadow:
+		0 0 0 0.3rem var(--cream),
+		0 0 0 0.6rem var(--burnt);
+	object-position: 50% 14%;
+}
+
+.calm-prose {
+	margin-top: 1.25rem;
+}
+
+.calm-prose p {
+	line-height: 1.68;
+}
+
+.calm-prose p + p {
+	margin-top: 0.9rem;
+}
+
+.calm-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem 1.75rem;
+	align-items: center;
+	justify-content: center;
+	margin-top: 1.75rem;
+}
+
+.calm-photos {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0.5rem;
+	margin-top: 1.75rem;
+}
+
+.gv .calm-photos img {
+	aspect-ratio: 1;
+	height: auto;
+	border-radius: 1rem;
+}
+
+.calm-faq {
+	text-align: start;
+}
+
+.calm-faq .calm-title {
+	margin-bottom: 1.5rem;
+	text-align: center;
+}
+
+@media (min-width: 800px) {
+	.calm {
+		padding: 6rem 2rem;
+	}
+
+	.calm-room .calm-inner {
+		width: min(100%, 60rem);
+	}
+
+	.calm-photos {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 0.75rem;
+	}
+}

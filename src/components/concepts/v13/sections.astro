@@ -1,0 +1,16 @@
+---
+import SimpleSections from '../simple-sections.astro'
+
+import './sections.css'
+
+const sweeps = [
+	{ from: 'chestnut', to: 'amber' },
+	{ from: 'amber', to: 'garnet', flip: true },
+	{ from: 'garnet', to: 'rust' },
+	{ from: 'rust', to: 'chestnut', flip: true },
+	undefined,
+	{ from: 'chestnut', to: 'cream' },
+]
+---
+
+<SimpleSections echo="v10-echo" sweeps={sweeps as never} />

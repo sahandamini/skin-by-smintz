@@ -1,0 +1,107 @@
+/* V13 "Remix": V10 lettering, the V1 mirror, and the V3 curves, one of each. */
+
+.v13-hero {
+	--focus: var(--amber);
+	position: relative;
+	display: grid;
+	min-height: 100svh;
+	grid-template-columns: minmax(0, 1fr);
+	align-content: start;
+	gap: 3rem;
+	overflow: hidden;
+	padding: 5.5rem 1.5rem 0;
+	background: var(--chestnut);
+	color: var(--cream);
+}
+
+.v13-copy {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	justify-items: start;
+	gap: 1rem;
+}
+
+.v13-eyebrow {
+	display: block;
+	margin-bottom: 0.9rem;
+	color: var(--amber);
+	font: 800 0.72rem/1.2 var(--body);
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+.v13-title {
+	display: block;
+	font-family: var(--display);
+	font-size: clamp(1.9rem, 9vw, 2.75rem);
+	font-weight: 400;
+	line-height: 1.05;
+}
+
+.v13-rhythm {
+	display: block;
+	margin-top: 0.12em;
+	margin-left: 0.04em;
+	font-family: var(--display);
+	font-size: clamp(3.5rem, 20vw, 7rem);
+	font-weight: 400;
+	line-height: 1.1;
+}
+
+.v13-copy > p {
+	max-width: 30rem;
+	line-height: 1.55;
+}
+
+.v13-mirror {
+	position: relative;
+	width: min(68vw, 19rem);
+	aspect-ratio: 3 / 4;
+	justify-self: center;
+	margin-bottom: -2.5rem;
+}
+
+.v13-mirror svg {
+	position: absolute;
+	inset: 0;
+	overflow: visible;
+}
+
+.gv .v13-mirror img {
+	position: relative;
+	clip-path: url('#v13-clip');
+	object-position: 50% 20%;
+}
+
+@media (min-width: 900px) {
+	.v13-hero {
+		grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+		gap: clamp(3rem, 6vw, 6rem);
+		align-content: center;
+		align-items: center;
+		padding: 6rem clamp(2rem, 6vw, 6rem) 3rem;
+	}
+
+	.v13-eyebrow {
+		font-size: 0.82rem;
+		letter-spacing: 0.18em;
+	}
+
+	.v13-title {
+		font-size: clamp(2.5rem, 4vw, 4.25rem);
+	}
+
+	.v13-rhythm {
+		font-size: clamp(6rem, 10.5vw, 12rem);
+	}
+
+	.v13-copy > p {
+		font-size: 1.1rem;
+	}
+
+	.v13-mirror {
+		width: min(100%, 52svh);
+		margin: 0;
+	}
+}

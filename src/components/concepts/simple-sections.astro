@@ -1,0 +1,135 @@
+---
+import type { Props as SweepProps } from './v3/sweep.astro'
+
+import BookPill from '@/components/site/book-pill.astro'
+import Icon from '@/components/site/icon.astro'
+import InstagramLink from '@/components/site/instagram-link.astro'
+
+import QuietClosing from './quiet-closing.astro'
+import { expectations, galleryRows, pillars, sammyIntro, services } from './v3/content'
+import FaqList from './v3/faq-list.astro'
+import Sweep from './v3/sweep.astro'
+
+import './faq.css'
+
+interface Props {
+	echo: string
+	photo?: boolean
+	sweeps?: SweepProps[]
+	closing?: boolean
+}
+
+const { echo, photo = false, sweeps = [], closing = true } = Astro.props
+
+const room = ['01', '41', '49', '13']
+
+const divider = (index: number) => sweeps[index]
+---
+
+{divider(0) && <Sweep {...divider(0)!} />}
+
+<section id="services" class="calm calm-services" aria-labelledby="calm-services-title">
+	<div class="calm-inner">
+		<p class="gv-kicker" data-reveal>Services</p>
+		<h2 class:list={['calm-title', echo]} id="calm-services-title" data-reveal>
+			<span>$50 consult.</span> <span>$50 shop credit.</span>
+		</h2>
+		<p class="calm-lead" data-reveal>After your consult, you get a $50 code for the shop, opening soon.</p>
+		<ol class="calm-list">
+			{services.map((service) => (
+				<li data-reveal>
+					<h3>{service.name}</h3>
+					<p class="calm-kind">{service.kind}</p>
+					<p>{service.body}</p>
+				</li>
+			))}
+		</ol>
+		<div data-reveal><BookPill /></div>
+	</div>
+</section>
+
+{divider(1) && <Sweep {...divider(1)!} />}
+
+<section class="calm calm-meet" aria-labelledby="calm-meet-title">
+	<div class="calm-inner">
+		<h2 class:list={['calm-title', echo]} id="calm-meet-title" data-reveal>Meet Skin Groove</h2>
+		<div class="calm-list">
+			{pillars.map((pillar) => (
+				<article data-reveal>
+					<h3>{pillar.title}</h3>
+					{pillar.body.map((paragraph) => (
+						<p>{paragraph}</p>
+					))}
+				</article>
+			))}
+		</div>
+	</div>
+</section>
+
+{divider(2) && <Sweep {...divider(2)!} />}
+
+<section class="calm calm-sammy" aria-labelledby="calm-sammy-title">
+	<div class="calm-inner">
+		{photo && (
+			<figure class="calm-photo" data-reveal>
+				<img alt="Sammy, the founder of Skin Groove, smiling in a black uniform" decoding="async" height="1080" loading="lazy" src="/images/sammy.webp" width="810" />
+			</figure>
+		)}
+		<p class="gv-kicker" data-reveal>The founder</p>
+		<h2 class:list={['calm-title', echo]} id="calm-sammy-title" data-reveal>Hi, I’m Sammy!</h2>
+		<div class="calm-prose" data-reveal>
+			{sammyIntro.map((paragraph) => (
+				<p set:html={paragraph} />
+			))}
+		</div>
+		<div class="calm-actions" data-reveal>
+			<a class="gv-pill" href="/about">
+				Meet the founder
+				<Icon name="arrowRight" />
+			</a>
+			<InstagramLink />
+		</div>
+	</div>
+</section>
+
+{divider(3) && <Sweep {...divider(3)!} />}
+
+<section class="calm calm-expect" aria-labelledby="calm-expect-title">
+	<div class="calm-inner">
+		<h2 class:list={['calm-title', echo]} id="calm-expect-title" data-reveal>What you can expect</h2>
+		<ol class="calm-list">
+			{expectations.map((item) => (
+				<li data-reveal>
+					<h3>{item.title}</h3>
+					<p set:html={item.body} />
+				</li>
+			))}
+		</ol>
+	</div>
+</section>
+
+{divider(4) && <Sweep {...divider(4)!} />}
+
+<section class="calm calm-room" aria-labelledby="calm-room-title">
+	<div class="calm-inner">
+		<h2 class:list={['calm-title', echo]} id="calm-room-title" data-reveal>The Groove Room</h2>
+		<p class="calm-lead" data-reveal>Warm light, soft shapes, and spaces that feel like an exhale.</p>
+		<div data-reveal><InstagramLink /></div>
+		<div aria-hidden="true" class="calm-photos">
+			{room.map((image) => (
+				<img alt="" decoding="async" height="300" loading="lazy" src={`/images/groove/${image}.webp`} width="300" />
+			))}
+		</div>
+	</div>
+</section>
+
+{divider(5) && <Sweep {...divider(5)!} />}
+
+<section id="faq" class="calm calm-faq" aria-labelledby="calm-faq-title">
+	<div class="calm-inner">
+		<h2 class="calm-title" id="calm-faq-title" data-reveal>Before you book</h2>
+		<div data-reveal><FaqList /></div>
+	</div>
+</section>
+
+{closing && <QuietClosing />}

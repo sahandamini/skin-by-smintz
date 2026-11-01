@@ -5,7 +5,7 @@ interface Props {
 
 const { current } = Astro.props
 
-const versions = Array.from({ length: 10 }, (_, index) => `v${index + 1}`)
+const versions = Array.from({ length: 13 }, (_, index) => `v${index + 1}`)
 ---
 
 <!-- Review only: jumps between landing page versions. -->
@@ -16,6 +16,14 @@ const versions = Array.from({ length: 10 }, (_, index) => `v${index + 1}`)
 		</a>
 	))}
 </nav>
+
+<script>
+	const switcher = document.querySelector<HTMLElement>('.concept-switcher')
+
+	const current = switcher?.querySelector<HTMLElement>('[aria-current]')
+
+	if (switcher && current) switcher.scrollLeft = current.offsetLeft - switcher.clientWidth / 2
+</script>
 
 <style is:global>
 	.concept-switcher {

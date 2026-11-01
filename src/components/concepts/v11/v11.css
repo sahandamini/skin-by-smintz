@@ -1,0 +1,79 @@
+/* V11 "Quiet Echo": one column, two backgrounds, one stripe. */
+
+.v11-hero {
+	--focus: var(--amber);
+	position: relative;
+	display: grid;
+	min-height: 100svh;
+	grid-template-rows: 1fr auto;
+	background: var(--chestnut);
+	color: var(--cream);
+}
+
+.v11-center {
+	display: grid;
+	align-content: center;
+	justify-items: center;
+	gap: 1.1rem;
+	padding: 5.5rem 1.5rem 3rem;
+	text-align: center;
+}
+
+.gv .v11-center > img {
+	width: 6rem;
+	height: 6rem;
+	border-radius: 50%;
+	box-shadow: 0 0 0 0.25rem var(--amber);
+	object-position: 50% 14%;
+}
+
+.v11-eyebrow {
+	display: block;
+	margin-top: 0.4rem;
+	margin-bottom: 1rem;
+	color: var(--amber);
+	font: 800 0.72rem/1.2 var(--body);
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+.v11-title {
+	display: block;
+	font-family: var(--display);
+	font-size: clamp(3rem, 14vw, 7rem);
+	font-weight: 400;
+	line-height: 1.08;
+	text-wrap: balance;
+}
+
+.v11-center > p {
+	max-width: 32rem;
+	line-height: 1.55;
+}
+
+/* One stripe marks the top of each dark and cream change. */
+.v11-stripe {
+	height: 1.5rem;
+	background: linear-gradient(
+		180deg,
+		var(--burnt) 0 33.3%,
+		var(--amber) 33.3% 66.6%,
+		var(--apricot) 66.6%
+	);
+}
+
+@media (min-width: 800px) {
+	.gv .v11-center > img {
+		width: 7.5rem;
+		height: 7.5rem;
+	}
+
+	.v11-eyebrow {
+		font-size: 0.82rem;
+		letter-spacing: 0.18em;
+	}
+
+	.v11-center > p {
+		font-size: 1.12rem;
+	}
+}
