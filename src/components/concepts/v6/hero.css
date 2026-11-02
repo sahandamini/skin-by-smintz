@@ -1,0 +1,170 @@
+/* V6 "Sunburst": rays turn behind a rising sun, with Sammy inside it. */
+
+.v6-hero {
+	--focus: var(--amber);
+	position: relative;
+	display: grid;
+	min-height: 100svh;
+	grid-template-rows: auto 1fr;
+	overflow: hidden;
+	background: var(--chestnut);
+	color: var(--cream);
+}
+
+/* The ray disc centers on the sun and runs far past every edge, so it can turn freely. */
+.v6-rays {
+	position: absolute;
+	bottom: -120vmax;
+	left: 50%;
+	width: 240vmax;
+	height: 240vmax;
+	margin-left: -120vmax;
+	border-radius: 50%;
+	background: repeating-conic-gradient(var(--garnet) 0 7.5deg, var(--chestnut) 7.5deg 15deg);
+}
+
+.v6-copy {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	justify-items: center;
+	gap: 0.9rem;
+	padding: 5.5rem 1.5rem 1rem;
+	text-align: center;
+}
+
+.v6-eyebrow {
+	display: block;
+	margin-bottom: 0.8rem;
+	color: var(--amber);
+	font: 800 0.72rem/1.2 var(--body);
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
+.v6-title {
+	display: block;
+	font-family: var(--display);
+	font-size: clamp(2.8rem, 13.5vw, 4rem);
+	font-weight: 400;
+	line-height: 0.98;
+	text-wrap: balance;
+}
+
+.v6-copy > p {
+	max-width: 30rem;
+	font-size: 0.98rem;
+	line-height: 1.5;
+}
+
+.v6-horizon {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	align-self: end;
+	justify-items: center;
+	margin-top: 2.5rem;
+}
+
+.v6-sun {
+	--sun: min(66vw, 21rem);
+	width: var(--sun);
+	aspect-ratio: 1;
+	margin-bottom: calc(var(--sun) * -0.14);
+	border-radius: 50%;
+	box-shadow:
+		0 0 0 0.6rem var(--cream),
+		0 0 0 1.3rem var(--apricot),
+		0 0 0 2rem var(--amber),
+		0 0 0 2.8rem var(--burnt);
+}
+
+.gv .v6-sun img {
+	border-radius: 50%;
+	object-position: 50% 12%;
+}
+
+.v6-daisy {
+	display: block;
+}
+
+.v6-horizon .v6-daisy {
+	position: absolute;
+	z-index: 1;
+	width: 26vw;
+}
+
+.v6-horizon .is-left {
+	bottom: 1.5rem;
+	left: -3vw;
+}
+
+.v6-horizon .is-right {
+	right: -4vw;
+	bottom: 9rem;
+	width: 20vw;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.v6-rays {
+		animation: gv-spin 120s linear infinite;
+	}
+
+	.v6-daisy {
+		animation: gv-spin 24s linear infinite;
+	}
+
+	.v6-sun {
+		animation: v6-rise 1500ms var(--ease) both;
+	}
+}
+
+@keyframes v6-rise {
+	from {
+		transform: translateY(35%);
+	}
+}
+
+@media (min-width: 900px) {
+	.v6-copy {
+		gap: 1.25rem;
+		padding: 6rem 2rem 0;
+	}
+
+	.v6-eyebrow {
+		font-size: 0.82rem;
+		letter-spacing: 0.18em;
+	}
+
+	.v6-title {
+		max-width: 16em;
+		font-size: clamp(3.5rem, 6.2vw, 6rem);
+	}
+
+	.v6-copy > p {
+		font-size: 1.08rem;
+	}
+
+	.v6-horizon {
+		margin-top: 3.75rem;
+	}
+
+	.v6-sun {
+		--sun: min(32vw, 54svh);
+	}
+
+	.v6-horizon .v6-daisy {
+		width: clamp(8rem, 13vw, 12rem);
+	}
+
+	.v6-horizon .is-left {
+		bottom: 2rem;
+		left: 14vw;
+	}
+
+	.v6-horizon .is-right {
+		right: 15vw;
+		bottom: 7rem;
+		width: clamp(6rem, 9vw, 9rem);
+	}
+}

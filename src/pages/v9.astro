@@ -1,0 +1,17 @@
+---
+import Base from '@/layouts/base.astro'
+import Hero from '@/components/concepts/v9/hero.astro'
+import Sections from '@/components/concepts/v9/sections.astro'
+import Switcher from '@/components/concepts/switcher.astro'
+---
+
+<Base>
+	<main class="gv">
+		<Hero />
+		<Sections />
+	</main>
+	<Switcher current="v9" />
+	<script>
+		import '@/scripts/reveal'
+	</script>
+</Base>

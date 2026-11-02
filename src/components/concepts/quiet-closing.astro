@@ -1,0 +1,72 @@
+---
+import BookPill from '@/components/site/book-pill.astro'
+import EmailLink from '@/components/site/email-link.astro'
+import Icon from '@/components/site/icon.astro'
+import InstagramLink from '@/components/site/instagram-link.astro'
+import Record from '@/components/site/record.astro'
+import SiteLinks from '@/components/site/site-links.astro'
+---
+
+<!-- A plain call to action and footer for the simpler versions. -->
+<section id="contact" class="quiet-closing" aria-labelledby="quiet-closing-title">
+	<h2 id="quiet-closing-title">Your best skin era starts here.</h2>
+	<p>Virtual · 45 minutes · $50 shop credit</p>
+	<BookPill />
+	<div>
+		<EmailLink />
+		<InstagramLink />
+	</div>
+</section>
+
+<footer class="gv-footer">
+	<p class="gv-mark">
+		<Record />
+		Skin Groove
+	</p>
+	<nav aria-label="Footer navigation">
+		<SiteLinks />
+	</nav>
+	<div class="gv-footer-end">
+		<InstagramLink />
+		<button aria-label="Back to top" class="gv-top" type="button">
+			<Icon name="arrowUp" />
+		</button>
+	</div>
+</footer>
+
+<script>
+	import { scrollToTop } from '@/lib/utils/scroll'
+
+	document.querySelector('.gv-top')?.addEventListener('click', scrollToTop)
+</script>
+
+<style is:global>
+	.quiet-closing {
+		--focus: var(--amber);
+		display: grid;
+		justify-items: center;
+		gap: 1rem;
+		padding: clamp(4rem, 9vw, 7rem) 1.5rem;
+		background: var(--chestnut);
+		color: var(--cream);
+		text-align: center;
+	}
+
+	.quiet-closing h2 {
+		font-size: clamp(2.5rem, 7vw, 5rem);
+	}
+
+	.quiet-closing > p {
+		font-size: 0.8rem;
+		font-weight: 800;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.quiet-closing > div {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem 1.5rem;
+		justify-content: center;
+	}
+</style>

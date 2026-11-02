@@ -1,0 +1,159 @@
+/* V7 "The Track": a four-band striped track starts in the hero and runs through every section. */
+
+.gv {
+	--band: 0.42rem;
+	--track: calc(var(--band) * 4);
+	--bend: 2rem;
+	--edge: 0.75rem;
+	--bands: linear-gradient(
+		90deg,
+		var(--cream) 0 25%,
+		var(--amber) 25% 50%,
+		var(--burnt) 50% 75%,
+		var(--apricot) 75%
+	);
+}
+
+.v7-rail {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: var(--track);
+	background: var(--bands);
+}
+
+.v7-rail.is-right {
+	right: var(--edge);
+}
+
+/* The track starts below the nav, so it never runs through the menu. */
+.v7-hero .v7-rail {
+	top: 4.75rem;
+	border-radius: var(--band) var(--band) 0 0;
+}
+
+.v7-rail.is-left {
+	left: var(--edge);
+}
+
+.v7-hero {
+	--focus: var(--amber);
+	position: relative;
+	display: grid;
+	min-height: 100svh;
+	align-content: start;
+	gap: 2rem;
+	overflow: hidden;
+	padding: 5.5rem calc(var(--edge) + var(--track) + 1rem) 3rem 1.5rem;
+	background: var(--garnet);
+	color: var(--cream);
+}
+
+.v7-hero-copy {
+	display: grid;
+	justify-items: start;
+	gap: 1rem;
+}
+
+.v7-eyebrow {
+	display: block;
+	margin-bottom: 0.8rem;
+	color: var(--amber);
+	font: 800 0.72rem/1.2 var(--body);
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+.v7-title {
+	display: block;
+	font-family: var(--display);
+	font-size: clamp(2.8rem, 13vw, 4rem);
+	font-weight: 400;
+	line-height: 0.98;
+	text-wrap: balance;
+}
+
+.v7-hero-copy > p {
+	max-width: 30rem;
+	line-height: 1.55;
+}
+
+.v7-hero-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem 1.5rem;
+	align-items: center;
+}
+
+/* A rounded 1970s television screen. */
+.v7-tv {
+	position: relative;
+	width: min(100%, 22rem);
+	aspect-ratio: 1 / 1.08;
+	justify-self: center;
+	padding: 0.7rem;
+	border-radius: 2.75rem;
+	background: var(--amber);
+	box-shadow: 0 0 0 0.5rem var(--chestnut);
+}
+
+.gv .v7-tv img {
+	border-radius: 2.1rem;
+	object-position: 50% 16%;
+}
+
+.v7-tv .v7-tv-record {
+	position: absolute;
+	right: -1.25rem;
+	bottom: -1.25rem;
+	width: 6.5rem;
+	height: 6.5rem;
+	color: var(--amber);
+}
+
+@media (min-width: 900px) {
+	.gv {
+		--band: 0.8rem;
+		--bend: 4rem;
+		--edge: 2.5rem;
+	}
+
+	.v7-hero {
+		grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+		gap: clamp(2rem, 5vw, 5rem);
+		align-content: center;
+		align-items: center;
+		padding: 6rem calc(var(--edge) + var(--track) + 3rem) 3rem clamp(2rem, 6vw, 6rem);
+	}
+
+	.v7-eyebrow {
+		font-size: 0.82rem;
+		letter-spacing: 0.18em;
+	}
+
+	.v7-title {
+		font-size: clamp(3.75rem, 6.4vw, 6.5rem);
+	}
+
+	.v7-hero-copy > p {
+		font-size: 1.12rem;
+	}
+
+	.v7-tv {
+		width: min(100%, 62svh);
+		padding: 1rem;
+		border-radius: 4rem;
+		box-shadow: 0 0 0 0.75rem var(--chestnut);
+	}
+
+	.gv .v7-tv img {
+		border-radius: 3rem;
+	}
+
+	.v7-tv .v7-tv-record {
+		right: -2.5rem;
+		bottom: -2rem;
+		width: 10rem;
+		height: 10rem;
+	}
+}

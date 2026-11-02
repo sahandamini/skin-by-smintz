@@ -1,0 +1,38 @@
+---
+export interface Props {
+	from: string
+	to: string
+	flip?: boolean
+}
+
+const { from, to, flip } = Astro.props
+
+const curve = 'M0 150C300 240 620 10 980 70S1320 170 1440 60'
+
+const stripes = [
+	{ color: 'var(--garnet)', width: 64 },
+	{ color: 'var(--burnt)', width: 46 },
+	{ color: 'var(--amber)', width: 28 },
+	{ color: 'var(--cream)', width: 10 },
+]
+---
+
+<!-- A big S-curve between two colour fields, with stripes along its edge. -->
+<svg
+	aria-hidden="true"
+	class:list={['v3-sweep', flip && 'is-flipped']}
+	preserveAspectRatio="none"
+	style={`background:var(--${from})`}
+	viewBox="0 0 1440 240"
+>
+	<path d={`${curve}V240H0Z`} fill={`var(--${to})`}></path>
+	{stripes.map((stripe) => (
+		<path
+			d={curve}
+			fill="none"
+			stroke={stripe.color}
+			stroke-width={stripe.width}
+			vector-effect="non-scaling-stroke"
+		/>
+	))}
+</svg>

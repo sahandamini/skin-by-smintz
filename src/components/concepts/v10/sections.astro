@@ -1,0 +1,101 @@
+---
+import BookPill from '@/components/site/book-pill.astro'
+import Closing from '@/components/site/closing.astro'
+import Icon from '@/components/site/icon.astro'
+import InstagramLink from '@/components/site/instagram-link.astro'
+
+import { expectations, galleryRows, pillars, sammyIntro, services } from '../v3/content'
+import FaqList from '../v3/faq-list.astro'
+
+import '../faq.css'
+import './sections.css'
+
+const gallery = galleryRows[0]
+---
+
+<section id="services" class="v10-services" aria-labelledby="v10-services-title">
+	<h2 class="v10-fifty" id="v10-services-title" data-reveal>
+		<span class="v10-echo-dark">$50</span>
+		<span class="v10-fifty-note">consult.</span>
+		<span class="v10-echo-dark">$50</span>
+		<span class="v10-fifty-note">shop credit.</span>
+	</h2>
+	<p class="v10-lead" data-reveal>After your consult, you get a $50 code for the shop, opening soon.</p>
+	<ol class="v10-list">
+		{services.map((service) => (
+			<li data-reveal>
+				<h3>{service.name}</h3>
+				<p class="v10-kind">{service.kind}</p>
+				<p>{service.body}</p>
+			</li>
+		))}
+	</ol>
+	<div data-reveal><BookPill /></div>
+</section>
+
+<section class="v10-meet" aria-labelledby="v10-meet-title">
+	<h2 class="v10-echo" id="v10-meet-title" data-reveal>Meet Skin Groove</h2>
+	<div class="v10-meet-list">
+		{pillars.map((pillar) => (
+			<article data-reveal>
+				<h3>{pillar.title}</h3>
+				{pillar.body.map((paragraph) => (
+					<p>{paragraph}</p>
+				))}
+			</article>
+		))}
+	</div>
+</section>
+
+<div aria-hidden="true" class="v10-band"></div>
+
+<section class="v10-sammy" aria-labelledby="v10-sammy-title">
+	<div class="v10-sammy-copy" data-reveal>
+		<p class="gv-kicker">The founder</p>
+		<h2 class="v10-echo" id="v10-sammy-title">Hi, I’m Sammy!</h2>
+		{sammyIntro.map((paragraph) => (
+			<p set:html={paragraph} />
+		))}
+		<div class="v10-sammy-actions">
+			<a class="gv-pill" href="/about">
+				Meet the founder
+				<Icon name="arrowRight" />
+			</a>
+			<InstagramLink />
+		</div>
+	</div>
+</section>
+
+<section class="v10-expect" aria-labelledby="v10-expect-title">
+	<h2 class="v10-echo" id="v10-expect-title" data-reveal>What you can expect</h2>
+	<ol class="v10-list">
+		{expectations.map((item) => (
+			<li data-reveal>
+				<h3>{item.title}</h3>
+				<p set:html={item.body} />
+			</li>
+		))}
+	</ol>
+</section>
+
+<section class="v10-room" aria-labelledby="v10-room-title">
+	<div class="v10-room-head" data-reveal>
+		<h2 class="v10-echo" id="v10-room-title">The Groove Room</h2>
+		<p>Warm light, soft shapes, and spaces that feel like an exhale.</p>
+		<InstagramLink />
+	</div>
+	<div aria-hidden="true" class="v10-slants">
+		<div>
+			{[...gallery, ...gallery].map((image) => (
+				<img alt="" decoding="async" height="300" loading="lazy" src={`/images/groove/${image}.webp`} width="300" />
+			))}
+		</div>
+	</div>
+</section>
+
+<section id="faq" class="v10-faq" aria-labelledby="v10-faq-title">
+	<h2 id="v10-faq-title" data-reveal>Before you book</h2>
+	<div data-reveal><FaqList /></div>
+</section>
+
+<Closing />

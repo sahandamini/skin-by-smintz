@@ -1,0 +1,18 @@
+---
+interface Props {
+	class?: string
+	petals?: string
+	eye?: string
+}
+
+const { class: className, petals = 'var(--cream)', eye = 'var(--amber)' } = Astro.props
+
+const angles = Array.from({ length: 8 }, (_, index) => index * 45)
+---
+
+<svg aria-hidden="true" class:list={['v6-daisy', className]} viewBox="0 0 200 200">
+	{angles.map((angle) => (
+		<ellipse cx="100" cy="46" fill={petals} rx="27" ry="46" transform={`rotate(${angle} 100 100)`} />
+	))}
+	<circle cx="100" cy="100" fill={eye} r="32"></circle>
+</svg>

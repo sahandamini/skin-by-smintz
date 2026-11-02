@@ -1,0 +1,56 @@
+---
+import BookPill from '@/components/site/book-pill.astro'
+import SiteNav from '@/components/site/site-nav.astro'
+
+import { wavyOutlinePath } from '../v1/wavy-outline'
+
+import '../v10/echo.css'
+import './v13.css'
+
+const mirror = { width: 600, height: 800 }
+
+const outline = wavyOutlinePath({ ...mirror, amplitude: 16, waves: 10 })
+
+const ripples = [
+	{ color: 'var(--garnet)', width: 150 },
+	{ color: 'var(--burnt)', width: 96 },
+	{ color: 'var(--amber)', width: 52 },
+	{ color: 'var(--cream)', width: 20 },
+]
+---
+
+<header class="v13-hero">
+	<SiteNav />
+	<div class="v13-copy">
+		<h1>
+			<span class="v13-eyebrow">Skin Groove · Virtual esthetics</span>
+			<span class="v13-title">Find your skincare</span>
+			<span class="v13-rhythm v10-echo-big">rhythm.</span>
+		</h1>
+		<p>
+			Thoughtful, curated skincare guidance to help you understand your skin,
+			simplify your routine, and finally find what works for you.
+		</p>
+		<BookPill />
+	</div>
+	<figure class="v13-mirror">
+		<svg aria-hidden="true" viewBox={`0 0 ${mirror.width} ${mirror.height}`}>
+			<defs>
+				<path d={outline} id="v13-outline"></path>
+				<clipPath clipPathUnits="objectBoundingBox" id="v13-clip">
+					<path d={outline} transform={`scale(${1 / mirror.width} ${1 / mirror.height})`}></path>
+				</clipPath>
+			</defs>
+			{ripples.map((ripple) => (
+				<use fill="none" href="#v13-outline" stroke={ripple.color} stroke-width={ripple.width} />
+			))}
+		</svg>
+		<img
+			alt="Sammy, the founder of Skin Groove, smiling in a black uniform"
+			fetchpriority="high"
+			height="1080"
+			src="/images/sammy.webp"
+			width="810"
+		/>
+	</figure>
+</header>

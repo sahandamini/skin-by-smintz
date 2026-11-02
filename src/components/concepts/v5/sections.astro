@@ -1,0 +1,123 @@
+---
+import BookPill from '@/components/site/book-pill.astro'
+import Closing from '@/components/site/closing.astro'
+import Icon from '@/components/site/icon.astro'
+import InstagramLink from '@/components/site/instagram-link.astro'
+
+import { expectations, galleryRows, pillars, sammyIntro, services } from '../v3/content'
+import FaqList from '../v3/faq-list.astro'
+import Strip from './strip.astro'
+
+import '../faq.css'
+import './sections.css'
+
+const swatches = ['flowers', 'stripes', 'rings']
+
+const snapshots = galleryRows.flat().slice(0, 9)
+
+const ticker = pillars.map((pillar) => pillar.title)
+---
+
+<section id="services" class="v5-services" aria-labelledby="v5-services-title">
+	<div class="v5-services-head" data-reveal>
+		<p class="gv-kicker">Services</p>
+		<h2 id="v5-services-title">
+			<span>$50 consult.</span> <span>$50 shop credit.</span>
+		</h2>
+		<p>After your consult, you get a $50 code for the shop, opening soon.</p>
+	</div>
+	<ul class="v5-swatches">
+		{services.map((service, index) => (
+			<li>
+				<div aria-hidden="true" class:list={['v5-swatch', `is-${swatches[index]}`]}></div>
+				<div class="v5-swatch-copy">
+					<h3>{service.name}</h3>
+					<p class="v5-swatch-kind">{service.kind}</p>
+					<p>{service.body}</p>
+				</div>
+			</li>
+		))}
+	</ul>
+	<div class="v5-center" data-reveal><BookPill /></div>
+</section>
+
+<Strip />
+
+<section class="v5-meet" aria-labelledby="v5-meet-title">
+	<div aria-hidden="true" class="v5-ticker">
+		<p>
+			{[...ticker, ...ticker, ...ticker, ...ticker].map((line) => (
+				<span>{line} ✿ </span>
+			))}
+		</p>
+	</div>
+	<h2 id="v5-meet-title" data-reveal>Meet Skin Groove</h2>
+	<div class="v5-meet-list">
+		{pillars.map((pillar) => (
+			<article data-reveal>
+				<h3>{pillar.title}</h3>
+				{pillar.body.map((paragraph) => (
+					<p>{paragraph}</p>
+				))}
+			</article>
+		))}
+	</div>
+</section>
+
+<section class="v5-sammy" aria-labelledby="v5-sammy-title">
+	<div class="v5-sammy-photo" data-reveal>
+		<figure>
+			<img alt="Sammy, the founder of Skin Groove, smiling in a black uniform" decoding="async" height="1080" loading="lazy" src="/images/sammy.webp" width="810" />
+		</figure>
+		<h2 id="v5-sammy-title">Hi, I’m Sammy!</h2>
+	</div>
+	<div class="v5-sammy-copy" data-reveal>
+		{sammyIntro.map((paragraph) => (
+			<p set:html={paragraph} />
+		))}
+		<div class="v5-sammy-actions">
+			<a class="gv-pill" href="/about">
+				Meet the founder
+				<Icon name="arrowRight" />
+			</a>
+			<InstagramLink />
+		</div>
+	</div>
+</section>
+
+<Strip />
+
+<section class="v5-expect" aria-labelledby="v5-expect-title">
+	<h2 id="v5-expect-title" data-reveal>What you can expect</h2>
+	<ol>
+		{expectations.map((item, index) => (
+			<li data-reveal>
+				<span aria-hidden="true">{index + 1}</span>
+				<div>
+					<h3>{item.title}</h3>
+					<p set:html={item.body} />
+				</div>
+			</li>
+		))}
+	</ol>
+</section>
+
+<section class="v5-room" aria-labelledby="v5-room-title">
+	<div class="v5-room-head" data-reveal>
+		<h2 id="v5-room-title">The Groove Room</h2>
+		<p>Warm light, soft shapes, and spaces that feel like an exhale.</p>
+		<InstagramLink />
+	</div>
+	<div aria-hidden="true" class="v5-pile">
+		{snapshots.map((image) => (
+			<span><img alt="" decoding="async" height="300" loading="lazy" src={`/images/groove/${image}.webp`} width="300" /></span>
+		))}
+	</div>
+</section>
+
+<section id="faq" class="v5-faq" aria-labelledby="v5-faq-title">
+	<h2 id="v5-faq-title" data-reveal>Before you book</h2>
+	<div data-reveal><FaqList /></div>
+</section>
+
+<Closing />

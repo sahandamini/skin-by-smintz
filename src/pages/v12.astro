@@ -1,0 +1,19 @@
+---
+import Base from '@/layouts/base.astro'
+import Hero from '@/components/concepts/v12/hero.astro'
+import Sections from '@/components/concepts/v12/sections.astro'
+import Switcher from '@/components/concepts/switcher.astro'
+---
+
+<Base>
+	<main class="gv v12-page">
+		<Hero />
+		<div class="v12-scroll">
+			<Sections />
+		</div>
+	</main>
+	<Switcher current="v12" />
+	<script>
+		import '@/scripts/reveal'
+	</script>
+</Base>

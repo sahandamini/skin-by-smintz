@@ -1,0 +1,128 @@
+/* V10 "Echo": outline-ring lettering, with slanted 1976 stripes across the page. */
+
+.v10-hero {
+	--focus: var(--amber);
+	position: relative;
+	display: grid;
+	min-height: 100svh;
+	grid-template-columns: minmax(0, 1fr);
+	align-content: start;
+	gap: 1.5rem;
+	overflow: hidden;
+	padding: 5.5rem 1.5rem 0;
+	background: var(--chestnut);
+	color: var(--cream);
+}
+
+.v10-sash {
+	position: absolute;
+	right: -30%;
+	bottom: -14%;
+	left: -30%;
+	height: 30%;
+	background: linear-gradient(
+		180deg,
+		var(--avocado) 0 20%,
+		var(--garnet) 20% 40%,
+		var(--burnt) 40% 60%,
+		var(--amber) 60% 80%,
+		var(--apricot) 80%
+	);
+	rotate: -14deg;
+}
+
+.v10-copy {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	justify-items: start;
+	gap: 1rem;
+}
+
+.v10-eyebrow {
+	display: block;
+	margin-bottom: 0.9rem;
+	color: var(--amber);
+	font: 800 0.72rem/1.2 var(--body);
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+.v10-title {
+	display: block;
+	font-family: var(--display);
+	font-size: clamp(1.9rem, 9vw, 2.75rem);
+	font-weight: 400;
+	line-height: 1.05;
+}
+
+.v10-rhythm {
+	display: block;
+	margin-top: 0.12em;
+	margin-left: 0.04em;
+	font-family: var(--display);
+	font-size: clamp(3.5rem, 20vw, 7rem);
+	font-weight: 400;
+	line-height: 1.1;
+}
+
+.v10-copy > p {
+	max-width: 30rem;
+	line-height: 1.55;
+}
+
+.v10-portrait {
+	position: relative;
+	z-index: 1;
+	width: min(72vw, 20rem);
+	aspect-ratio: 1;
+	justify-self: end;
+	margin-bottom: -2.5rem;
+	border-radius: 50%;
+	box-shadow:
+		0 0 0 0.4rem var(--cream),
+		0 0 0 0.8rem var(--burnt);
+}
+
+.gv .v10-portrait img {
+	border-radius: 50%;
+	object-position: 50% 14%;
+}
+
+@media (min-width: 900px) {
+	.v10-hero {
+		grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+		gap: clamp(2rem, 4vw, 4rem);
+		align-content: center;
+		align-items: center;
+		padding: 6rem clamp(2rem, 6vw, 6rem) 5rem;
+	}
+
+	.v10-eyebrow {
+		font-size: 0.82rem;
+		letter-spacing: 0.18em;
+	}
+
+	.v10-title {
+		font-size: clamp(2.5rem, 4vw, 4.25rem);
+	}
+
+	.v10-rhythm {
+		font-size: clamp(6rem, 10.8vw, 12rem);
+	}
+
+	.v10-copy > p {
+		font-size: 1.1rem;
+	}
+
+	.v10-portrait {
+		width: 100%;
+		margin: 0;
+	}
+
+	.v10-sash {
+		bottom: -22%;
+		height: 42%;
+		rotate: -8deg;
+	}
+}

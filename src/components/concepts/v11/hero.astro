@@ -1,0 +1,30 @@
+---
+import BookPill from '@/components/site/book-pill.astro'
+import SiteNav from '@/components/site/site-nav.astro'
+
+import './echo.css'
+import './v11.css'
+---
+
+<header class="v11-hero">
+	<SiteNav />
+	<div class="v11-center">
+		<img
+			alt="Sammy, the founder of Skin Groove, smiling in a black uniform"
+			fetchpriority="high"
+			height="1080"
+			src="/images/sammy.webp"
+			width="810"
+		/>
+		<h1>
+			<span class="v11-eyebrow">Skin Groove · Virtual esthetics</span>
+			<span class="v11-title v11-echo">Find your skincare rhythm.</span>
+		</h1>
+		<p>
+			Thoughtful, curated skincare guidance to help you understand your skin,
+			simplify your routine, and finally find what works for you.
+		</p>
+		<BookPill />
+	</div>
+	<div aria-hidden="true" class="v11-stripe"></div>
+</header>

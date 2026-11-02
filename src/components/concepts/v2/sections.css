@@ -1,0 +1,587 @@
+/* Homepage sections below the hero. Rules start at phone size, and the wide layouts follow at the end. */
+
+/* ===== Rail ===== */
+
+/* Phones swipe through long card sets, so the page stays short. The next card peeks in to show that the row moves. */
+.gv-rail {
+	display: flex;
+	gap: 0.75rem;
+	margin: 0 -1.5rem;
+	padding: 0.25rem 1.5rem 1rem;
+	overflow-x: auto;
+	list-style: none;
+	scroll-padding-inline: 1.5rem;
+	scroll-snap-type: x mandatory;
+	scrollbar-width: none;
+	-webkit-overflow-scrolling: touch;
+}
+
+.gv-rail::-webkit-scrollbar {
+	display: none;
+}
+
+.gv-rail > * {
+	flex: 0 0 min(84%, 22rem);
+	scroll-snap-align: start;
+}
+
+/* ===== Services ===== */
+
+.home-services {
+	width: min(100% - 3rem, 76rem);
+	margin-inline: auto;
+	padding-block: 3.5rem 3rem;
+}
+
+.home-services-head .gv-kicker {
+	margin-bottom: 0.75rem;
+}
+
+.home-services h2 {
+	color: var(--burnt);
+	font-size: clamp(2.5rem, 11vw, 4.75rem);
+}
+
+.home-services h2 span {
+	display: inline-block;
+}
+
+.home-services-head > p:last-child {
+	max-width: 30rem;
+	margin-top: 1rem;
+	margin-bottom: 1.75rem;
+	color: var(--muted);
+	font-size: 1.05rem;
+	line-height: 1.55;
+}
+
+/* Vintage apothecary labels. */
+.home-labels li {
+	--label: #f9dcbb;
+	display: grid;
+	align-content: start;
+	gap: 0.4rem;
+	padding: 1.75rem 1.5rem;
+	border-radius: 1.25rem;
+	background: var(--label);
+	color: var(--chestnut);
+	outline: 1.5px solid rgb(43 17 13 / 70%);
+	outline-offset: -0.45rem;
+}
+
+.home-labels li:nth-child(2) {
+	--label: var(--amber);
+}
+
+.home-labels li:nth-child(3) {
+	--label: var(--apricot);
+}
+
+.home-labels .gv-vanity {
+	width: auto;
+	height: 4.25rem;
+	margin-bottom: 0.6rem;
+	justify-self: start;
+}
+
+.home-label-number {
+	font-size: 0.72rem;
+	font-weight: 800;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
+.home-labels h3 {
+	font-family: var(--display);
+	font-size: 1.85rem;
+	font-weight: 400;
+	line-height: 1.1;
+}
+
+.home-label-kind {
+	font-size: 0.8rem;
+	font-weight: 800;
+	line-height: 1.35;
+}
+
+.home-labels li > p:last-child {
+	margin-top: 0.4rem;
+	line-height: 1.55;
+}
+
+/* ===== Meet ===== */
+
+.home-meet {
+	--focus: var(--amber);
+	background: var(--garnet) url('/images/tile/garnet.svg');
+	color: var(--cream);
+}
+
+.home-meet-inner {
+	width: min(100% - 3rem, 76rem);
+	margin-inline: auto;
+	padding-block: 3.25rem 2.5rem;
+}
+
+.home-meet-head {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	margin-bottom: 1.75rem;
+}
+
+.home-meet-record {
+	width: 3.5rem;
+	height: 3.5rem;
+	flex: none;
+	color: var(--amber);
+}
+
+.home-meet h2 {
+	font-size: clamp(2.4rem, 10vw, 5.25rem);
+}
+
+.home-meet-list article {
+	padding: 1.5rem;
+	border-radius: 1.25rem;
+	background: var(--garnet);
+	box-shadow: 0 0 0 1px rgb(242 181 74 / 35%);
+}
+
+.home-meet-list h3 {
+	margin-bottom: 0.85rem;
+	color: var(--amber);
+	font-family: var(--display);
+	font-size: 1.6rem;
+	font-weight: 400;
+	line-height: 1.12;
+	text-wrap: balance;
+}
+
+.home-meet-list p {
+	font-size: 0.98rem;
+	line-height: 1.62;
+}
+
+.home-meet-list p + p {
+	margin-top: 0.8rem;
+}
+
+/* ===== Sammy ===== */
+
+.home-sammy {
+	--kicker: var(--rust);
+	display: grid;
+	gap: 1.5rem;
+	padding: 3.5rem 1.5rem;
+	background: var(--apricot);
+}
+
+/* Phones keep the name beside the portrait, so her face and the greeting share one view. */
+.home-sammy-head {
+	display: grid;
+	grid-template-columns: 40% minmax(0, 1fr);
+	gap: 1.25rem;
+	align-items: center;
+}
+
+.home-sammy-photo {
+	aspect-ratio: 3 / 4;
+}
+
+.gv .home-sammy-photo img {
+	border-radius: 999px;
+	box-shadow:
+		0 0 0 0.3rem var(--cream),
+		0 0 0 0.6rem var(--burnt);
+}
+
+.home-sammy h2 {
+	margin-top: 0.5rem;
+	color: var(--rust);
+	font-size: clamp(2.5rem, 11.5vw, 5.25rem);
+}
+
+.home-sammy-copy > p {
+	max-width: 36rem;
+	color: var(--ink);
+	font-size: 1rem;
+	line-height: 1.68;
+}
+
+.home-sammy-copy > p + p {
+	margin-top: 0.9rem;
+}
+
+.home-sammy-actions {
+	--pill-bg: var(--chestnut);
+	--pill-fg: var(--cream);
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem 1.75rem;
+	align-items: center;
+	margin-top: 1.75rem;
+}
+
+/* ===== Expect ===== */
+
+.home-expect {
+	--focus: var(--amber);
+	background: var(--avocado) url('/images/tile/avocado.svg');
+	color: var(--cream);
+}
+
+.home-expect-inner {
+	width: min(100% - 3rem, 76rem);
+	margin-inline: auto;
+	padding-block: 3.25rem;
+}
+
+.home-expect h2 {
+	font-size: clamp(2.5rem, 11vw, 5rem);
+}
+
+.home-expect-list {
+	display: grid;
+	gap: 0.75rem;
+	margin: 1.75rem 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.home-expect-list li {
+	padding: 1.4rem 1.5rem;
+	border-radius: 1.25rem;
+	background: var(--cream);
+	color: var(--chestnut);
+}
+
+.home-expect-list h3 {
+	margin-bottom: 0.6rem;
+	font-family: var(--display);
+	font-size: 1.45rem;
+	font-weight: 400;
+	line-height: 1.12;
+	text-wrap: balance;
+}
+
+.home-expect-list p {
+	font-size: 0.98rem;
+	line-height: 1.6;
+}
+
+.home-expect-cta {
+	margin-top: 1.75rem;
+}
+
+/* ===== Groove Room ===== */
+
+.home-room {
+	--focus: var(--amber);
+	padding-block: 3.5rem;
+	background: var(--chestnut);
+	color: var(--cream);
+}
+
+.home-room-head {
+	width: min(100% - 3rem, 40rem);
+	margin: 0 auto 2rem;
+	text-align: center;
+}
+
+.home-room h2 {
+	color: var(--amber);
+	font-size: clamp(2.5rem, 10.5vw, 4.75rem);
+}
+
+.home-room-head .gv-text-link {
+	margin-top: 0.75rem;
+}
+
+.home-room-head p {
+	margin-top: 1rem;
+	line-height: 1.6;
+	opacity: 0.88;
+}
+
+/* ===== FAQ ===== */
+
+.home-faq {
+	display: grid;
+	width: min(100% - 3rem, 76rem);
+	gap: 2rem;
+	align-items: center;
+	margin-inline: auto;
+	padding-block: 3.5rem;
+}
+
+/* The lamps are mood, so phones go straight to the questions. */
+.home-faq-photo {
+	display: none;
+	aspect-ratio: 1;
+}
+
+.home-faq-photo img {
+	border-radius: 50%;
+	box-shadow: 0 0 0 0.75rem var(--apricot);
+}
+
+.home-faq h2 {
+	margin-bottom: clamp(1.5rem, 4vw, 3rem);
+	color: var(--burnt);
+	font-size: clamp(2.5rem, 11vw, 5.25rem);
+}
+
+/* ===== FAQ list and gallery rows ===== */
+
+.gv-faq details {
+	border-bottom: 1px solid var(--line);
+}
+
+.gv-faq details:first-child {
+	border-top: 1px solid var(--line);
+}
+
+.gv-faq summary {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.5rem;
+	padding-block: 1.3rem;
+	cursor: pointer;
+	font-size: 1.02rem;
+	font-weight: 600;
+	list-style: none;
+}
+
+.gv-faq summary::-webkit-details-marker {
+	display: none;
+}
+
+.gv-faq summary svg {
+	width: 1.1rem;
+	height: 1.1rem;
+	flex: none;
+	transition: transform 500ms var(--ease);
+}
+
+.gv-faq details[open] summary svg {
+	transform: rotate(45deg);
+}
+
+/* Browsers that support ::details-content animate the panel open and closed. */
+.gv-faq details::details-content {
+	height: 0;
+	overflow: clip;
+	transition:
+		height 500ms var(--ease),
+		content-visibility 500ms allow-discrete;
+}
+
+.gv-faq details[open]::details-content {
+	height: auto;
+}
+
+.gv-faq details p {
+	max-width: 32rem;
+	padding-bottom: 1.4rem;
+	line-height: 1.7;
+	opacity: 0.82;
+}
+
+.gv-rows {
+	display: grid;
+	gap: 1rem;
+	overflow: hidden;
+}
+
+.gv-row {
+	--tile: clamp(9rem, 15vw, 13rem);
+	display: flex;
+	width: max-content;
+	gap: 1rem;
+}
+
+.gv-row img {
+	width: var(--tile);
+	height: var(--tile);
+	border-radius: 1.25rem;
+}
+
+.gv-row img:nth-child(3n + 2) {
+	width: calc(var(--tile) * 1.5);
+}
+
+.gv-row img:nth-child(3n) {
+	border-radius: 50%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.gv-row {
+		animation: gv-marquee 80s linear infinite;
+	}
+
+	.gv-row.is-reverse {
+		animation-direction: reverse;
+	}
+
+	@media (hover: hover) {
+		.gv-rows:hover .gv-row {
+			animation-play-state: paused;
+		}
+	}
+
+	/* A touch screen keeps :hover after a tap, so a tap sets the pause instead. */
+	@media (hover: none) {
+		.gv-rows {
+			-webkit-tap-highlight-color: transparent;
+		}
+
+		.gv-rows.is-paused .gv-row {
+			animation-play-state: paused;
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.gv-rows {
+		overflow-x: auto;
+	}
+}
+
+@keyframes gv-marquee {
+	to {
+		transform: translateX(calc(-50% - 0.5rem));
+	}
+}
+
+/* ===== Phones ===== */
+
+/* One gallery row keeps the Groove Room to a single screen. */
+@media (max-width: 719px) {
+	.gv-row.is-reverse {
+		display: none;
+	}
+}
+
+/* ===== Wide screens ===== */
+
+@media (min-width: 720px) {
+	.gv-rail {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: clamp(1rem, 2vw, 1.5rem);
+		margin: 0;
+		padding: 0;
+		overflow: visible;
+	}
+
+	.home-services {
+		padding-block: clamp(5rem, 8vw, 7rem);
+	}
+
+	.home-services-head {
+		display: grid;
+		grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+		gap: 0.75rem 3rem;
+		align-items: end;
+		margin-bottom: 2.5rem;
+	}
+
+	.home-services-head .gv-kicker {
+		grid-column: 1 / -1;
+		margin-bottom: 0;
+	}
+
+	.home-services-head > p:last-child {
+		margin: 0 0 0.5rem;
+	}
+
+	.home-labels li {
+		padding: 2.25rem 2rem;
+	}
+
+	.home-labels .gv-vanity {
+		height: 5.5rem;
+	}
+
+	.home-meet-inner {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		padding-block: clamp(5rem, 8vw, 7rem);
+	}
+
+	.home-meet-head {
+		margin-bottom: 2.5rem;
+	}
+
+	.home-meet-list article {
+		padding: 2rem;
+	}
+
+	.home-sammy {
+		grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+		gap: 1.5rem clamp(2.5rem, 7vw, 6rem);
+		align-items: center;
+		padding: clamp(5rem, 8vw, 7rem) max(2rem, (100% - 72rem) / 2);
+	}
+
+	.home-sammy-head {
+		display: contents;
+	}
+
+	.home-sammy-head > div {
+		grid-column: 2;
+		grid-row: 1;
+		align-self: end;
+	}
+
+	.home-sammy-photo {
+		grid-row: 1 / span 2;
+		margin: 0.75rem;
+	}
+
+	.gv .home-sammy-photo img {
+		box-shadow:
+			0 0 0 0.5rem var(--cream),
+			0 0 0 1rem var(--burnt);
+	}
+
+	.home-sammy-copy {
+		grid-column: 2;
+		grid-row: 2;
+		align-self: start;
+	}
+
+	.home-sammy-copy > p {
+		font-size: 1.05rem;
+	}
+
+	.home-expect-inner {
+		padding-block: clamp(5rem, 8vw, 7rem);
+	}
+
+	.home-expect-list {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: clamp(1rem, 2vw, 1.5rem);
+		margin-top: 2.5rem;
+	}
+
+	.home-expect-list li {
+		padding: 2rem;
+	}
+
+	.home-room {
+		padding-block: clamp(5rem, 8vw, 7rem);
+	}
+
+	.home-faq {
+		grid-template-columns: 1fr 1.1fr;
+		gap: clamp(2.5rem, 6vw, 6rem);
+		padding-block: clamp(5rem, 8vw, 7rem);
+	}
+
+	.home-faq-photo {
+		display: block;
+	}
+}

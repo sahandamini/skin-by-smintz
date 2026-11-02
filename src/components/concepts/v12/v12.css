@@ -1,0 +1,120 @@
+/* V12 "Sticky Poster": one poster stays on screen while the content scrolls beside it. */
+
+.v12-poster {
+	--focus: var(--amber);
+	position: relative;
+	display: grid;
+	min-height: 100svh;
+	align-content: start;
+	gap: 1.5rem;
+	overflow: hidden;
+	padding: 5.5rem 1.5rem 0;
+	background: var(--rust);
+	color: var(--cream);
+}
+
+.v12-poster-copy {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	justify-items: start;
+	gap: 1rem;
+}
+
+.v12-eyebrow {
+	display: block;
+	margin-bottom: 0.9rem;
+	color: var(--amber);
+	font: 800 0.72rem/1.2 var(--body);
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+.v12-big {
+	display: block;
+	font-family: var(--display);
+	font-size: clamp(3rem, 14.5vw, 4.5rem);
+	font-weight: 400;
+	line-height: 1.04;
+	text-wrap: balance;
+}
+
+.v12-poster-copy > p {
+	max-width: 30rem;
+	line-height: 1.55;
+}
+
+.v12-poster figure {
+	position: relative;
+	z-index: 1;
+	width: min(70vw, 19rem);
+	aspect-ratio: 1;
+	justify-self: end;
+	margin-bottom: -2.5rem;
+	border-radius: 50%;
+	box-shadow: 0 0 0 0.5rem var(--amber);
+}
+
+.gv .v12-poster img {
+	border-radius: 50%;
+	object-position: 50% 14%;
+}
+
+/* A quarter of stripes in the corner is the only decoration. */
+.v12-corner {
+	--corner: 62vw;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: var(--corner);
+	aspect-ratio: 1;
+	background: radial-gradient(
+		circle var(--corner) at 0 100%,
+		var(--chestnut) 0 36%,
+		var(--garnet) 36% 52%,
+		var(--burnt) 52% 68%,
+		var(--amber) 68% 84%,
+		var(--apricot) 84% 99.5%,
+		transparent 100%
+	);
+}
+
+@media (min-width: 1000px) {
+	.v12-page {
+		display: grid;
+		grid-template-columns: minmax(0, 46fr) minmax(0, 54fr);
+		align-items: start;
+	}
+
+	.v12-poster {
+		position: sticky;
+		top: 0;
+		height: 100svh;
+		align-content: center;
+		padding: 5rem clamp(2rem, 4vw, 4rem) 2rem;
+	}
+
+	.v12-eyebrow {
+		font-size: 0.82rem;
+	}
+
+	.v12-big {
+		font-size: clamp(3.25rem, 5.2vw, 5.75rem);
+	}
+
+	.v12-poster figure {
+		position: absolute;
+		right: 2rem;
+		bottom: 2rem;
+		width: min(15vw, 26svh);
+		margin: 0;
+	}
+
+	.v12-poster-copy {
+		padding-bottom: 9rem;
+	}
+
+	.v12-corner {
+		--corner: min(17vw, 28svh);
+	}
+}

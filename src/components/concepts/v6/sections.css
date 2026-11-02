@@ -1,0 +1,511 @@
+/* V6 sections. Rules start at phone size. */
+
+.v6-center {
+	display: flex;
+	justify-content: center;
+	margin-top: 2rem;
+}
+
+/* ===== Offer and services ===== */
+
+.v6-services {
+	--pill-bg: var(--chestnut);
+	--pill-fg: var(--cream);
+	position: relative;
+	z-index: 2;
+	padding: 3rem 1.5rem 3.5rem;
+	background: var(--amber);
+	color: var(--chestnut);
+}
+
+.gv .v6-offer {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.5rem;
+}
+
+/* Two starburst stickers say the deal: pay $50, get $50. */
+.v6-sticker {
+	position: relative;
+	display: grid;
+	width: min(41vw, 15rem);
+	aspect-ratio: 1;
+	place-content: center;
+	color: var(--cream);
+	font-family: var(--body);
+	font-size: clamp(0.8rem, 3.1vw, 1.05rem);
+	font-weight: 800;
+	line-height: 1.15;
+	text-align: center;
+}
+
+.v6-sticker b {
+	display: block;
+	font-family: var(--display);
+	font-size: 3.2em;
+	font-weight: 400;
+	line-height: 1;
+}
+
+.v6-sticker > * {
+	position: relative;
+}
+
+.v6-sticker i {
+	font-style: normal;
+}
+
+.v6-scallop {
+	position: absolute;
+	inset: 0;
+}
+
+.v6-sticker.is-consult {
+	rotate: -7deg;
+}
+
+.v6-sticker.is-consult .v6-scallop {
+	fill: var(--burnt);
+}
+
+.v6-sticker.is-credit {
+	rotate: 6deg;
+}
+
+.v6-sticker.is-credit .v6-scallop {
+	fill: var(--garnet);
+}
+
+.v6-offer-note {
+	max-width: 26rem;
+	margin: 1rem auto 0;
+	font-size: 1.05rem;
+	font-weight: 600;
+	line-height: 1.45;
+	text-align: center;
+}
+
+/* The services are three suns that overlap down the phone screen. */
+.v6-suns {
+	display: grid;
+	margin: 2rem 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.v6-suns li {
+	display: grid;
+	width: min(88vw, 23rem);
+	aspect-ratio: 1;
+	place-items: center;
+	padding: 2.75rem;
+	border-radius: 50%;
+	background: var(--garnet);
+	color: var(--cream);
+	text-align: center;
+}
+
+.v6-suns li:nth-child(2) {
+	justify-self: end;
+	margin-top: -3.5rem;
+	background: var(--burnt);
+}
+
+.v6-suns li:nth-child(3) {
+	margin-top: -3.5rem;
+	background: var(--avocado);
+}
+
+.v6-suns h3 {
+	font-family: var(--display);
+	font-size: 1.85rem;
+	font-weight: 400;
+	line-height: 1.1;
+}
+
+.v6-sun-kind {
+	margin-block: 0.4rem 0.5rem;
+	color: var(--amber);
+	font-size: 0.74rem;
+	font-weight: 800;
+	line-height: 1.3;
+}
+
+.v6-suns li:nth-child(2) .v6-sun-kind {
+	color: var(--cream);
+}
+
+.v6-suns p:last-child {
+	font-size: 0.94rem;
+	line-height: 1.45;
+}
+
+/* ===== Meet ===== */
+
+.v6-meet {
+	--focus: var(--amber);
+	position: relative;
+	padding: 3.5rem 1.5rem;
+	overflow: hidden;
+	background: var(--avocado);
+	color: var(--cream);
+}
+
+.v6-meet-daisy {
+	position: absolute;
+	top: -3rem;
+	right: -3.5rem;
+	width: 11rem;
+	opacity: 0.9;
+}
+
+.v6-meet h2 {
+	position: relative;
+	max-width: 80%;
+	font-size: clamp(2.8rem, 12.5vw, 6.5rem);
+}
+
+/* Pill tabs built from radio inputs, so they work without a script. */
+.v6-tabs {
+	position: relative;
+	margin-top: 1.75rem;
+}
+
+.v6-tabs input {
+	position: absolute;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.v6-tab-labels {
+	display: grid;
+	gap: 0.5rem;
+}
+
+.v6-tab-labels label {
+	padding: 0.75rem 1.25rem;
+	border-radius: 1.5rem;
+	box-shadow: inset 0 0 0 2px var(--amber);
+	color: var(--amber);
+	cursor: pointer;
+	font-family: var(--display);
+	font-size: 1.2rem;
+	line-height: 1.15;
+}
+
+.v6-tabs input:nth-of-type(1):checked ~ .v6-tab-labels label:nth-child(1),
+.v6-tabs input:nth-of-type(2):checked ~ .v6-tab-labels label:nth-child(2),
+.v6-tabs input:nth-of-type(3):checked ~ .v6-tab-labels label:nth-child(3) {
+	background: var(--amber);
+	color: var(--chestnut);
+}
+
+.v6-tabs input:focus-visible ~ .v6-tab-labels {
+	outline: 3px solid var(--amber);
+	outline-offset: 4px;
+}
+
+.v6-tabs article {
+	display: none;
+	margin-top: 1.25rem;
+}
+
+.v6-tabs input:nth-of-type(1):checked ~ article:nth-of-type(1),
+.v6-tabs input:nth-of-type(2):checked ~ article:nth-of-type(2),
+.v6-tabs input:nth-of-type(3):checked ~ article:nth-of-type(3) {
+	display: block;
+}
+
+.v6-tabs article p {
+	max-width: 42rem;
+	line-height: 1.65;
+}
+
+.v6-tabs article p + p {
+	margin-top: 0.8rem;
+}
+
+/* ===== Sammy ===== */
+
+.v6-sammy {
+	--kicker: var(--amber);
+	--focus: var(--amber);
+	display: grid;
+	gap: 2rem;
+	justify-items: center;
+	padding: 3.5rem 1.5rem;
+	background: var(--rust);
+	color: var(--cream);
+}
+
+.v6-sammy figure {
+	position: relative;
+	display: grid;
+	width: min(84vw, 28rem);
+	aspect-ratio: 1;
+	place-items: center;
+}
+
+.v6-sammy .v6-scallop {
+	fill: var(--amber);
+}
+
+.gv .v6-sammy img {
+	position: relative;
+	width: 80%;
+	height: 80%;
+	border-radius: 50%;
+	object-position: 50% 14%;
+}
+
+.v6-sammy h2 {
+	margin-block: 0.6rem 1.25rem;
+	color: var(--amber);
+	font-size: clamp(2.8rem, 13vw, 5.5rem);
+}
+
+.v6-sammy-copy > p:not(.gv-kicker) {
+	max-width: 36rem;
+	line-height: 1.68;
+}
+
+.v6-sammy-copy > p + p:not(.gv-kicker) {
+	margin-top: 0.9rem;
+}
+
+.v6-sammy-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem 1.75rem;
+	align-items: center;
+	margin-top: 1.75rem;
+}
+
+/* ===== Expect ===== */
+
+.v6-expect {
+	position: relative;
+	padding: 3.5rem 1.5rem;
+	overflow: hidden;
+	background: var(--chestnut);
+	color: var(--cream);
+}
+
+/* A retro sun cut into bars, sinking below the cards. */
+.v6-sunset {
+	position: absolute;
+	top: 1.5rem;
+	left: 50%;
+	width: min(130vw, 60rem);
+	aspect-ratio: 1;
+	border-radius: 50%;
+	background: linear-gradient(180deg, var(--amber), var(--burnt) 55%, var(--garnet));
+	mask: repeating-linear-gradient(180deg, #000 0 2.4rem, transparent 2.4rem 3rem);
+	translate: -50% 0;
+}
+
+.v6-expect h2 {
+	position: relative;
+	color: var(--cream);
+	font-size: clamp(2.8rem, 12.5vw, 6.5rem);
+	text-align: center;
+	text-shadow: 0 0.06em 0 var(--chestnut);
+}
+
+.v6-expect-grid {
+	position: relative;
+	display: grid;
+	gap: 0.85rem;
+	margin-top: 2.5rem;
+}
+
+.v6-expect-grid article {
+	padding: 1.5rem;
+	border-radius: 1.75rem;
+	background: var(--chestnut);
+	box-shadow: 0 0 0 2px var(--amber);
+}
+
+.v6-expect-grid h3 {
+	margin-bottom: 0.6rem;
+	color: var(--amber);
+	font-family: var(--display);
+	font-size: 1.5rem;
+	font-weight: 400;
+	line-height: 1.12;
+	text-wrap: balance;
+}
+
+.v6-expect-grid p {
+	line-height: 1.58;
+}
+
+/* ===== Groove Room ===== */
+
+.v6-room {
+	--focus: var(--amber);
+	padding-top: 3.5rem;
+	background: var(--garnet);
+	color: var(--cream);
+}
+
+.v6-room-head {
+	width: min(100% - 3rem, 40rem);
+	margin: 0 auto 2.5rem;
+	text-align: center;
+}
+
+.v6-room h2 {
+	color: var(--amber);
+	font-size: clamp(2.6rem, 11vw, 5rem);
+}
+
+.v6-room-head p {
+	margin-block: 0.9rem 0.6rem;
+	line-height: 1.6;
+}
+
+/* Tall pills rise and fall in columns, opposite ways. */
+.v6-columns {
+	display: grid;
+	height: 30rem;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0.75rem;
+	overflow: hidden;
+	padding-inline: 0.75rem;
+}
+
+.v6-column {
+	display: grid;
+	gap: 0.75rem;
+	height: max-content;
+}
+
+.v6-column:nth-child(3) {
+	display: none;
+}
+
+.gv .v6-column img {
+	height: 15rem;
+	border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.v6-column {
+		animation: v6-climb 60s linear infinite;
+	}
+
+	.v6-column.is-reverse {
+		animation-direction: reverse;
+	}
+}
+
+@keyframes v6-climb {
+	to {
+		transform: translateY(calc(-50% - 0.375rem));
+	}
+}
+
+/* ===== FAQ ===== */
+
+.v6-faq {
+	--line: rgb(58 26 18 / 20%);
+	display: grid;
+	gap: 1.5rem;
+	padding: 3.5rem 1.5rem;
+	background: var(--cream);
+}
+
+.v6-faq h2 {
+	color: var(--burnt);
+	font-size: clamp(2.6rem, 11vw, 5rem);
+}
+
+/* ===== Wide screens ===== */
+
+@media (min-width: 800px) {
+	.v6-services,
+	.v6-meet,
+	.v6-expect,
+	.v6-faq {
+		padding: clamp(4rem, 7vw, 6rem) clamp(2rem, 6vw, 6rem);
+	}
+
+	.v6-sticker {
+		width: clamp(13rem, 22vw, 18rem);
+		font-size: 1.15rem;
+	}
+
+	.v6-suns {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		justify-items: center;
+		margin-top: 3rem;
+	}
+
+	.v6-suns li {
+		width: 118%;
+		max-width: 26rem;
+	}
+
+	.v6-suns li:nth-child(2) {
+		justify-self: center;
+		margin-top: 0;
+		z-index: 1;
+	}
+
+	.v6-suns li:nth-child(3) {
+		margin-top: 0;
+	}
+
+	.v6-meet-daisy {
+		right: 3vw;
+		width: 17rem;
+		top: -3rem;
+	}
+
+	.v6-tab-labels {
+		grid-auto-flow: column;
+		grid-auto-columns: minmax(0, 1fr);
+		gap: 0.75rem;
+	}
+
+	.v6-tab-labels label {
+		display: grid;
+		place-items: center;
+		text-align: center;
+		font-size: 1.35rem;
+	}
+
+	.v6-sammy {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+		gap: clamp(2.5rem, 6vw, 6rem);
+		align-items: center;
+		padding: clamp(4rem, 7vw, 6rem) clamp(2rem, 6vw, 6rem);
+	}
+
+	.v6-expect-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1.25rem;
+		margin-top: 8rem;
+	}
+
+	.v6-columns {
+		height: 34rem;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		padding-inline: clamp(1rem, 12vw, 12rem);
+	}
+
+	.v6-column:nth-child(3) {
+		display: grid;
+	}
+
+	.gv .v6-column img {
+		height: 17rem;
+	}
+
+	.v6-faq {
+		grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+		gap: 4rem;
+	}
+}

@@ -1,0 +1,422 @@
+/* V7 sections. Rules start at phone size. The rail keeps one side of each section. */
+
+/* ===== Track ===== */
+
+/* A bend turns twice. The band order flips on the second corner, so the stripes stay parallel. */
+.v7-bend {
+	position: relative;
+	display: grid;
+	grid-template-columns: calc(var(--bend) + var(--track)) minmax(0, 1fr) calc(var(--bend) + var(--track));
+	grid-template-rows: calc(var(--bend) + var(--track)) var(--bend);
+	padding-inline: var(--edge);
+	margin-top: -1px;
+}
+
+.v7-corner {
+	--r0: var(--bend);
+	--r1: calc(var(--bend) + var(--band));
+	--r2: calc(var(--bend) + var(--band) * 2);
+	--r3: calc(var(--bend) + var(--band) * 3);
+	--r4: calc(var(--bend) + var(--band) * 4);
+}
+
+.v7-run {
+	grid-row: 1;
+	grid-column: 2;
+	align-self: end;
+	height: var(--track);
+}
+
+/* Right side to left side. */
+.to-left .v7-corner.is-top {
+	grid-area: 1 / 3;
+	background: radial-gradient(
+		circle at 0 0,
+		transparent var(--r0),
+		var(--cream) var(--r0) var(--r1),
+		var(--amber) var(--r1) var(--r2),
+		var(--burnt) var(--r2) var(--r3),
+		var(--apricot) var(--r3) var(--r4),
+		transparent var(--r4)
+	);
+}
+
+.to-left .v7-run {
+	background: linear-gradient(
+		180deg,
+		var(--cream) 0 25%,
+		var(--amber) 25% 50%,
+		var(--burnt) 50% 75%,
+		var(--apricot) 75%
+	);
+	transform: translateY(0);
+}
+
+.to-left .v7-corner.is-bottom {
+	grid-area: 1 / 1;
+	align-self: end;
+	height: 100%;
+	background: radial-gradient(
+		circle at 100% 100%,
+		transparent var(--r0),
+		var(--apricot) var(--r0) var(--r1),
+		var(--burnt) var(--r1) var(--r2),
+		var(--amber) var(--r2) var(--r3),
+		var(--cream) var(--r3) var(--r4),
+		transparent var(--r4)
+	);
+	translate: 0 calc(var(--bend));
+}
+
+/* Left side to right side. */
+.to-right .v7-corner.is-top {
+	grid-area: 1 / 1;
+	background: radial-gradient(
+		circle at 100% 0,
+		transparent var(--r0),
+		var(--apricot) var(--r0) var(--r1),
+		var(--burnt) var(--r1) var(--r2),
+		var(--amber) var(--r2) var(--r3),
+		var(--cream) var(--r3) var(--r4),
+		transparent var(--r4)
+	);
+}
+
+.to-right .v7-run {
+	background: linear-gradient(
+		180deg,
+		var(--apricot) 0 25%,
+		var(--burnt) 25% 50%,
+		var(--amber) 50% 75%,
+		var(--cream) 75%
+	);
+}
+
+.to-right .v7-corner.is-bottom {
+	grid-area: 1 / 3;
+	height: 100%;
+	background: radial-gradient(
+		circle at 0 100%,
+		transparent var(--r0),
+		var(--cream) var(--r0) var(--r1),
+		var(--amber) var(--r1) var(--r2),
+		var(--burnt) var(--r2) var(--r3),
+		var(--apricot) var(--r3) var(--r4),
+		transparent var(--r4)
+	);
+	translate: 0 calc(var(--bend));
+}
+
+/* ===== Sections ===== */
+
+.v7-section {
+	--focus: var(--amber);
+	--gutter: calc(var(--edge) + var(--track) + 1rem);
+	position: relative;
+	padding-block: 1rem 2.5rem;
+	color: var(--cream);
+}
+
+.v7-section.is-left {
+	padding-inline: var(--gutter) 1.5rem;
+}
+
+.v7-section.is-right {
+	padding-inline: 1.5rem var(--gutter);
+}
+
+.v7-section h2 {
+	font-size: clamp(2.5rem, 11.5vw, 6rem);
+}
+
+.v7-lead {
+	max-width: 30rem;
+	margin-top: 0.9rem;
+	line-height: 1.5;
+}
+
+/* Each stop is a record that sits on the track. */
+.v7-stops {
+	display: grid;
+	gap: 2rem;
+	margin: 2rem 0;
+	padding: 0;
+	list-style: none;
+}
+
+.v7-stops li {
+	position: relative;
+}
+
+.v7-section .v7-stop {
+	position: absolute;
+	top: -0.15rem;
+	width: calc(var(--track) + 1.4rem);
+	height: calc(var(--track) + 1.4rem);
+	color: var(--amber);
+}
+
+.is-left .v7-stop {
+	left: calc(var(--track) / -2 - 0.7rem - var(--track) / 2 - 1rem);
+}
+
+.is-right .v7-stop {
+	right: calc(var(--track) / -2 - 0.7rem - var(--track) / 2 - 1rem);
+}
+
+.v7-stops h3 {
+	margin-bottom: 0.45rem;
+	color: var(--amber);
+	font-family: var(--display);
+	font-size: 1.65rem;
+	font-weight: 400;
+	line-height: 1.12;
+	text-wrap: balance;
+}
+
+.v7-kind {
+	margin-bottom: 0.4rem;
+	font-size: 0.78rem;
+	font-weight: 800;
+	line-height: 1.35;
+}
+
+.v7-stops p:last-child {
+	line-height: 1.58;
+}
+
+.v7-services {
+	--kicker: var(--amber);
+	background: var(--chestnut);
+}
+
+.v7-services h2 {
+	margin-top: 0.6rem;
+}
+
+.v7-services h2 span {
+	display: inline-block;
+}
+
+.v7-meet {
+	background: var(--avocado);
+}
+
+.v7-meet-list {
+	display: grid;
+	gap: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+.v7-meet-list h3 {
+	margin-bottom: 0.6rem;
+	color: var(--amber);
+	font-family: var(--display);
+	font-size: 1.6rem;
+	font-weight: 400;
+	line-height: 1.12;
+	text-wrap: balance;
+}
+
+.v7-meet-list p {
+	line-height: 1.6;
+}
+
+.v7-meet-list p + p {
+	margin-top: 0.75rem;
+}
+
+.v7-sammy {
+	--kicker: var(--amber);
+	background: var(--chestnut);
+}
+
+.v7-sammy-head {
+	display: grid;
+	grid-template-columns: 6.5rem minmax(0, 1fr);
+	gap: 1rem;
+	align-items: center;
+	margin-bottom: 1.5rem;
+}
+
+.gv .v7-sammy-head img {
+	height: 6.5rem;
+	border-radius: 50%;
+	box-shadow: 0 0 0 0.3rem var(--amber);
+	object-position: 50% 14%;
+}
+
+.v7-sammy h2 {
+	margin-top: 0.4rem;
+	color: var(--amber);
+	font-size: clamp(2.25rem, 10vw, 5.5rem);
+}
+
+.v7-sammy-copy p {
+	max-width: 38rem;
+	line-height: 1.66;
+}
+
+.v7-sammy-copy p + p {
+	margin-top: 0.85rem;
+}
+
+.v7-sammy-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem 1.75rem;
+	align-items: center;
+	margin-top: 1.5rem;
+}
+
+.v7-expect {
+	background: var(--garnet);
+}
+
+.v7-room {
+	padding-bottom: 3.5rem;
+	overflow: hidden;
+	background: var(--chestnut);
+}
+
+.v7-room h2 {
+	color: var(--amber);
+}
+
+.v7-room .gv-text-link {
+	margin-top: 0.6rem;
+}
+
+/* A filmstrip with the track bands on each edge. */
+.v7-film {
+	margin-top: 2rem;
+	margin-right: -1.5rem;
+	padding-block: var(--band);
+	border-block: var(--band) solid var(--amber);
+	overflow: hidden;
+}
+
+.v7-film > div {
+	display: flex;
+	width: max-content;
+	gap: 0.5rem;
+}
+
+.gv .v7-film img {
+	width: 15rem;
+	height: 11rem;
+	border-radius: 0.75rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.v7-film > div {
+		animation: v7-roll 70s linear infinite;
+	}
+}
+
+@keyframes v7-roll {
+	to {
+		transform: translateX(calc(-50% - 0.25rem));
+	}
+}
+
+/* ===== FAQ ===== */
+
+.v7-faq {
+	--line: rgb(58 26 18 / 20%);
+	position: relative;
+	display: grid;
+	gap: 1.5rem;
+	padding: 3.5rem 1.5rem;
+	background: var(--cream);
+}
+
+.v7-faq h2 {
+	color: var(--burnt);
+	font-size: clamp(2.6rem, 11vw, 5rem);
+}
+
+.v7-room .v7-terminus {
+	position: absolute;
+	bottom: 0.5rem;
+	left: calc(var(--edge) + var(--track) / 2 - 2rem);
+	width: 4rem;
+	height: 4rem;
+	color: var(--amber);
+}
+
+/* ===== Wide screens ===== */
+
+@media (min-width: 900px) {
+	.v7-section {
+		--gutter: calc(var(--edge) + var(--track) + 3rem);
+		padding-block: 2rem 4rem;
+	}
+
+	.v7-section.is-left {
+		padding-inline: var(--gutter) clamp(2rem, 6vw, 6rem);
+	}
+
+	.v7-section.is-right {
+		padding-inline: clamp(2rem, 6vw, 6rem) var(--gutter);
+	}
+
+	.v7-stops {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 2.5rem;
+		margin-block: 3rem;
+	}
+
+	.v7-section .v7-stop {
+		position: static;
+		display: block;
+		width: 4.5rem;
+		height: 4.5rem;
+		margin-bottom: 1rem;
+	}
+
+	.v7-meet-list {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 3rem;
+		margin-top: 2.5rem;
+	}
+
+	.v7-sammy {
+		display: grid;
+		grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+		gap: 0 4rem;
+	}
+
+	.v7-sammy-head {
+		grid-row: 1 / span 2;
+		grid-template-columns: minmax(0, 1fr);
+		align-content: center;
+		margin: 0;
+	}
+
+	.gv .v7-sammy-head img {
+		width: min(100%, 20rem);
+		height: auto;
+		aspect-ratio: 1;
+		box-shadow: 0 0 0 0.6rem var(--amber);
+	}
+
+	.v7-sammy-actions {
+		grid-column: 2;
+	}
+
+	.gv .v7-film img {
+		width: 22rem;
+		height: 15rem;
+	}
+
+	.v7-film {
+		margin-right: calc(clamp(2rem, 6vw, 6rem) * -1);
+	}
+
+	.v7-faq {
+		grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+		gap: 4rem;
+		padding: clamp(4rem, 7vw, 6rem) clamp(2rem, 6vw, 6rem);
+	}
+}

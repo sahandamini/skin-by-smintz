@@ -1,0 +1,97 @@
+---
+import BookPill from '@/components/site/book-pill.astro'
+import Icon from '@/components/site/icon.astro'
+import SiteNav from '@/components/site/site-nav.astro'
+
+import VanityDefs from './vanity-defs.astro'
+import VanityObject from './vanity-object.astro'
+
+import './hero.css'
+
+const facts = ['$50 consult', '45 minutes, virtual', '$50 shop credit']
+---
+
+<header class="hero">
+	<VanityDefs />
+	<SiteNav />
+	<div aria-hidden="true" class="hero-sun"></div>
+
+	<svg aria-hidden="true" class="hero-pendant" viewBox="0 0 240 420">
+		<path
+			d="M120 0v196"
+			fill="none"
+			stroke="var(--ink)"
+			stroke-width="3"
+		></path>
+		<rect
+			fill="url(#metal-brass)"
+			height="34"
+			rx="6"
+			width="40"
+			x="100"
+			y="176"
+		></rect>
+		<path d="M60 262q0-56 60-56t60 56z" fill="url(#glass-garnet)"></path>
+		<path
+			d="M8 322q-4-48 40-60h144q44 12 40 60-4 34-112 34T8 322z"
+			fill="url(#glass-amber)"
+		></path>
+		<ellipse
+			cx="120"
+			cy="356"
+			fill="var(--lamp-shade)"
+			rx="62"
+			ry="12"
+		></ellipse>
+		<path
+			d="M36 306q6-22 26-32"
+			fill="none"
+			stroke="var(--sheen)"
+			stroke-linecap="round"
+			stroke-opacity="0.55"
+			stroke-width="8"
+		></path>
+	</svg>
+
+	<div class="hero-copy">
+		<h1>
+			<span class="hero-eyebrow">Skin Groove · Virtual esthetics</span>
+			<span class="hero-title">Find your skincare rhythm.</span>
+		</h1>
+		<p class="hero-lead">
+			Thoughtful, curated skincare guidance to help you understand your skin,
+			simplify your routine, and finally find what works for you.
+		</p>
+		<div class="hero-actions">
+			<BookPill />
+			<a class="gv-text-link" href="#services">
+				See the services
+				<Icon name="arrowRight" />
+			</a>
+		</div>
+	</div>
+
+	<div class="hero-vanity">
+		<VanityObject name="dropper" />
+		<figure class="hero-frame">
+			<img
+				alt="Sammy, the founder of Skin Groove, smiling in a black uniform"
+				fetchpriority="high"
+				height="1080"
+				src="/images/sammy.webp"
+				width="810"
+			/>
+		</figure>
+		<VanityObject name="lamp" />
+		<VanityObject class="is-wide-only" name="lava" />
+		<VanityObject name="jar" />
+	</div>
+
+	<div aria-hidden="true" class="hero-shelf"></div>
+
+	<ul class="hero-facts">
+		{facts.map((fact) => (
+			<li>{fact}</li>
+		))}
+	</ul>
+</header>

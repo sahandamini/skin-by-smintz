@@ -8,13 +8,15 @@ interface Props {
 const { class: className } = Astro.props
 
 const { pathname } = Astro.url
+
+const homePath = /^\/v\d/.test(pathname) ? pathname : '/'
 ---
 
 <div class={cn('gv-links', className)}>
 	<a aria-current={pathname === '/about' ? 'page' : undefined} href="/about">
 		About
 	</a>
-	<a href="/#services">Services</a>
-	<a href="/#faq">FAQ</a>
+	<a href={`${homePath}#services`}>Services</a>
+	<a href={`${homePath}#faq`}>FAQ</a>
 	<a href="#contact">Contact</a>
 </div>

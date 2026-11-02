@@ -1,0 +1,116 @@
+---
+import BookPill from '@/components/site/book-pill.astro'
+import Closing from '@/components/site/closing.astro'
+import Icon from '@/components/site/icon.astro'
+import InstagramLink from '@/components/site/instagram-link.astro'
+
+import { expectations, galleryRows, pillars, sammyIntro, services } from '../v3/content'
+import FaqList from '../v3/faq-list.astro'
+import Daisy from './daisy.astro'
+import Scallop from './scallop.astro'
+
+import '../faq.css'
+import './sections.css'
+
+const columns = [galleryRows[0].slice(0, 5), galleryRows[1].slice(0, 5), galleryRows[0].slice(5, 10)]
+---
+
+<section id="services" class="v6-services" aria-labelledby="v6-services-title">
+	<h2 class="v6-offer" id="v6-services-title" data-reveal>
+		<span class="v6-sticker is-consult"><Scallop /><b>$50</b> <i>consult.</i></span>
+		<span class="v6-sticker is-credit"><Scallop /><b>$50</b> <i>shop credit.</i></span>
+	</h2>
+	<p class="v6-offer-note" data-reveal>After your consult, you get a $50 code for the shop, opening soon.</p>
+	<ul class="v6-suns">
+		{services.map((service) => (
+			<li data-reveal>
+				<div>
+					<h3>{service.name}</h3>
+					<p class="v6-sun-kind">{service.kind}</p>
+					<p>{service.body}</p>
+				</div>
+			</li>
+		))}
+	</ul>
+	<div class="v6-center" data-reveal><BookPill /></div>
+</section>
+
+<section class="v6-meet" aria-labelledby="v6-meet-title">
+	<Daisy class="v6-meet-daisy" />
+	<h2 id="v6-meet-title" data-reveal>Meet Skin Groove</h2>
+	<div class="v6-tabs" data-reveal>
+		{pillars.map((pillar, index) => (
+			<input aria-label={pillar.title} checked={index === 0} id={`v6-tab-${index}`} name="v6-tabs" type="radio" />
+		))}
+		<div class="v6-tab-labels">
+			{pillars.map((pillar, index) => (
+				<label for={`v6-tab-${index}`}>{pillar.title}</label>
+			))}
+		</div>
+		{pillars.map((pillar) => (
+			<article>
+				{pillar.body.map((paragraph) => (
+					<p>{paragraph}</p>
+				))}
+			</article>
+		))}
+	</div>
+</section>
+
+<section class="v6-sammy" aria-labelledby="v6-sammy-title">
+	<figure data-reveal>
+		<Scallop />
+		<img alt="Sammy, the founder of Skin Groove, smiling in a black uniform" decoding="async" height="1080" loading="lazy" src="/images/sammy.webp" width="810" />
+	</figure>
+	<div class="v6-sammy-copy" data-reveal>
+		<p class="gv-kicker">The founder</p>
+		<h2 id="v6-sammy-title">Hi, I’m Sammy!</h2>
+		{sammyIntro.map((paragraph) => (
+			<p set:html={paragraph} />
+		))}
+		<div class="v6-sammy-actions">
+			<a class="gv-pill" href="/about">
+				Meet the founder
+				<Icon name="arrowRight" />
+			</a>
+			<InstagramLink />
+		</div>
+	</div>
+</section>
+
+<section class="v6-expect" aria-labelledby="v6-expect-title">
+	<div aria-hidden="true" class="v6-sunset"></div>
+	<h2 id="v6-expect-title" data-reveal>What you can expect</h2>
+	<div class="v6-expect-grid">
+		{expectations.map((item) => (
+			<article data-reveal>
+				<h3>{item.title}</h3>
+				<p set:html={item.body} />
+			</article>
+		))}
+	</div>
+</section>
+
+<section class="v6-room" aria-labelledby="v6-room-title">
+	<div class="v6-room-head" data-reveal>
+		<h2 id="v6-room-title">The Groove Room</h2>
+		<p>Warm light, soft shapes, and spaces that feel like an exhale.</p>
+		<InstagramLink />
+	</div>
+	<div aria-hidden="true" class="v6-columns">
+		{columns.map((column, index) => (
+			<div class:list={['v6-column', index % 2 === 1 && 'is-reverse']}>
+				{[...column, ...column].map((image) => (
+					<img alt="" decoding="async" height="400" loading="lazy" src={`/images/groove/${image}.webp`} width="260" />
+				))}
+			</div>
+		))}
+	</div>
+</section>
+
+<section id="faq" class="v6-faq" aria-labelledby="v6-faq-title">
+	<h2 id="v6-faq-title" data-reveal>Before you book</h2>
+	<div data-reveal><FaqList /></div>
+</section>
+
+<Closing />

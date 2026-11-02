@@ -1,0 +1,156 @@
+---
+import BookPill from '@/components/site/book-pill.astro'
+import Closing from '@/components/site/closing.astro'
+import Icon from '@/components/site/icon.astro'
+import InstagramLink from '@/components/site/instagram-link.astro'
+import Record from '@/components/site/record.astro'
+import Wave from '@/components/site/wave.astro'
+
+import AlbumSleeve from './album-sleeve.astro'
+import { expectations, pillars, sammyIntro, services } from './content'
+import FaqList from './faq-list.astro'
+import GalleryRows from './gallery-rows.astro'
+import Motif from './motif.astro'
+
+import './sections.css'
+---
+
+<section
+	id="services"
+	class="home-services"
+	aria-labelledby="home-services-title"
+>
+	<AlbumSleeve />
+	<div class="home-services-copy">
+		<div data-reveal>
+			<p class="gv-kicker">Services</p>
+			<h2 id="home-services-title">
+				<span>$50 consult.</span> <span>$50 shop credit.</span>
+			</h2>
+			<p class="home-services-lead">
+				After your consult, you get a $50 code for the shop, opening soon.
+			</p>
+		</div>
+		<ol class="home-tracks">
+			{services.map((service, index) => (
+				<li data-reveal style={`transition-delay:${index * 90}ms`}>
+					<div class="home-track-disc">
+						<img
+							alt=""
+							decoding="async"
+							height="240"
+							loading="lazy"
+							src={service.image}
+							width="240"
+						/>
+					</div>
+					<div>
+						<h3>{service.name}</h3>
+						<p class="home-track-kind">{service.kind}</p>
+						<p>{service.body}</p>
+					</div>
+				</li>
+			))}
+		</ol>
+		<div data-reveal>
+			<BookPill />
+		</div>
+	</div>
+</section>
+
+<section class="home-meet" aria-labelledby="home-meet-title">
+	<Wave class="is-top" />
+	<div class="home-meet-inner">
+		<div class="home-meet-head" data-reveal>
+			<Record class="home-meet-record" />
+			<h2 id="home-meet-title">Meet Skin Groove</h2>
+		</div>
+		<div class="home-meet-list">
+			{pillars.map((pillar) => (
+				<article data-reveal>
+					<h3>{pillar.title}</h3>
+					{pillar.body.map((paragraph) => (
+						<p>{paragraph}</p>
+					))}
+				</article>
+			))}
+		</div>
+	</div>
+	<Wave class="is-bottom" />
+</section>
+
+<section class="home-sammy" aria-labelledby="home-sammy-title">
+	<figure class="home-sammy-door" data-reveal>
+		<img
+			alt="A warm lounge lit by a glowing amber table lamp"
+			decoding="async"
+			height="1400"
+			loading="lazy"
+			src="/images/groove/43-lg.webp"
+			width="1000"
+		/>
+	</figure>
+	<div class="home-sammy-copy" data-reveal>
+		<p class="gv-kicker">The founder</p>
+		<h2 id="home-sammy-title">Hi, I’m Sammy!</h2>
+		{sammyIntro.map((paragraph) => (
+			<p set:html={paragraph} />
+		))}
+		<div class="home-sammy-actions">
+			<a class="gv-pill" href="/about">
+				Meet the founder
+				<Icon name="arrowRight" />
+			</a>
+			<InstagramLink />
+		</div>
+	</div>
+</section>
+
+<section class="home-expect" aria-labelledby="home-expect-title">
+	<Wave class="is-top" />
+	<div class="home-expect-inner">
+		<h2 id="home-expect-title" data-reveal>
+			What you can expect
+		</h2>
+		<div class="home-expect-grid">
+			{expectations.map((item, index) => (
+				<article data-reveal style={`transition-delay:${index * 90}ms`}>
+					<Motif name={item.motif} />
+					<div>
+						<h3>{item.title}</h3>
+						<p set:html={item.body} />
+					</div>
+				</article>
+			))}
+		</div>
+	</div>
+	<Wave class="is-bottom" />
+</section>
+
+<section class="home-room" aria-labelledby="home-room-title">
+	<div class="home-room-head" data-reveal>
+		<h2 id="home-room-title">The Groove Room</h2>
+		<p>Warm light, soft shapes, and spaces that feel like an exhale.</p>
+		<InstagramLink />
+	</div>
+	<GalleryRows />
+	<Wave class="is-bottom" />
+</section>
+
+<section id="faq" class="home-faq" aria-labelledby="home-faq-title">
+	<figure class="home-faq-photo" data-reveal>
+		<img
+			alt="A row of glowing lava lamps"
+			height="1277"
+			loading="lazy"
+			src="/images/groove/61.webp"
+			width="1800"
+		/>
+	</figure>
+	<div class="home-faq-copy" data-reveal>
+		<h2 id="home-faq-title">Before you book</h2>
+		<FaqList />
+	</div>
+</section>
+
+<Closing />

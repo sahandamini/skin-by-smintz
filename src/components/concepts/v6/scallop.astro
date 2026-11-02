@@ -1,0 +1,10 @@
+---
+const angles = Array.from({ length: 16 }, (_, index) => index * 22.5)
+---
+
+<svg aria-hidden="true" class="v6-scallop" viewBox="0 0 100 100">
+	<circle cx="50" cy="50" r="40"></circle>
+	{angles.map((angle) => (
+		<circle cx="50" cy="9.5" r="9" transform={`rotate(${angle} 50 50)`} />
+	))}
+</svg>

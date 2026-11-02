@@ -1,0 +1,140 @@
+---
+import BookPill from '@/components/site/book-pill.astro'
+import Closing from '@/components/site/closing.astro'
+import Icon from '@/components/site/icon.astro'
+import InstagramLink from '@/components/site/instagram-link.astro'
+
+import { expectations, galleryRows, pillars, sammyIntro, services } from './content'
+import FaqList from './faq-list.astro'
+import RecordRing from './record-ring.astro'
+import Sweep from './sweep.astro'
+
+import './sections.css'
+
+const posters = ['/images/groove/06-lg.webp', '/images/groove/57.webp', '/images/groove/41-lg.webp']
+
+const petals = [
+	{ cx: 0.5, cy: 0.27 },
+	{ cx: 0.73, cy: 0.5 },
+	{ cx: 0.5, cy: 0.73 },
+	{ cx: 0.27, cy: 0.5 },
+]
+---
+
+<Sweep from="chestnut" to="amber" />
+
+<section id="services" class="v3-services" aria-labelledby="v3-services-title">
+	<div class="v3-services-head" data-reveal>
+		<p class="gv-kicker">Services</p>
+		<h2 id="v3-services-title">
+			<span>$50 consult.</span> <span>$50 shop credit.</span>
+		</h2>
+		<p>After your consult, you get a $50 code for the shop, opening soon.</p>
+	</div>
+	<ul class="v3-posters">
+		{services.map((service, index) => (
+			<li>
+				<img alt="" decoding="async" height="1000" loading="lazy" src={posters[index]} width="750" />
+				<div>
+					<h3>{service.name}</h3>
+					<p class="v3-poster-kind">{service.kind}</p>
+					<p>{service.body}</p>
+				</div>
+			</li>
+		))}
+	</ul>
+	<div class="v3-cta" data-reveal>
+		<BookPill />
+	</div>
+</section>
+
+<Sweep flip from="amber" to="avocado" />
+
+<section class="v3-meet" aria-labelledby="v3-meet-title">
+	<div class="v3-meet-head" data-reveal>
+		<h2 id="v3-meet-title">Meet Skin Groove</h2>
+		<RecordRing class="v3-meet-record" id="v3-meet-ring" text="SKINCARE WITH SOUL ✿ SKINCARE WITH SOUL ✿ " />
+	</div>
+	<div class="v3-accordion" data-reveal>
+		{pillars.map((pillar, index) => (
+			<details name="v3-pillars" open={index === 0}>
+				<summary>
+					{pillar.title}
+					<Icon name="plus" />
+				</summary>
+				{pillar.body.map((paragraph) => (
+					<p>{paragraph}</p>
+				))}
+			</details>
+		))}
+	</div>
+</section>
+
+<Sweep from="avocado" to="rust" />
+
+<section class="v3-sammy" aria-labelledby="v3-sammy-title">
+	<figure class="v3-flower" data-reveal>
+		<svg aria-hidden="true" viewBox="0 0 1 1">
+			<defs>
+				<clipPath clipPathUnits="objectBoundingBox" id="v3-flower-clip">
+					{petals.map((petal) => <circle cx={petal.cx} cy={petal.cy} r="0.27" />)}
+					<circle cx="0.5" cy="0.5" r="0.3" />
+				</clipPath>
+			</defs>
+			<g class="v3-petals">
+				{petals.map((petal) => <circle cx={petal.cx} cy={petal.cy} r="0.285" />)}
+			</g>
+		</svg>
+		<img alt="Sammy, the founder of Skin Groove, smiling in a black uniform" decoding="async" height="1080" loading="lazy" src="/images/sammy.webp" width="810" />
+	</figure>
+	<div class="v3-sammy-copy" data-reveal>
+		<p class="gv-kicker">The founder</p>
+		<h2 id="v3-sammy-title">Hi, I’m Sammy!</h2>
+		{sammyIntro.map((paragraph) => (
+			<p set:html={paragraph} />
+		))}
+		<div class="v3-sammy-actions">
+			<a class="gv-pill" href="/about">
+				Meet the founder
+				<Icon name="arrowRight" />
+			</a>
+			<InstagramLink />
+		</div>
+	</div>
+</section>
+
+<section class="v3-expect" aria-labelledby="v3-expect-title">
+	<h2 id="v3-expect-title">What you can expect</h2>
+	<ul>
+		{expectations.map((item) => (
+			<li>
+				<div>
+					<h3>{item.title}</h3>
+					<p set:html={item.body} />
+				</div>
+			</li>
+		))}
+	</ul>
+</section>
+
+<section class="v3-room" aria-labelledby="v3-room-title">
+	<div class="v3-room-head" data-reveal>
+		<h2 id="v3-room-title">The Groove Room</h2>
+		<p>Warm light, soft shapes, and spaces that feel like an exhale.</p>
+		<InstagramLink />
+	</div>
+	<div aria-hidden="true" class="v3-discs">
+		{[...galleryRows[0], ...galleryRows[0]].map((image) => (
+			<span><img alt="" decoding="async" height="300" loading="lazy" src={`/images/groove/${image}.webp`} width="300" /></span>
+		))}
+	</div>
+</section>
+
+<Sweep from="chestnut" to="cream" />
+
+<section id="faq" class="v3-faq" aria-labelledby="v3-faq-title">
+	<h2 id="v3-faq-title" data-reveal>Before you book</h2>
+	<div data-reveal><FaqList /></div>
+</section>
+
+<Closing />

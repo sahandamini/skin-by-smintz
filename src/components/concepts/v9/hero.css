@@ -1,0 +1,172 @@
+/* V9 "Album Wall": the whole page is one grid of record covers on a dark wall. */
+
+.v9-top {
+	position: relative;
+	height: 4.75rem;
+	background: var(--chestnut);
+}
+
+.v9-wall {
+	--focus: var(--amber);
+	display: grid;
+	grid-auto-flow: dense;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0.5rem;
+	padding: 0.25rem 0.5rem;
+	background: var(--chestnut);
+	color: var(--cream);
+}
+
+.v9-tile {
+	position: relative;
+	min-width: 0;
+	aspect-ratio: 1;
+	overflow: hidden;
+	border-radius: 0.9rem;
+}
+
+.v9-photo {
+	background: var(--garnet);
+}
+
+.gv .v9-sammy-tile img {
+	object-position: 50% 16%;
+}
+
+.v9-headline {
+	--pill-bg: var(--chestnut);
+	--pill-fg: var(--cream);
+	display: grid;
+	grid-column: span 2;
+	align-content: end;
+	justify-items: start;
+	gap: 0.85rem;
+	aspect-ratio: auto;
+	padding: 1.5rem 1.25rem 1.5rem;
+	background: var(--amber);
+	color: var(--chestnut);
+}
+
+.v9-eyebrow {
+	display: block;
+	margin-bottom: 0.8rem;
+	font: 800 0.72rem/1.2 var(--body);
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+.v9-title {
+	display: block;
+	font-family: var(--display);
+	font-size: clamp(2.9rem, 14vw, 4rem);
+	font-weight: 400;
+	line-height: 0.97;
+	text-wrap: balance;
+}
+
+.v9-headline > p {
+	max-width: 30rem;
+	font-weight: 600;
+	line-height: 1.5;
+}
+
+.v9-record-tile {
+	display: grid;
+	place-items: center;
+	background: var(--burnt);
+}
+
+.v9-record-tile svg {
+	width: 118%;
+	height: 118%;
+	color: var(--amber);
+	translate: 22% 22%;
+}
+
+.v9-arcs {
+	background: radial-gradient(
+		circle at 0 100%,
+		var(--chestnut) 0 18%,
+		var(--avocado) 18% 34%,
+		var(--cream) 34% 50%,
+		var(--amber) 50% 66%,
+		var(--burnt) 66% 82%,
+		var(--garnet) 82% 98%,
+		var(--apricot) 98%
+	);
+}
+
+.v9-stripes {
+	background: repeating-linear-gradient(
+		135deg,
+		var(--garnet) 0 1.1rem,
+		var(--burnt) 1.1rem 2.2rem,
+		var(--amber) 2.2rem 3.3rem,
+		var(--apricot) 3.3rem 4.4rem,
+		var(--cream) 4.4rem 5.5rem
+	);
+}
+
+.v9-waves {
+	background: url('/images/tile/wave.svg') 0 0 / 120% auto;
+}
+
+.v9-rings {
+	background: repeating-radial-gradient(
+		circle at 50% 50%,
+		var(--avocado) 0 1rem,
+		var(--cream) 1rem 2rem,
+		var(--amber) 2rem 3rem
+	);
+}
+
+.v9-record-tile.is-avocado {
+	background: var(--avocado);
+}
+
+.v9-tile.is-wide {
+	display: none;
+}
+
+@media (min-width: 900px) {
+	.v9-top {
+		height: 5rem;
+	}
+
+	.v9-wall {
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+		gap: 0.75rem;
+		padding: 0.25rem 0.75rem;
+	}
+
+	.v9-headline {
+		grid-row: span 2;
+		grid-column: span 3;
+		padding: 2rem 2.5rem 2.5rem;
+	}
+
+	.v9-eyebrow {
+		font-size: 0.8rem;
+	}
+
+	.v9-title {
+		font-size: clamp(3.25rem, 5.6vw, 6rem);
+	}
+
+	.v9-headline > p {
+		font-size: 1.05rem;
+	}
+
+	.v9-sammy-tile {
+		grid-row: span 2;
+		grid-column: span 2;
+	}
+
+	.v9-tile.is-wide {
+		display: block;
+	}
+
+	.v9-tile.v9-record-tile.is-wide {
+		display: grid;
+	}
+}

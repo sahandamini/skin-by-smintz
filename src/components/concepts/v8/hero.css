@@ -1,0 +1,166 @@
+/* V8 "Melt": flat wax blobs rise behind the headline, and each section drips into the next. */
+
+.v8-hero {
+	--focus: var(--amber);
+	position: relative;
+	display: grid;
+	min-height: 100svh;
+	align-items: end;
+	overflow: hidden;
+	padding: 5.5rem 1.5rem 2.5rem;
+	background: var(--garnet);
+	color: var(--cream);
+}
+
+.v8-hero .gv-nav::before {
+	opacity: 1;
+}
+
+.v8-lava {
+	position: absolute;
+	inset: 0;
+}
+
+.v8-lava i {
+	--size: calc(11rem + var(--n) * 2.4rem);
+	position: absolute;
+	bottom: -20%;
+	left: calc(var(--n) * 15% - 6%);
+	width: var(--size);
+	height: calc(var(--size) * 1.15);
+	border-radius: 58% 42% 55% 45% / 48% 60% 40% 52%;
+	background: var(--burnt);
+}
+
+.v8-lava i:nth-child(3n) {
+	background: var(--amber);
+}
+
+.v8-lava i:nth-child(3n + 1) {
+	background: var(--rust);
+}
+
+.v8-lava i:nth-child(1) {
+	bottom: 52%;
+}
+
+.v8-lava i:nth-child(2) {
+	bottom: 62%;
+	left: 58%;
+}
+
+.v8-lava i:nth-child(3) {
+	bottom: 44%;
+	left: 66%;
+}
+
+.v8-lava i:nth-child(4) {
+	bottom: -6%;
+	left: 60%;
+}
+
+.v8-lava i:nth-child(5) {
+	bottom: 70%;
+	left: 8%;
+}
+
+.v8-copy {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	justify-items: start;
+	gap: 1rem;
+	padding: 1.5rem;
+	border-radius: 2.25rem 3.25rem 2.5rem 3rem;
+	background: var(--chestnut);
+}
+
+.v8-eyebrow {
+	display: block;
+	margin-bottom: 0.7rem;
+	color: var(--amber);
+	font: 800 0.72rem/1.2 var(--body);
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+.v8-title {
+	display: block;
+	font-family: var(--display);
+	font-size: clamp(2.7rem, 12.5vw, 3.75rem);
+	font-weight: 400;
+	line-height: 0.98;
+	text-wrap: balance;
+}
+
+.v8-copy > p {
+	max-width: 30rem;
+	line-height: 1.55;
+}
+
+.v8-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem 1.5rem;
+	align-items: center;
+}
+
+.v8-actions .gv-text-link {
+	display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.v8-lava i {
+		animation:
+			v8-rise calc(16s + var(--n) * 3s) ease-in-out infinite alternate,
+			v8-morph calc(9s + var(--n) * 1.5s) ease-in-out infinite alternate;
+		animation-delay: calc(var(--n) * -2.5s);
+	}
+}
+
+@keyframes v8-rise {
+	to {
+		transform: translateY(-28svh);
+	}
+}
+
+@keyframes v8-morph {
+	to {
+		border-radius: 42% 58% 46% 54% / 60% 42% 58% 40%;
+	}
+}
+
+@media (min-width: 900px) {
+	.v8-hero {
+		align-items: center;
+		padding: 6rem clamp(2rem, 6vw, 6rem) 3rem;
+	}
+
+	.v8-copy {
+		max-width: 44rem;
+		gap: 1.25rem;
+		padding: 3rem 3.5rem;
+		border-radius: 4rem 6rem 5rem 5.5rem;
+	}
+
+	.v8-eyebrow {
+		font-size: 0.82rem;
+		letter-spacing: 0.18em;
+	}
+
+	.v8-title {
+		font-size: clamp(3.5rem, 6vw, 5.75rem);
+	}
+
+	.v8-copy > p {
+		font-size: 1.1rem;
+	}
+
+	.v8-actions .gv-text-link {
+		display: inline-flex;
+	}
+
+	.v8-lava i {
+		--size: calc(16rem + var(--n) * 3.5rem);
+	}
+}
